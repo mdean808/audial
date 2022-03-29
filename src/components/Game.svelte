@@ -184,6 +184,9 @@
             🟥
           {/if}
         {/each}
+        {#each Array(6 - attempt.attempts) as i}
+          ⬛
+        {/each}
       </div>
     {:else if !attempt.correct}
       <div>
