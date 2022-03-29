@@ -1,9 +1,9 @@
 const build = [
-  "/_app/start-98a63818.js",
+  "/_app/start-e43c41ee.js",
   "/_app/pages/__layout.svelte-c12af0bd.js",
   "/_app/assets/pages/__layout.svelte-2b10fab5.css",
   "/_app/pages/__error.svelte-24bc969d.js",
-  "/_app/pages/index.svelte-9a904c0a.js",
+  "/_app/pages/index.svelte-f61d8bc6.js",
   "/_app/chunks/vendor-dca149f1.js",
   "/_app/assets/vendor-0aa84dd2.css",
   "/_app/chunks/singletons-d1fb5791.js",
@@ -19,7 +19,7 @@ const files = [
   "/icons/favicon-32x32.png",
   "/manifest.json"
 ];
-const version = "1648597707030";
+const version = "1648597958425";
 const worker = self;
 const CACHE_NAME = "audial-cache-" + version;
 const VALID_HOSTS = [location.host, "api.spotify.com"];

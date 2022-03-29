@@ -11,6 +11,7 @@
   import { daysBetweenDates } from "../api/util.ts";
 
   const FIRST_DAY = new Date(1648594699909);
+  let forceRandom = false;
   let notifyClipboard = false;
   let attempt = <Attempt>{};
   let playlist = <SpotifyPlaylist>{};
@@ -29,9 +30,8 @@
     // load the current playlist
     playlist = await getSpotifyPlaylist("5LQuCyn8AhcHpl31DgLaxL", auth.token);
     // get a random track and ALL tracks from the playlist
-
+    forceRandom = new URL(window.location.href).searchParams.get("random") === "true";
     allTracks = await getAllSpotifyPlaylistTracks(playlist, auth.token);
-    const forceRandom = new URL(window.location.href).searchParams.get("random") === "true";
     const randomTrack = await getRandomTrack(allTracks, forceRandom);
     // if we are in a new date from the past, take the new random song and set it to the current one.
     //    reset the attempts.
@@ -196,9 +196,14 @@
       </div>
     {:else}
       <div class="py-3">
-        <span class="my-2">audial #{daysBetweenDates(new Date(), FIRST_DAY)} {generateEmojis()}</span>
-        <div class="w-full mx-auto my-2"><Button className="block mx-auto" type="submit" on:click={generateShareClipboard}>share</Button>
-        <p class={`${notifyClipboard ? 'opacity-100' : 'opacity-0'} text-blue-100 font-semibold transition-all duration-500 my-2`}>copied to clipboard.</p></div>
+        {#if !forceRandom}
+          <span class="my-2">audial #{daysBetweenDates(new Date(), FIRST_DAY)}</span>
+        {/if}
+        <span> {generateEmojis()}</span>
+        {#if !forceRandom}
+          <div class="w-full mx-auto my-2"><Button className="block mx-auto" type="submit" on:click={generateShareClipboard}>share</Button>
+          <p class={`${notifyClipboard ? 'opacity-100' : 'opacity-0'} text-blue-100 font-semibold transition-all duration-500 my-2`}>copied to clipboard.</p></div>
+        {/if}
       </div>
     {/if}
   </div>
