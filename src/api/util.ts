@@ -9,3 +9,8 @@ export const convertSpotifyTrackToSong = (track: SpotifyTrack) => {
   };
   return song;
 };
+
+export const daysBetweenDates = (d1: Date, d2: Date) => {
+  const diffTime = Math.abs(d1.getTime() - d2.getTime());
+  return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+}

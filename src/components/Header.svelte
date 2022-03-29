@@ -12,14 +12,14 @@
 </script>
 
 <div>
-  <header class="border-b">
+  <header class="border-b border-gray-500">
     <div class="max-w-screen-md mx-auto ">
       <div class="flex justify-evenly p-3 items-center">
         <div class="flex flex-1">
           <button
             on:click={() => goto('/about')}
             title="About Audial"
-            class="px-2 py-2 tracking-widest border-none flex items-center font-semibold text-sm text-white"
+            class="px-2 py-2 tracking-widest border-none flex items-center font-semibold text-sm text-white hover:text-blue-500"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +40,7 @@
           <button
             on:click={() => window.location.href = '/random?=true'}
             title="Random Song"
-            class="px-2 py-2 tracking-widest border-none flex items-center font-semibold text-sm text-white"
+            class="px-2 py-2 tracking-widest border-none flex items-center font-semibold text-sm text-white hover:text-blue-500"
           >
             <svg xmlns="http://www.w3.org/2000/svg"
                  width="24"
@@ -60,7 +60,7 @@
           <button
             on:click={() => goto('/stats')}
             title="View Statistics"
-            class="px-2 py-2 tracking-widest border-none flex items-center font-semibold text-sm text-white"
+            class="px-2 py-2 tracking-widest border-none flex items-center font-semibold text-sm text-white hover:text-blue-600"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

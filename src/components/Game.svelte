@@ -8,7 +8,10 @@
   import { convertSpotifyTrackToSong } from "../api/util";
   import type { Attempt, Guess, Song, SpotifyPlaylist, SpotifyTrack } from "../types";
   import Button from "./Button.svelte";
+  import { daysBetweenDates } from "../api/util.ts";
 
+  const FIRST_DAY = new Date(1648594699909);
+  let notifyClipboard = false;
   let attempt = <Attempt>{};
   let playlist = <SpotifyPlaylist>{};
   let allTracks = <SpotifyTrack[]>[];
@@ -85,6 +88,27 @@
     searchResults = searchResults.map((t) => convertSpotifyTrackToSong(t));
     return searchResults;
   };
+
+  const generateEmojis = () => {
+    let emojiString = '';
+    for (const guess of attempt.guesses || []) {
+      if (guess.correct) emojiString += "🟩 "
+      else if (guess.artistCorrect) emojiString += "🟨 "
+      else emojiString += "🟥 "
+    }
+    for (let i = 0; i < 6 - attempt.attempts; i++) {
+      emojiString += "⬛ "
+    }
+    return emojiString
+  }
+
+  const generateShareClipboard = () => {
+    let string = 'audial #' + daysBetweenDates(new Date(), FIRST_DAY);
+    string += '\n' + generateEmojis()
+    string += '\nhttps://audial.mogdan.xyz'
+    navigator.clipboard.writeText(string)
+    notifyClipboard = true;
+  }
 </script>
 
 <div>
@@ -105,7 +129,7 @@
           on:click={() => {
             window.open(`https://open.spotify.com/track/${guess.song.id}`, '_blank').focus();
           }}
-          class={`cursor-pointer ${guess.artistCorrect ? 'border-amber-400' : 'border-orange-600'} border-2 h-10 p-2 my-2 w-full text-left rounded-sm bg-gray-900 overflow-ellipsis whitespace-nowrap overflow-hidden`}
+          class={`cursor-pointer ${guess.artistCorrect ? 'border-amber-400' : 'border-red-600'} border-2 h-10 p-2 my-2 w-full text-left rounded-sm bg-gray-900 overflow-ellipsis whitespace-nowrap overflow-hidden`}
         >
           {guess.song.name} by {guess.song.artist}
         </div>
@@ -156,7 +180,7 @@
           </div>
         </AutoComplete>
         <div class="w-2/12 pl-4 mt-0.5" title="guess selected song">
-          <Button title="Submit Song Guess" type="submit" className="w-full" on:click={chooseSong}>
+          <Button title="Submit Song Guess" type="primary" className="w-full" on:click={chooseSong}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-6 w-6 mx-auto"
@@ -170,28 +194,11 @@
           </Button>
         </div>
       </div>
-    {:else if attempt.correct}
-      <div>
-        <p>AWESOME JOB, YOU GUESSED</p>
-        <p class="text-green-500">{currentSong.get().name} by {currentSong.get().artist}</p>
-        <p>CORRECTLY!</p>
-        {#each attempt.guesses as guess}
-          {#if guess.correct}
-            🟩
-          {:else if guess.artistCorrect}
-            🟨
-          {:else }
-            🟥
-          {/if}
-        {/each}
-        {#each Array(6 - attempt.attempts) as i}
-          ⬛
-        {/each}
-      </div>
-    {:else if !attempt.correct}
-      <div>
-        <p>THE SONG WAS </p>
-        <p class="text-red-600">{currentSong.get().name} by {currentSong.get().artist}</p>
+    {:else}
+      <div class="py-3">
+        <span class="my-2">audial #{daysBetweenDates(new Date(), FIRST_DAY)} {generateEmojis()}</span>
+        <div class="w-full mx-auto my-2"><Button className="block mx-auto" type="submit" on:click={generateShareClipboard}>share</Button>
+        <p class={`${notifyClipboard ? 'opacity-100' : 'opacity-0'} text-blue-100 font-semibold transition-all duration-500 my-2`}>copied to clipboard.</p></div>
       </div>
     {/if}
   </div>

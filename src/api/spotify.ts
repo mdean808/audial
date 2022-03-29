@@ -66,8 +66,8 @@ export const getAllSpotifyPlaylistTracks = async (playlist: SpotifyPlaylist, tok
 
 export const getRandomTrack = async (tracks: SpotifyTrack[], forceRandom?: boolean) => {
   const date = new Date();
-  date.setDate(date.getDate() + (forceRandom ? Math.random() * 10 * (Math.random() + 20) : 0));
-  random.use(seedrandom(date.toLocaleDateString()));
+  const forceRand =  (forceRandom ? Math.random() * 10 * (Math.random() + 20) : 0);
+  random.use(seedrandom(parseInt(date.toLocaleDateString().replace(new RegExp('/', 'g'), '')) + forceRand));
   const rand = random.int(0, tracks.length - 1);
   return tracks[rand];
 };

@@ -1,6 +1,6 @@
 <script lang='ts'>
 	import { readInstructions } from '../store';
-	import Button from './button.svelte';
+	import Button from './Button.svelte';
 
 	export let hidden = true;
 </script>

@@ -11,7 +11,7 @@
 		} else if (attempts === index + 1 && attempt.correct) {
 			color = 'bg-green-600';
 		} else if (attempts > index) {
-			color = 'bg-orange-500';
+			color = 'bg-red-600';
 		}
 		return color;
 	};

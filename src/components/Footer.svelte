@@ -61,7 +61,7 @@
 
 </script>
 
-<footer class="border-t bottom-0 w-full fixed bg-gray-800">
+<footer class="border-t border-gray-500 bottom-0 w-full fixed bg-gray-800">
   <div class="border-b">
     <AttemptVisualizer attempt={attempt} />
   </div>
