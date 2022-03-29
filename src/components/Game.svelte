@@ -56,7 +56,8 @@
     if (currentSelectedSong.id === currentSong.get().id) {
       guesses.push(<Guess>{
         song: currentSong.get(),
-        correct: true
+        correct: true,
+        artistCorrect: true
       });
       currentAttempt.setKey("guesses", guesses);
       currentAttempt.setKey("correct", true);
@@ -65,7 +66,8 @@
       const track = allTracks.find((t) => t.id == currentSelectedSong.id);
       guesses.push(<Guess>{
         song: convertSpotifyTrackToSong(track),
-        correct: false
+        correct: false,
+        artistCorrect: currentSelectedSong.artist.includes(currentSong.get().artist)
       });
       currentAttempt.setKey("guesses", guesses);
       currentAttempt.setKey("attempts", attempt.attempts + 1);
@@ -103,7 +105,7 @@
           on:click={() => {
             window.open(`https://open.spotify.com/track/${guess.song.id}`, '_blank').focus();
           }}
-          class="cursor-pointer border-orange-500 border-2 h-10 p-2 my-2 w-full text-left rounded-sm bg-gray-900 overflow-ellipsis whitespace-nowrap overflow-hidden"
+          class={`cursor-pointer ${guess.artistCorrect ? 'border-amber-400' : 'border-orange-600'} border-2 h-10 p-2 my-2 w-full text-left rounded-sm bg-gray-900 overflow-ellipsis whitespace-nowrap overflow-hidden`}
         >
           {guess.song.name} by {guess.song.artist}
         </div>
@@ -173,6 +175,15 @@
         <p>AWESOME JOB, YOU GUESSED</p>
         <p class="text-green-500">{currentSong.get().name} by {currentSong.get().artist}</p>
         <p>CORRECTLY!</p>
+        {#each attempt.guesses as guess}
+          {#if guess.correct}
+            🟩
+          {:else if guess.artistCorrect}
+            🟨
+          {:else }
+            🟥
+          {/if}
+        {/each}
       </div>
     {:else if !attempt.correct}
       <div>

@@ -8,6 +8,7 @@ export interface Song {
 export interface Guess {
   song: Song;
   correct: boolean;
+  artistCorrect: boolean;
 }
 
 export interface Attempt {
