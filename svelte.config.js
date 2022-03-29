@@ -15,6 +15,9 @@ const config = {
     }),
     prerender: {
       default: true
+    },
+    serviceWorker: {
+      files: (path) => !path.includes('CNAME') && !path.includes('.nojekyll')
     }
   }
 };

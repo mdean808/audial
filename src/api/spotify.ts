@@ -22,7 +22,7 @@ export const getSpotifyToken = async () => {
   const json = await res.json();
   const token: SpotifyToken = {
     token: json.access_token,
-    expires_at: new Date(Date.now() + json.expires_in),
+    expires_at: new Date(Date.now() + json.expires_in * 1000),
     type: json.type
   };
   return token;
