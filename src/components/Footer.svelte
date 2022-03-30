@@ -78,7 +78,6 @@
     <!-- TRACK CONTROL AREA -->
     <div class="flex justify-evenly items-center w-full">
       {#if player}
-        <!--TODO: update every second-->
         <div class="flex flex-1 justify-start font-mono">{timeElapsed}</div>
       {/if}
       <div class="text-center flex-1 justify-center">

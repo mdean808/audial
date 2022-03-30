@@ -79,7 +79,6 @@
   };
 
   const searchSongs = async (query: string) => {
-    // todo: make search better
     searchResults = allTracks.filter((t) => {
         return (t.name + " " + t.artists[0].name).toLowerCase().includes(query.toLowerCase());
       }
