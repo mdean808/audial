@@ -1,13 +1,15 @@
 <script lang="ts">
-	import { currentAttempt, currentSong, songPaused } from "../store";
-	import { onMount } from "svelte";
-	import type { Attempt } from "../types";
-	import AttemptVisualizer from "./AttemptVisualizer.svelte";
+  import { currentAttempt, currentSong, songPaused } from "../store";
+  import { onMount } from "svelte";
+  import type { Attempt } from "../types";
+  import AttemptVisualizer from "./AttemptVisualizer.svelte";
 
-	let player: HTMLAudioElement;
+  let player: HTMLAudioElement;
   let attempt = <Attempt>{ attempts: 0, guesses: [], correct: false, date: new Date() };
   let paused = true;
   let songLength = 0;
+  let timeElapsed = "0:00";
+  let timerInterval;
   onMount(() => {
     attempt = currentAttempt.get();
     player = new Audio(currentSong.get().preview);
@@ -21,6 +23,7 @@
   const playSong = () => {
     songPaused.set(false);
     player.play();
+    timeElapsed = "0:00";
     let denominator = (12 - (attempt.attempts * 6));
     const BASE_LENGTH_DIVIDER = .08333333;
     switch (attempt.attempts) {
@@ -49,7 +52,12 @@
       player.pause();
       player.currentTime = 0;
       songPaused.set(true);
+      clearInterval(timerInterval);
     }, durationMS);
+
+    timerInterval = setInterval(() => {
+      timeElapsed = `${Math.floor(player.currentTime / 60)}:${(player.currentTime % 60) < 10 ? "0" + Math.round(player.currentTime % 60) : Math.round(player.currentTime % 60)}`;
+    }, 1000);
   };
 
   const stopSong = () => {
@@ -71,8 +79,7 @@
     <div class="flex justify-evenly items-center w-full">
       {#if player}
         <!--TODO: update every second-->
-        <div class="flex flex-1 justify-start font-mono">{Math.floor(player.currentTime / 60)}
-          : {(player.currentTime % 60) < 10 ? "0" + (player.currentTime % 60) : player.currentTime % 60}</div>
+        <div class="flex flex-1 justify-start font-mono">{timeElapsed}</div>
       {/if}
       <div class="text-center flex-1 justify-center">
         <button title="Play Song"
@@ -113,8 +120,7 @@
       </div>
       {#if player}
         <div
-          class="flex flex-1 justify-end font-mono">{Math.floor(songLength / 60)}
-          : {Math.round(songLength % 60) < 10 ? "0" + Math.round(songLength % 60) : Math.round(songLength % 60)}</div>
+          class="flex flex-1 justify-end font-mono">{Math.floor(songLength / 60) + ":" + (Math.round(songLength % 60) < 10 ? "0" + Math.round(songLength % 60) : Math.round(songLength % 60))}</div>
       {/if}
     </div>
   </div>

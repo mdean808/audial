@@ -21,16 +21,15 @@ worker.addEventListener('fetch', (event) => {
   if (!worker) return;
   event.respondWith(
     (async () => {
+      // make sure we only cache things we want to.
+      if (!VALID_HOSTS.find((host) => host === new URL(event.request.url).host)) {
+        return await fetch(event.request);
+      }
       const r = await caches.match(event.request);
       if (r) {
         return r;
       }
-      // make sure we only cache things we want to.
       const response = await fetch(event.request);
-
-      if (!VALID_HOSTS.find((host) => host === new URL(event.request.url).host)) {
-        return response;
-      }
       const cache = await caches.open(CACHE_NAME);
       await cache.put(event.request, response.clone());
       return response;
