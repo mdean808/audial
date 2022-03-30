@@ -1,13 +1,13 @@
 const build = [
-  "/_app/start-e43c41ee.js",
-  "/_app/pages/__layout.svelte-c12af0bd.js",
-  "/_app/assets/pages/__layout.svelte-2b10fab5.css",
-  "/_app/pages/__error.svelte-24bc969d.js",
-  "/_app/pages/index.svelte-f61d8bc6.js",
-  "/_app/chunks/vendor-dca149f1.js",
+  "/_app/start-3577267a.js",
+  "/_app/pages/__layout.svelte-54a6b6b5.js",
+  "/_app/assets/pages/__layout.svelte-1c490f38.css",
+  "/_app/pages/__error.svelte-41adbb3b.js",
+  "/_app/pages/index.svelte-8a4c2ae7.js",
+  "/_app/chunks/vendor-89bed0de.js",
   "/_app/assets/vendor-0aa84dd2.css",
   "/_app/chunks/singletons-d1fb5791.js",
-  "/_app/chunks/store-6e616064.js"
+  "/_app/chunks/store-de14ea9d.js"
 ];
 const files = [
   "/favicon.ico",
@@ -19,7 +19,7 @@ const files = [
   "/icons/favicon-32x32.png",
   "/manifest.json"
 ];
-const version = "1648597958425";
+const version = "v0.0.2";
 const worker = self;
 const CACHE_NAME = "audial-cache-" + version;
 const VALID_HOSTS = [location.host, "api.spotify.com"];

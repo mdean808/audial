@@ -1,6 +1,7 @@
 import type { SpotifyPlaylist, SpotifyToken, SpotifyTrack } from '../types';
 import random from 'random';
 import seedrandom from 'seedrandom';
+import { daysBetweenDates } from './util';
 
 export const getSpotifyToken = async () => {
   const body = new URLSearchParams();
@@ -66,8 +67,8 @@ export const getAllSpotifyPlaylistTracks = async (playlist: SpotifyPlaylist, tok
 
 export const getRandomTrack = async (tracks: SpotifyTrack[], forceRandom?: boolean) => {
   const date = new Date();
-  const forceRand =  (forceRandom ? Math.random() * 10 * (Math.random() + 20) : 0);
-  random.use(seedrandom(parseInt(date.toLocaleDateString().replace(new RegExp('/', 'g'), '')) + forceRand));
+  const forceRand = forceRandom ? Math.random() * 10 * (Math.random() + 20) : 0;
+  random.use(seedrandom(daysBetweenDates(date, new Date('15/01/2002')) + forceRand));
   const rand = random.int(0, tracks.length - 1);
   return tracks[rand];
 };

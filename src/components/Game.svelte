@@ -8,9 +8,8 @@
   import { convertSpotifyTrackToSong } from "../api/util";
   import type { Attempt, Guess, Song, SpotifyPlaylist, SpotifyTrack } from "../types";
   import Button from "./Button.svelte";
-  import { daysBetweenDates } from "../api/util.ts";
+  import GameEnd from "./GameEnd.svelte";
 
-  const FIRST_DAY = new Date(1648594699909);
   let forceRandom = false;
   let notifyClipboard = false;
   let attempt = <Attempt>{};
@@ -89,26 +88,7 @@
     return searchResults;
   };
 
-  const generateEmojis = () => {
-    let emojiString = '';
-    for (const guess of attempt.guesses || []) {
-      if (guess.correct) emojiString += "🟩 "
-      else if (guess.artistCorrect) emojiString += "🟨 "
-      else emojiString += "🟥 "
-    }
-    for (let i = 0; i < 6 - attempt.attempts; i++) {
-      emojiString += "⬛ "
-    }
-    return emojiString
-  }
 
-  const generateShareClipboard = () => {
-    let string = 'audial #' + daysBetweenDates(new Date(), FIRST_DAY);
-    string += '\n' + generateEmojis()
-    string += '\nhttps://audial.mogdan.xyz'
-    navigator.clipboard.writeText(string)
-    notifyClipboard = true;
-  }
 </script>
 
 <div>
@@ -195,16 +175,7 @@
         </div>
       </div>
     {:else}
-      <div class="py-3">
-        {#if !forceRandom}
-          <span class="my-2">audial #{daysBetweenDates(new Date(), FIRST_DAY)}</span>
-        {/if}
-        <span> {generateEmojis()}</span>
-        {#if !forceRandom}
-          <div class="w-full mx-auto my-2"><Button className="block mx-auto" type="submit" on:click={generateShareClipboard}>share</Button>
-          <p class={`${notifyClipboard ? 'opacity-100' : 'opacity-0'} text-blue-100 font-semibold transition-all duration-500 my-2`}>copied to clipboard.</p></div>
-        {/if}
-      </div>
+      <GameEnd forceRandom={forceRandom} />
     {/if}
   </div>
 </div>
