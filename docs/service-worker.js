@@ -1,13 +1,13 @@
 const build = [
-  "/_app/start-3577267a.js",
-  "/_app/pages/__layout.svelte-54a6b6b5.js",
-  "/_app/assets/pages/__layout.svelte-1c490f38.css",
-  "/_app/pages/__error.svelte-41adbb3b.js",
-  "/_app/pages/index.svelte-8a4c2ae7.js",
-  "/_app/chunks/vendor-89bed0de.js",
+  "/_app/start-553c37b4.js",
+  "/_app/pages/__layout.svelte-5ad4d269.js",
+  "/_app/assets/pages/__layout.svelte-90d1bb6c.css",
+  "/_app/pages/__error.svelte-8f673b82.js",
+  "/_app/pages/index.svelte-1f602490.js",
+  "/_app/chunks/vendor-832d971d.js",
   "/_app/assets/vendor-0aa84dd2.css",
   "/_app/chunks/singletons-d1fb5791.js",
-  "/_app/chunks/store-de14ea9d.js"
+  "/_app/chunks/store-a531a00f.js"
 ];
 const files = [
   "/favicon.ico",
@@ -19,7 +19,7 @@ const files = [
   "/icons/favicon-32x32.png",
   "/manifest.json"
 ];
-const version = "v0.0.2";
+const version = "v0.0.3";
 const worker = self;
 const CACHE_NAME = "audial-cache-" + version;
 const VALID_HOSTS = [location.host, "api.spotify.com"];
@@ -38,14 +38,14 @@ worker.addEventListener("fetch", (event) => {
   if (!worker)
     return;
   event.respondWith((async () => {
+    if (!VALID_HOSTS.find((host) => host === new URL(event.request.url).host)) {
+      return await fetch(event.request);
+    }
     const r = await caches.match(event.request);
     if (r) {
       return r;
     }
     const response = await fetch(event.request);
-    if (!VALID_HOSTS.find((host) => host === new URL(event.request.url).host)) {
-      return response;
-    }
     const cache = await caches.open(CACHE_NAME);
     await cache.put(event.request, response.clone());
     return response;
