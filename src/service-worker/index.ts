@@ -51,7 +51,7 @@ const activateWorker = async () => {
   const keys = await caches.keys();
   for (const key of keys) {
     if (key !== CACHE_NAME) {
-      await caches.delete(CACHE_NAME);
+      await caches.delete(key);
     }
   }
 };
