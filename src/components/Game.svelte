@@ -3,35 +3,23 @@
   import AutoComplete from "simple-svelte-autocomplete";
   import { onMount } from "svelte";
 
-  import { currentAttempt, currentSong, readInstructions, songPaused, spotifyAuth } from "../store";
-  import { getAllSpotifyPlaylistTracks, getRandomTrack, getSpotifyPlaylist, getSpotifyToken } from "../api/spotify";
+  import { currentAttempt, currentSong, readInstructions, songPaused } from "../store";
   import { convertSpotifyTrackToSong } from "../api/util";
   import type { Attempt, Guess, Song, SpotifyPlaylist, SpotifyTrack } from "../types";
   import Button from "./Button.svelte";
   import GameEnd from "./GameEnd.svelte";
+  import { getDailySpotifyTrack, getSpotifyPlaylistTracks } from "../api/spotify";
 
   let forceRandom = false;
-  let notifyClipboard = false;
   let attempt = <Attempt>{};
   let playlist = <SpotifyPlaylist>{};
   let allTracks = <SpotifyTrack[]>[];
   onMount(async () => {
-    // Get Spotify authentication set up
-    let auth = spotifyAuth.get();
-    if (!auth.token) {
-      auth = await getSpotifyToken();
-      spotifyAuth.set(auth);
-    }
-    if (new Date(auth.expires_at) < new Date()) {
-      auth = await getSpotifyToken();
-      spotifyAuth.set(auth);
-    }
-    // load the current playlist
-    playlist = await getSpotifyPlaylist("5LQuCyn8AhcHpl31DgLaxL", auth.token);
-    // get a random track and ALL tracks from the playlist
-    forceRandom = new URL(window.location.href).searchParams.get("random") === "true";
-    allTracks = await getAllSpotifyPlaylistTracks(playlist, auth.token);
-    const randomTrack = await getRandomTrack(allTracks, forceRandom);
+    playlist.id = new URL(window.location.href).searchParams.get("playlist") || "5LQuCyn8AhcHpl31DgLaxL";
+    forceRandom = new URL(window.location.href).searchParams.get("random") === "true" || false;
+
+    allTracks = await getSpotifyPlaylistTracks(playlist);
+    const randomTrack = await getDailySpotifyTrack(playlist, forceRandom);
     // if we are in a new date from the past, take the new random song and set it to the current one.
     //    reset the attempts.
     if (new Date(currentAttempt.get().date) !== new Date() || forceRandom) {
