@@ -10,3 +10,4 @@ declare namespace App {
 }
 
 declare module 'simple-svelte-autocomplete';
+declare module '@beyonk/svelte-google-analytics';

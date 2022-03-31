@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { ga } from "@beyonk/svelte-google-analytics";
   import { currentAttempt, currentSong } from "../store";
   import { daysBetweenDates } from "../api/util";
   import Button from "./Button.svelte";
@@ -27,6 +28,7 @@
     string += "\nhttps://audial.mogdan.xyz";
     navigator.clipboard.writeText(string);
     notifyClipboard = true;
+    ga.addEvent("share-score", { result: generateEmojis() });
   };
 </script>
 

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { currentAttempt, currentSong, songPaused } from "../store";
+  import { ga } from "@beyonk/svelte-google-analytics";
   import { onMount } from "svelte";
   import type { Attempt } from "../types";
   import AttemptVisualizer from "./AttemptVisualizer.svelte";
@@ -26,6 +27,7 @@
   songPaused.listen(value => paused = value);
 
   const playSong = () => {
+    ga.addEvent("play-song", {});
     songPaused.set(false);
     player.play();
     timeElapsed = "0:00";

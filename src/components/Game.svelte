@@ -1,5 +1,6 @@
 <script lang="ts">
   import AutoComplete from "simple-svelte-autocomplete";
+  import { ga } from "@beyonk/svelte-google-analytics";
   import { onMount } from "svelte";
 
   import { currentAttempt, currentSong, songPaused } from "../store";
@@ -52,6 +53,7 @@
       currentAttempt.setKey("guesses", guesses);
       currentAttempt.setKey("correct", true);
       currentAttempt.setKey("attempts", attempt.attempts + 1);
+      ga.addEvent("guess-song", { correct: true });
     } else {
       const track = allTracks.find((t) => t.id == currentSelectedSong.id);
       guesses.push(<Guess>{
@@ -61,6 +63,7 @@
       });
       currentAttempt.setKey("guesses", guesses);
       currentAttempt.setKey("attempts", attempt.attempts + 1);
+      ga.addEvent("guess-song", { correct: false });
     }
     currentSelectedSong = undefined;
     songPaused.set(true);
