@@ -22,7 +22,10 @@ worker.addEventListener('fetch', (event) => {
   event.respondWith(
     (async () => {
       // make sure we only cache things we want to.
-      if (!VALID_HOSTS.find((host) => host === new URL(event.request.url).host)) {
+      if (
+        !VALID_HOSTS.find((host) => host === new URL(event.request.url).host) ||
+        event.request.url.includes('version.json')
+      ) {
         return await fetch(event.request);
       }
       const r = await caches.match(event.request);

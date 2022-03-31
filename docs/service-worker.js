@@ -1,5 +1,5 @@
 const build = [
-  "/_app/start-553c37b4.js",
+  "/_app/start-038339be.js",
   "/_app/pages/__layout.svelte-5ad4d269.js",
   "/_app/assets/pages/__layout.svelte-90d1bb6c.css",
   "/_app/pages/__error.svelte-8f673b82.js",
@@ -19,7 +19,7 @@ const files = [
   "/icons/favicon-32x32.png",
   "/manifest.json"
 ];
-const version = "v0.0.3";
+const version = "v0.0.4";
 const worker = self;
 const CACHE_NAME = "audial-cache-" + version;
 const VALID_HOSTS = [location.host, "api.spotify.com"];
@@ -38,7 +38,7 @@ worker.addEventListener("fetch", (event) => {
   if (!worker)
     return;
   event.respondWith((async () => {
-    if (!VALID_HOSTS.find((host) => host === new URL(event.request.url).host)) {
+    if (!VALID_HOSTS.find((host) => host === new URL(event.request.url).host) || event.request.url.includes("version.json")) {
       return await fetch(event.request);
     }
     const r = await caches.match(event.request);
