@@ -21,7 +21,7 @@ const config = {
     },
     version: {
       pollInterval: 3600,
-      name: 'v0.0.4'
+      name: 'v0.0.5'
     }
   }
 };

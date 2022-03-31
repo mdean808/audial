@@ -32,13 +32,13 @@
   <title>audial</title>
   <meta http-equiv="content-security-policy" content="">
 	<link rel="stylesheet" href="/_app/assets/vendor-0aa84dd2.css">
-	<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-90d1bb6c.css">
-	<link rel="modulepreload" href="/_app/start-038339be.js">
-	<link rel="modulepreload" href="/_app/chunks/vendor-832d971d.js">
+	<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-096405ad.css">
+	<link rel="modulepreload" href="/_app/start-302331c9.js">
+	<link rel="modulepreload" href="/_app/chunks/vendor-c11fbefc.js">
 	<link rel="modulepreload" href="/_app/chunks/singletons-d1fb5791.js">
-	<link rel="modulepreload" href="/_app/pages/__layout.svelte-5ad4d269.js">
-	<link rel="modulepreload" href="/_app/chunks/store-a531a00f.js">
-	<link rel="modulepreload" href="/_app/pages/index.svelte-1f602490.js">
+	<link rel="modulepreload" href="/_app/pages/__layout.svelte-a1c4d212.js">
+	<link rel="modulepreload" href="/_app/chunks/store-ff5d40bc.js">
+	<link rel="modulepreload" href="/_app/pages/index.svelte-e2a9b140.js">
 				<script>
 		if ('serviceWorker' in navigator) {
 			navigator.serviceWorker.register('/service-worker.js');
@@ -60,16 +60,15 @@
         <h1 class="text-3xl font-bold flex-grow text-center flex-1 cursor-pointer text-white">audial</h1>
         <div class="flex flex-1 justify-end"><button title="View Statistics" class="px-2 py-2 tracking-widest border-none flex items-center font-semibold text-sm text-white hover:text-blue-600"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-6M6 20V10M18 20V4"></path></svg></button>
           <button title="View Instructions" class="px-2 py-2 uppercase tracking-widest border-none flex items-center font-semibold text-sm text-white"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></button></div></div></div></header></div>
-  <div><div class="hidden"><div class="max-w-screen-md mx-auto"><div class="text-center p-3"><div><div><div class="flex overflow-y-auto overflow-x-hidden fixed right-0 left-0 top-4 z-40 justify-center items-center h-modal md:h-full md:inset-0 bg-black opacity-50"></div>
-  <div class="relative px-4 w-full max-w-2xl h-full md:h-auto mx-auto z-50"><div class="relative rounded-lg bg-gray-700 p-3 opacity-100 shadow"><h1 class="text-3xl">Instructions</h1>
+  <div><div class="hidden"><div class="flex overflow-y-auto overflow-x-hidden fixed absolute right-0 left-0 z-40 justify-center items-center h-modal md:h-full md:inset-0 bg-black opacity-50"></div>
+  <div class="relative px-4 w-full max-w-2xl h-full md:h-auto mx-auto z-50"><div class="relative rounded-lg mt-6 bg-gray-700 p-3 opacity-100 shadow"><h1 class="text-3xl mx-auto text-center">Instructions</h1>
       <div class="p-4"><ul class="text-left"><li><span>press the play button</span></li>
           <li><span>listen to the song snippet</span></li>
           <li><span>type the name of the song or song artist into the box</span></li>
           <li><span>if you get the song incorrect or press skip, more of the song will be revealed</span></li></ul></div>
-      <button title="Close Popup" class="p-2 text-white bg-blue-600 hover:bg-blue-500 rounded-md shadow hover:shadow-lg transition-all duration-200 ">sounds cool
-      </button></div></div></div>
-
-  
+      <div class="w-full"><button title="Close Popup" class="p-2 text-white bg-blue-600 hover:bg-blue-500 rounded-md shadow hover:shadow-lg transition-all duration-200 mx-auto text-center block">sounds cool
+        </button></div></div></div></div>
+  <div class="max-w-screen-md mx-auto"><div class="text-center p-3 hidden"><div>
   
   
   <div class="w-full px-0 transition-all sm:px-20 items-center game">
@@ -79,7 +78,7 @@
   <div class="w-full mx-auto my-2"><button title="Share Score" class="p-2 text-white bg-green-600 hover:bg-green-500 rounded-md shadow hover:shadow-lg transition-all duration-200 block mx-auto">share
       </button>
       <p class="opacity-0 text-blue-100 font-semibold transition-all duration-500 my-2">copied to clipboard.</p></div></div></div></div></div></div>
-    <footer class="border-t border-gray-500 bottom-0 w-full fixed bg-gray-800"><div class="border-b"><div class="max-w-3xl mx-auto flex h-3"><div class="w-2/12 bg-blue-500 border-r border-l"></div>
+  <footer class="border-t border-gray-500 bottom-0 w-full fixed bg-gray-800"><div class="border-b"><div class="max-w-3xl mx-auto flex h-3"><div class="w-2/12 bg-blue-500 border-r border-l"></div>
   <div class="w-2/12 bg-black opacity-40 border-r border-l"></div>
 
   <div class="w-4/12 bg-black opacity-40 border-r border-l"></div>
@@ -90,16 +89,16 @@
 
   <div class="max-w-screen-md mx-auto p-3">
     <div class="flex justify-evenly items-center w-full">
-      <div class="text-center flex-1 justify-center"><button title="Play Song" class="hover:text-green-600 transition-colors duration-200 "><svg class="w-14 h-14 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></button>
-        <button title="Pause Song" class="hover:text-green-600 transition-colors duration-200 hidden"><svg xmlns="http://www.w3.org/2000/svg" class="w-14 h-14 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"></path></svg></button></div>
-      </div></div></footer></div>
-  <div class="w-full mx-auto text-center mt-20  text-blue-600"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: transparent; display: block; shape-rendering: auto;" width="100px" height="100px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><circle cx="50" cy="50" fill="none" stroke="currentColor" stroke-width="7" r="38" stroke-dasharray="179.0707812546182 61.690260418206066"><animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="0.9345794392523364s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform></circle></svg></div></div></main>
+      <div class="text-center flex-1 justify-center"><button title="Play Song" class="hover:text-blue-600 transition-colors duration-200 "><svg class="w-14 h-14 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></button>
+        <button title="Pause Song" class="hover:text-blue-600 transition-colors duration-200 hidden"><svg xmlns="http://www.w3.org/2000/svg" class="w-14 h-14 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"></path></svg></button></div>
+      </div></div></footer>
+  <div class="w-full mx-auto text-center mt-20 text-blue-600 "><svg xmlns="http://www.w3.org/2000/svg" style="margin: auto; background: transparent; display: block; shape-rendering: auto;" width="100px" height="100px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><circle cx="50" cy="50" fill="none" stroke="currentColor" stroke-width="7" r="38" stroke-dasharray="179.0707812546182 61.690260418206066"><animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="0.9345794392523364s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform></circle></svg></div></div></main>
 
 
-		<script type="module" data-hydrate="g3i3q0">
-		import { start } from "/_app/start-038339be.js";
+		<script type="module" data-hydrate="199joz0">
+		import { start } from "/_app/start-302331c9.js";
 		start({
-			target: document.querySelector('[data-hydrate="g3i3q0"]').parentNode,
+			target: document.querySelector('[data-hydrate="199joz0"]').parentNode,
 			paths: {"base":"","assets":""},
 			session: {},
 			route: true,
@@ -109,8 +108,8 @@
 				status: 200,
 				error: null,
 				nodes: [
-					import("/_app/pages/__layout.svelte-5ad4d269.js"),
-						import("/_app/pages/index.svelte-1f602490.js")
+					import("/_app/pages/__layout.svelte-a1c4d212.js"),
+						import("/_app/pages/index.svelte-e2a9b140.js")
 				],
 				params: {}
 			}

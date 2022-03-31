@@ -3,12 +3,17 @@ import { build, files, version } from '$service-worker';
 const worker = self as unknown as ServiceWorker;
 
 const CACHE_NAME = 'audial-cache-' + version;
-const VALID_HOSTS = [location.host, 'api.spotify.com'];
+const VALID_HOSTS = [
+  location.host,
+  'api.spotify.com',
+  'us-central1-audial-6e1bd.cloudfunctions.net'
+];
 const filesToCache = build.concat(files);
 
 worker.addEventListener('install', (event) => {
   if (!worker) return;
   event.waitUntil(installWorker());
+  event.waitUntil(activateWorker());
 });
 
 worker.addEventListener('activate', (event) => {
@@ -24,7 +29,7 @@ worker.addEventListener('fetch', (event) => {
       // make sure we only cache things we want to.
       if (
         !VALID_HOSTS.find((host) => host === new URL(event.request.url).host) ||
-        event.request.url.includes('version.json')
+        event.request.url.includes('/daily')
       ) {
         return await fetch(event.request);
       }

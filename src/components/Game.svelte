@@ -1,9 +1,8 @@
 <script lang="ts">
-  import Instructions from "./Instructions.svelte";
   import AutoComplete from "simple-svelte-autocomplete";
   import { onMount } from "svelte";
 
-  import { currentAttempt, currentSong, readInstructions, songPaused } from "../store";
+  import { currentAttempt, currentSong, songPaused } from "../store";
   import { convertSpotifyTrackToSong } from "../api/util";
   import type { Attempt, Guess, Song, SpotifyPlaylist, SpotifyTrack } from "../types";
   import Button from "./Button.svelte";
@@ -79,8 +78,6 @@
 </script>
 
 <div>
-  <Instructions hidden={$readInstructions} />
-
   <!-- PLAYLIST/GENRE TITLE -->
   {#if attempt.attempts === 0}
     <div class="w-full px-0 sm:px-20 transition-all duration-200">

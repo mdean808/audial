@@ -1,27 +1,33 @@
 <script>
   import Footer from "../components/Footer.svelte";
-  import { currentAttempt } from "../store";
+  import { currentAttempt, readInstructions } from "../store";
   import Game from "../components/Game.svelte";
+  import Instructions from "../components/Instructions.svelte";
+  import { onMount } from "svelte";
 
   let loading = true;
-  currentAttempt.listen(value => {
-    if (value.date) {
-      loading = false;
-    }
+  let showInstructions;
+  onMount(() => {
+    showInstructions = readInstructions.get();
+    currentAttempt.listen(value => {
+      if (value.date) {
+        loading = false;
+      }
+    });
+    readInstructions.listen(value => showInstructions = value);
   });
 </script>
 
 <div>
-  <div class={`${loading ? 'hidden' : ''}`}>
-    <div class="max-w-screen-md mx-auto">
-      <div class="text-center p-3">
-        <Game />
-      </div>
+  <Instructions hidden={showInstructions} />
+  <div class="max-w-screen-md mx-auto">
+    <div class={`text-center p-3 ${!showInstructions || loading ? 'hidden' : ''}`}>
+      <Game />
     </div>
-    <Footer />
   </div>
-  <div class={`w-full mx-auto text-center mt-20 ${loading ? '' : 'hidden'} text-blue-600`}>
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  <Footer />
+  <div class={`w-full mx-auto text-center mt-20 text-blue-600 ${loading ? '' : 'hidden'}`}>
+    <svg xmlns="http://www.w3.org/2000/svg"
          style="margin: auto; background: transparent; display: block; shape-rendering: auto;" width="100px"
          height="100px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
       <circle cx="50" cy="50" fill="none" stroke="currentColor" stroke-width="7" r="38"

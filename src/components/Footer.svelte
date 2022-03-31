@@ -82,7 +82,7 @@
       {/if}
       <div class="text-center flex-1 justify-center">
         <button title="Play Song"
-                class={`hover:text-green-600 transition-colors duration-200 ${paused ? '' : 'hidden'}`}
+                class={`hover:text-blue-600 transition-colors duration-200 ${paused ? '' : 'hidden'}`}
                 on:click={playSong}>
           <svg
             class="w-14 h-14 mx-auto"
@@ -107,7 +107,7 @@
           >
         </button>
         <button title="Pause Song"
-                class={`hover:text-green-600 transition-colors duration-200 ${paused ? 'hidden' : ''}`}
+                class={`hover:text-blue-600 transition-colors duration-200 ${paused ? 'hidden' : ''}`}
                 on:click={stopSong}>
           <svg xmlns="http://www.w3.org/2000/svg" class="w-14 h-14 mx-auto"
                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

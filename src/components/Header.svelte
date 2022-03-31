@@ -1,12 +1,9 @@
 <script lang="ts">
-  import { currentAttempt, currentSong } from "../store";
-  import type { Attempt, Song } from "../types";
+  import { readInstructions } from "../store";
   import { goto } from "$app/navigation";
 
-  const resetData = () => {
-    //readInstructions.set(false);
-    currentAttempt.set(<Attempt>{ attempts: 0, guesses: [], correct: false });
-    currentSong.set(<Song>{});
+  // for some reason this window.location.href is REQUIRED here
+  const why = () => {
     window.location.href = "";
   };
 </script>
@@ -38,7 +35,7 @@
             </svg>
           </button>
           <button
-            on:click={() => window.location.href = '/random?=true'}
+            on:click={() => window.location.href = '/?random=true'}
             title="Random Song"
             class="px-2 py-2 tracking-widest border-none flex items-center font-semibold text-sm text-white hover:text-blue-500"
           >
@@ -77,7 +74,7 @@
             </svg>
           </button>
           <button
-            on:click={() => goto('/instructions')}
+            on:click={() => readInstructions.set(false)}
             title="View Instructions"
             class="px-2 py-2 uppercase tracking-widest border-none flex items-center font-semibold text-sm text-white"
           >
