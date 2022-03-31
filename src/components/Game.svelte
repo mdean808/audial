@@ -7,7 +7,7 @@
   import type { Attempt, Guess, Song, SpotifyPlaylist, SpotifyTrack } from "../types";
   import Button from "./Button.svelte";
   import GameEnd from "./GameEnd.svelte";
-  import { getDailySpotifyTrack, getSpotifyPlaylistTracks } from "../api/spotify";
+  import { getDailySpotifyTrack } from "../api/spotify";
 
   let forceRandom = false;
   let attempt = <Attempt>{};
@@ -17,12 +17,13 @@
     playlist.id = new URL(window.location.href).searchParams.get("playlist") || "5LQuCyn8AhcHpl31DgLaxL";
     forceRandom = new URL(window.location.href).searchParams.get("random") === "true" || false;
 
-    allTracks = await getSpotifyPlaylistTracks(playlist);
-    const randomTrack = await getDailySpotifyTrack(playlist, forceRandom);
+    const trackResponse = await getDailySpotifyTrack(playlist, forceRandom);
+    const daily = trackResponse.daily;
+    allTracks = trackResponse.tracks;
     // if we are in a new date from the past, take the new random song and set it to the current one.
     //    reset the attempts.
     if (new Date(currentAttempt.get().date) !== new Date() || forceRandom) {
-      const song = convertSpotifyTrackToSong(randomTrack);
+      const song = convertSpotifyTrackToSong(daily);
       currentAttempt.set(<Attempt>{
         guesses: [],
         date: new Date(),

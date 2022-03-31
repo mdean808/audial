@@ -14,6 +14,11 @@
     attempt = currentAttempt.get();
     player = new Audio(currentSong.get().preview);
     player.addEventListener("loadedmetadata", () => songLength = player.duration);
+    // disable media keys
+    navigator.mediaSession.setActionHandler("play", () => null);
+    navigator.mediaSession.setActionHandler("pause", () => null);
+    navigator.mediaSession.setActionHandler("seekbackward", null);
+    navigator.mediaSession.setActionHandler("seekforward", () => null);
   });
 
   currentAttempt.listen((value => attempt = value));
