@@ -1,24 +1,19 @@
-# create-svelte
+# audial
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+[Visit audial](https://audial.mogdan.xyz)
 
-## Creating a project
+----
 
-If you're seeing this, you've probably already done this step. Congrats!
+Inspired by [heardle.app](https://heardle.app), audial is a wordle-style web game for guessing a different song each
+day.
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
+It is built on svelte and [some firebase functions](https://github.com/mdean808/audial-firebase) for interfacing with
+the spotify api.
 
-# create a new project in my-app
-npm init svelte@next my-app
-```
+## Development
 
-> Note: the `@next` is temporary
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Once pulled the repository and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a
+development server:
 
 ```bash
 npm run dev
@@ -29,12 +24,10 @@ npm run dev -- --open
 
 ## Building
 
-To create a production version of your app:
+To create a production version of audial:
 
 ```bash
 npm run build
 ```
 
 You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
