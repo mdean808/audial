@@ -14,7 +14,7 @@
       url = window.location.href;
     }
     queryParams = new URL(url).searchParams;
-  })
+  });
 
   const enableRandom = async () => {
     if (browser) {
@@ -22,7 +22,11 @@
     }
     queryParams = new URL(url).searchParams;
     queryParams.set("random", "true");
-    await goto("?" + queryParams.toString());
+    if (!url.includes("stats")) {
+      await goto("?" + queryParams.toString());
+    } else {
+      await goto("/?" + queryParams.toString());
+    }
     window.location.reload();
   };
 </script>
@@ -76,6 +80,8 @@
               <span class="absolute rotate-45 text-green-500 text-sm -right-9">custom</span>
             {:else if new URL(url).searchParams.get("random") === "true"}
               <span class="absolute rotate-45 text-red-600 text-sm -right-9">shuffle</span>
+            {:else if $page.url.href.includes('stats')}
+              <span class="absolute rotate-45 text-amber-400 text-sm -right-7">stats</span>
             {/if}
           </h1>
         </div>

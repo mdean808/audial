@@ -1,4 +1,4 @@
-const version = "v0.0.5";
+const version = "v0.0.9";
 self.addEventListener("install", function() {
   console.log("Uninstalling Service Worker in favor of version " + version);
   self.skipWaiting();
