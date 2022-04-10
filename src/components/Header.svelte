@@ -70,7 +70,7 @@
           </button>
         </div>
         <div>
-          <h1 on:click={() => goto('/')}
+          <h1 on:click={() => goto('/').then(() => window.location.reload())}
               class="text-3xl font-bold flex-grow text-center flex-1 cursor-pointer text-white relative">
             audial
             {#if $page.url.href.includes('custom') && new URL(url).searchParams.get("random") === "true"}
