@@ -14,7 +14,7 @@ const config = {
       fallback: null
     }),
     prerender: {
-      default: true
+      default: false
     },
     serviceWorker: {
       files: (path) => !path.includes('CNAME') && !path.includes('.nojekyll')

@@ -41,7 +41,7 @@ body {
 .autocomplete-list {
     background: theme('colors.gray.900') !important;
     padding: theme('padding.1') theme('padding.2') !important;
-    max-height: calc(15 * (1rem + 10px) - 88px) !important;
+    max-height: 40vh !important;
 }
 
 .autocomplete-list-item {

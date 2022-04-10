@@ -1,39 +1,42 @@
 <script lang="ts">
-  import { ga } from "@beyonk/svelte-google-analytics";
-  import { currentAttempt, currentSong } from "../store";
+  import { currentAttempt, currentSong, temporaryAttempt } from "../store";
   import { daysBetweenDates } from "../api/util";
   import Button from "./Button.svelte";
+  import analytics from "../api/analytics";
 
   export let forceRandom;
+  export let custom;
 
   let notifyClipboard = false;
   const FIRST_DAY = new Date("3/29/2022");
 
   const generateEmojis = () => {
     let emojiString = "";
-    for (const guess of currentAttempt.get().guesses || []) {
+    for (const guess of (custom ? temporaryAttempt.get().guesses : currentAttempt.get().guesses) || []) {
       if (guess.correct) emojiString += "🟩 ";
       else if (guess.artistCorrect) emojiString += "🟨 ";
+      else if (!guess.song) emojiString += "⬜ ";
       else emojiString += "🟥 ";
     }
-    for (let i = 0; i < 6 - currentAttempt.get().attempts; i++) {
+    for (let i = 0; i < 6 - (custom ? temporaryAttempt.get().attempts : currentAttempt.get().attempts); i++) {
       emojiString += "⬛ ";
     }
     return emojiString;
   };
 
   const generateShareClipboard = () => {
-    let string = "audial #" + daysBetweenDates(new Date(), FIRST_DAY);
+    let string = "custom audial #" + daysBetweenDates(new Date(), FIRST_DAY);
     string += "\n" + generateEmojis();
-    string += "\nhttps://audial.mogdan.xyz";
+    const link = "https://audial.mogdan.xyz" + (custom ? "/custom?playlist=" + new URLSearchParams(window.location.search).get("playlist") : "");
+    string += "\n" + link;
     navigator.clipboard.writeText(string);
     notifyClipboard = true;
-    ga.addEvent("share-score", { result: generateEmojis() });
+    analytics.track("share-score", { result: generateEmojis() });
   };
 </script>
 
 <div class="py-3">
-  {#if !currentAttempt.get().correct}
+  {#if (custom ? !temporaryAttempt.get().correct : !currentAttempt.get().correct)}
     <div
       title="Open in Spotify"
       on:click={() => {

@@ -12,7 +12,7 @@
   />
   <div class="relative px-4 w-full max-w-2xl h-full md:h-auto mx-auto z-50">
     <div class="relative rounded-lg mt-6 bg-gray-700 p-3 opacity-100 shadow">
-      <h1 class="text-3xl mx-auto text-center">Instructions</h1>
+      <h1 class="text-3xl mx-auto text-center">instructions</h1>
       <div class="p-4">
         <ul class="text-left">
           <li>
@@ -25,9 +25,16 @@
             <span>type the name of the song or song artist into the box</span>
           </li>
           <li>
-						<span
-            >if you get the song incorrect or press skip, more of the song will be revealed</span
-            >
+            <span>if you get the song incorrect or press skip, more of the song will be revealed</span>
+          </li>
+          <li>
+            <span>a <span class="text-red-500">red result</span> means you guessed incorrectly.</span>
+          </li>
+          <li>
+            <span>a <span class="text-amber-400">yellow result</span> means the artist was correct.</span>
+          </li>
+          <li>
+            <span>a <span class="text-green-500">green result</span> means your guess was correct!</span>
           </li>
         </ul>
       </div>

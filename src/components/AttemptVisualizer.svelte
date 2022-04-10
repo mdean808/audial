@@ -1,8 +1,8 @@
 <script lang="ts">
 
-	import type { Attempt, Guess } from "../types";
+  import type { Attempt, Guess } from "../types";
 
-	export let attempt: Attempt;
+  export let attempt: Attempt;
 
   const getColorOfAttempt = (index, attempts) => {
     let color = "bg-black opacity-40";
@@ -12,6 +12,8 @@
       color = "bg-green-600";
     } else if (attempts > index && (attempt.guesses[index] as Guess).artistCorrect) {
       color = "bg-amber-400";
+    } else if (attempts > index && !(attempt.guesses[index] as Guess).song) {
+      color = "bg-gray-500";
     } else if (attempts > index) {
       color = "bg-red-600";
     }

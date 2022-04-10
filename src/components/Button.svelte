@@ -21,6 +21,10 @@
       buttonCSS = "bg-red-600 hover:bg-red-500";
       break;
 
+    case "muted":
+      buttonCSS = "bg-gray-600 hover:bg-gray-500";
+      break;
+
     default:
       buttonCSS = "bg-blue-600 hover:bg-blue-500";
       break;

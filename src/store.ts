@@ -1,6 +1,6 @@
 import { persistentAtom, persistentMap } from '@nanostores/persistent';
 import type { Attempt, Song, SpotifyToken } from './types';
-import { atom } from 'nanostores';
+import { atom, map } from 'nanostores';
 
 const objectValueCoder = {
   encode(val) {
@@ -30,6 +30,13 @@ export const currentAttempt = persistentMap<Attempt>(
   <Attempt>{ attempts: 0, guesses: [], correct: false, date: new Date() },
   objectValueCoder
 );
+
+export const temporaryAttempt = map<Attempt>(<Attempt>{
+  attempts: 0,
+  guesses: [],
+  correct: false,
+  date: new Date()
+});
 
 export const readInstructions = persistentAtom('read_instructions', false, booleanValueCoder);
 

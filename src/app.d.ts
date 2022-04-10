@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /// <reference types="@sveltejs/kit" />
 
 // See https://kit.svelte.dev/docs/types#the-app-namespace
@@ -10,4 +11,5 @@ declare namespace App {
 }
 
 declare module 'simple-svelte-autocomplete';
-declare module '@beyonk/svelte-google-analytics';
+declare module 'analytics';
+declare module '@analytics/google-tag-manager';

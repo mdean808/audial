@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { currentAttempt, currentSong, songPaused } from "../store";
-  import { ga } from "@beyonk/svelte-google-analytics";
+  import { currentAttempt, currentSong, songPaused, temporaryAttempt } from "../store";
   import { onMount } from "svelte";
   import type { Attempt } from "../types";
   import AttemptVisualizer from "./AttemptVisualizer.svelte";
+  import analytics from "../api/analytics";
 
   let player: HTMLAudioElement;
   let attempt = <Attempt>{ attempts: 0, guesses: [], correct: false, date: new Date() };
@@ -11,8 +11,15 @@
   let songLength = 0;
   let timeElapsed = "0:00";
   let timerInterval;
+
+  export let custom = false;
+
   onMount(() => {
-    attempt = currentAttempt.get();
+    if (custom) {
+      attempt = temporaryAttempt.get();
+    } else {
+      attempt = currentAttempt.get();
+    }
     player = new Audio(currentSong.get().preview);
     player.addEventListener("loadedmetadata", () => songLength = player.duration);
     // disable media keys
@@ -22,16 +29,17 @@
     navigator.mediaSession.setActionHandler("seekforward", () => null);
   });
 
-  currentAttempt.listen((value => attempt = value));
+  if (custom) temporaryAttempt.listen((value => attempt = value));
+  else currentAttempt.listen((value => attempt = value));
   currentSong.listen((value => player = new Audio(value.preview)));
   songPaused.listen(value => paused = value);
 
   const playSong = () => {
-    ga.addEvent("play-song", {});
+    analytics.track("play-song");
     songPaused.set(false);
     player.play();
     timeElapsed = "0:00";
-    let denominator = (12 - (attempt.attempts * 6));
+    let denominator: number;
     const BASE_LENGTH_DIVIDER = .08333333;
     switch (attempt.attempts) {
       case 0:
@@ -76,7 +84,7 @@
 
 </script>
 
-<footer class="border-t border-gray-500 bottom-0 w-full fixed bg-gray-800">
+<footer class="border-t border-white bottom-0 w-full fixed bg-gray-800">
   <div class="border-b">
     <AttemptVisualizer attempt={attempt} />
   </div>
