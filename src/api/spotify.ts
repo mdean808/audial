@@ -1,4 +1,5 @@
 import type { SpotifyPlaylist, SpotifyTrack } from '../types';
+import analytics from './analytics';
 
 export const getSpotifyPlaylistTracks = async (playlist: SpotifyPlaylist) => {
   const res = await fetch(
@@ -10,11 +11,13 @@ export const getSpotifyPlaylistTracks = async (playlist: SpotifyPlaylist) => {
   return (await res.json()) as SpotifyTrack[];
 };
 
-export const getDailySpotifyTrack = async (playlist: SpotifyPlaylist, forceRandom: boolean) => {
+export const getDailySpotifyTrack = async (playlistId: string, forceRandom: boolean) => {
+  analytics.track('get-track', {
+    playlist: playlistId || 'default',
+    random: forceRandom
+  });
   const res = await fetch(
-    `https://us-central1-audial-6e1bd.cloudfunctions.net/daily?playlist=${
-      playlist.id
-    }&random=${forceRandom}&locale=${new Date().toDateString()}`,
+    `https://us-central1-audial-6e1bd.cloudfunctions.net/daily?playlist=${playlistId}&random=${forceRandom}&locale=${new Date().toDateString()}`,
     {
       method: 'GET',
       cache: 'reload'

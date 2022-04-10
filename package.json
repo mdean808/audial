@@ -35,6 +35,7 @@
   "type": "module",
   "dependencies": {
     "@analytics/google-tag-manager": "^0.5.2",
+    "@analytics/mixpanel": "^0.4.0",
     "@nanostores/persistent": "^0.5.2",
     "@sveltejs/adapter-node": "^1.0.0-next.0",
     "@sveltejs/adapter-static": "^1.0.0-next.29",

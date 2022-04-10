@@ -40,7 +40,7 @@
     string += '\n' + link;
     navigator.clipboard.writeText(string);
     notifyClipboard = true;
-    analytics.track('share-score', { result: generateEmojis() });
+    analytics.track('share-score', { result: generateEmojis(), custom });
   };
 </script>
 
