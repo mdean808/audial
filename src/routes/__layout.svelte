@@ -1,8 +1,8 @@
 <script lang="ts">
   import "../app.css";
-  import Header from "../components/Header.svelte";
   import { onMount } from "svelte";
   import analytics from "../api/analytics";
+  import Header from "../components/Header.svelte";
 
   // Google Analytics id: GTM-TNTJT9T
   onMount(() => {

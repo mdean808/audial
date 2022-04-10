@@ -1,16 +1,26 @@
 <script lang="ts">
   import { readInstructions } from "../store";
   import { goto } from "$app/navigation";
+  import { browser } from "$app/env";
   import { page } from "$app/stores";
   import { onMount } from "svelte";
 
 
   let queryParams;
+  let url = "https://audial.mogdan.xyz";
+
   onMount(() => {
-    queryParams = $page.url.searchParams;
-  });
+    if (browser) {
+      url = window.location.href;
+    }
+    queryParams = new URL(url).searchParams;
+  })
 
   const enableRandom = async () => {
+    if (browser) {
+      url = window.location.href;
+    }
+    queryParams = new URL(url).searchParams;
     queryParams.set("random", "true");
     await goto("?" + queryParams.toString());
     window.location.reload();
@@ -59,12 +69,12 @@
           <h1 on:click={() => goto('/')}
               class="text-3xl font-bold flex-grow text-center flex-1 cursor-pointer text-white relative">
             audial
-            {#if $page.url.href.includes('custom') && $page.url.searchParams.get("random") === "true"}
+            {#if $page.url.href.includes('custom') && new URL(url).searchParams.get("random") === "true"}
               <span class="absolute rotate-45 text-green-500 text-sm -right-12 -top-1">custom</span>
               <span class="absolute rotate-45 text-red-600 text-sm -right-10 top-2">shuffle</span>
             {:else if $page.url.href.includes('custom')}
               <span class="absolute rotate-45 text-green-500 text-sm -right-9">custom</span>
-            {:else if $page.url.searchParams.get("random") === "true"}
+            {:else if new URL(url).searchParams.get("random") === "true"}
               <span class="absolute rotate-45 text-red-600 text-sm -right-9">shuffle</span>
             {/if}
           </h1>

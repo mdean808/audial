@@ -9,7 +9,6 @@
   import type { SpotifyPlaylist } from "../types/";
   import { getDailySpotifyTrack } from "../api/spotify";
   import { convertSpotifyTrackToSong } from "../api/util";
-  import { page } from "$app/stores";
 
   let loading = false;
   let showInstructions;
@@ -36,7 +35,7 @@
     if (!playlistUrl && !id) return;
     const playlistId = typeof id === "string" ? id : null || new URL(playlistUrl).pathname.split("/")[2];
     loading = true;
-    const queryParams = $page.url.searchParams;
+    const queryParams = new URL(window.location.href).searchParams;
     queryParams.set("playlist", playlistId);
     queryParams.set("random", forceRandom ? "true" : "false");
     await goto("/custom?" + queryParams.toString());

@@ -24,7 +24,7 @@
 
     playlist.id = "5LQuCyn8AhcHpl31DgLaxL";
 
-    const trackResponse = await getDailySpotifyTrack(playlist, new URL(window.location.href).searchParams.get("random") === "true");
+    const trackResponse = await getDailySpotifyTrack(playlist, forceRandom);
     daily = trackResponse.daily;
     allTracks = trackResponse.tracks;
     // if we are in a new date from the past, take the new random song and set it to the current one.
