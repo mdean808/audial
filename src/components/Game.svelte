@@ -61,7 +61,7 @@
         currentAttempt.setKey('attempts', attempt.attempts + 1);
       }
       analytics.track('guess-song', { correct: true, custom });
-      analytics.track('attempt-correct');
+      analytics.track('attempt-correct', { custom });
     } else {
       const track = allTracks.find((t) => t.id == currentSelectedSong.id);
       guesses.push(<Guess>{
@@ -79,7 +79,7 @@
       analytics.track('guess-song', { correct: false, custom });
     }
     if (attempt.attempts === 6 && !attempt.correct) {
-      analytics.track('attempt-fail');
+      analytics.track('attempt-fail', { custom });
     }
     currentSelectedSong = undefined;
     songPaused.set(true);
