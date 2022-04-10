@@ -12,7 +12,9 @@ export const getSpotifyPlaylistTracks = async (playlist: SpotifyPlaylist) => {
 
 export const getDailySpotifyTrack = async (playlist: SpotifyPlaylist, forceRandom: boolean) => {
   const res = await fetch(
-    `https://us-central1-audial-6e1bd.cloudfunctions.net/daily?playlist=${playlist.id}&random=${forceRandom}`,
+    `https://us-central1-audial-6e1bd.cloudfunctions.net/daily?playlist=${
+      playlist.id
+    }&random=${forceRandom}&locale=${new Date().toDateString()}`,
     {
       method: 'GET',
       cache: 'reload'

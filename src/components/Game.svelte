@@ -15,10 +15,12 @@
   export let allTracks = <SpotifyTrack[]>[];
   export let custom = false;
 
+  // TODO: rewrite store logic to support storing multiple attempts (and maybe custom playlists)
+  //       cuz it's hideous right now
   onMount(async () => {
     // if we are in a new date from the past, take the new random song and set it to the current one.
     //    reset the attempts.
-    if (new Date(currentAttempt.get().date).toLocaleDateString() !== new Date().toLocaleDateString() || forceRandom) {
+    if (new Date(currentAttempt.get().date).toLocaleDateString() !== new Date().toLocaleDateString() || !currentAttempt) {
       currentAttempt.set(<Attempt>{
         guesses: [],
         date: new Date(),

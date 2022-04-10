@@ -1,5 +1,19 @@
 <script lang="ts">
+  import type { Attempt, Song } from "../types";
+  import { currentAttempt, currentSong, readInstructions } from "../store";
 
+
+  const resetData = () => {
+    currentAttempt.set(<Attempt>{
+      attempts: 0,
+      guesses: [],
+      correct: false,
+      date: new Date()
+    });
+    readInstructions.set(false);
+    currentSong.set(<Song>{});
+    window.location.href = "/";
+  };
 </script>
 
 <div class="w-8/12 mx-auto mt-2">
@@ -27,5 +41,8 @@
       firebase,
       and github pages.
     </div>
+    <p on:click={resetData} class="cursor-pointer text-red-400 underline-offset-1 underline mt-10">
+      reset local data
+    </p>
   </div>
 </div>

@@ -1,5 +1,5 @@
 import { persistentAtom, persistentMap } from '@nanostores/persistent';
-import type { Attempt, Song, SpotifyToken } from './types';
+import type { Attempt, Song } from './types';
 import { atom, map } from 'nanostores';
 
 const objectValueCoder = {
@@ -25,11 +25,19 @@ const booleanValueCoder = {
   }
 };
 
+// local storage
 export const currentAttempt = persistentMap<Attempt>(
   'current_attempt',
   <Attempt>{ attempts: 0, guesses: [], correct: false, date: new Date() },
   objectValueCoder
 );
+
+export const readInstructions = persistentAtom('read_instructions', false, booleanValueCoder);
+
+export const currentSong = persistentMap<Song>('current_song', <Song>{}, objectValueCoder);
+
+// normal state
+export const songPaused = atom(true);
 
 export const temporaryAttempt = map<Attempt>(<Attempt>{
   attempts: 0,
@@ -37,15 +45,3 @@ export const temporaryAttempt = map<Attempt>(<Attempt>{
   correct: false,
   date: new Date()
 });
-
-export const readInstructions = persistentAtom('read_instructions', false, booleanValueCoder);
-
-export const currentSong = persistentMap<Song>('current_song', <Song>{}, objectValueCoder);
-
-export const spotifyAuth = persistentMap<SpotifyToken>(
-  'spotify_auth',
-  <SpotifyToken>{},
-  objectValueCoder
-);
-
-export const songPaused = atom(true);

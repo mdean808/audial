@@ -17,9 +17,6 @@
   let forceRandom;
   onMount(async () => {
     showInstructions = readInstructions.get();
-    readInstructions.listen(value => {
-      showInstructions = value;
-    });
     forceRandom = new URL(window.location.href).searchParams.get("random") === "true" || false;
 
     playlist.id = "5LQuCyn8AhcHpl31DgLaxL";
@@ -32,6 +29,10 @@
     const song = convertSpotifyTrackToSong(daily);
     currentSong.set(song);
     loading = false;
+  });
+
+  readInstructions.listen(value => {
+    showInstructions = value;
   });
 
 </script>
