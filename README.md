@@ -1,18 +1,23 @@
-# audial
+# [audial](https://audial.mogdan.xyz)
 
-[Visit audial](https://audial.mogdan.xyz)
+audial is a wordle-style web game, but instead of formulating a word, the user guesses the song.
 
----
+Expanded from just a song a day, audial also inlcudes:
 
-Inspired by [heardle.app](https://heardle.app), audial is a wordle-style web game for guessing a different song each
-day.
+* A randomization mode
+* Support for custom playlists
+* Stat and history tracking
 
-It is built on svelte and [some firebase functions](https://github.com/mdean808/audial-firebase) for interfacing with
-the spotify api.
+## Technologies
+
+* [Firebase Functions and Realtime Database](https://github.com/mdean808/audial-firebase)
+* [SvelteKit](https://kit.svelte.dev/)
+* [TailwindCSS](https://tailwindcss.com/)
+* [NanoStores](https://github.com/nanostores/nanostores)
 
 ## Development
 
-Once pulled the repository and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a
+Clone the repository, install dependencies with `yarn install` and start the
 development server:
 
 ```bash
@@ -29,5 +34,7 @@ To create a production version of audial:
 ```bash
 npm run build
 ```
+
+An `index.html` will become available in `docs/`.
 
 You can preview the production build with `npm run preview`.
