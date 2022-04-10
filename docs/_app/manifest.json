@@ -1,6 +1,6 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-7cdcef9c.js",
+    "file": "start-f85b4633.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -41,25 +41,25 @@
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-38d2d514.js",
+    "file": "pages/index.svelte-f7845ec0.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-003f673f.js",
-      "_spotify-9673d47d.js",
+      "_spotify-1966c0ee.js",
       "_store-3ff3bc7c.js",
       "_analytics-e1d11e77.js"
     ]
   },
   "src/routes/custom.svelte": {
-    "file": "pages/custom.svelte-c0e453ac.js",
+    "file": "pages/custom.svelte-81ee5a11.js",
     "src": "src/routes/custom.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-003f673f.js",
-      "_spotify-9673d47d.js",
+      "_spotify-1966c0ee.js",
       "_store-3ff3bc7c.js",
       "_navigation-0e6511d1.js",
       "_analytics-e1d11e77.js",
@@ -103,8 +103,8 @@
       "_singletons-d1fb5791.js"
     ]
   },
-  "_spotify-9673d47d.js": {
-    "file": "chunks/spotify-9673d47d.js",
+  "_spotify-1966c0ee.js": {
+    "file": "chunks/spotify-1966c0ee.js",
     "imports": [
       "_vendor-003f673f.js",
       "_store-3ff3bc7c.js",
