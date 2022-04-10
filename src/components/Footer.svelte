@@ -1,15 +1,15 @@
 <script lang="ts">
-  import { currentAttempt, currentSong, songPaused, temporaryAttempt } from "../store";
-  import { onMount } from "svelte";
-  import type { Attempt } from "../types";
-  import AttemptVisualizer from "./AttemptVisualizer.svelte";
-  import analytics from "../api/analytics";
+  import { currentAttempt, currentSong, songPaused, temporaryAttempt } from '../store';
+  import { onMount } from 'svelte';
+  import type { Attempt } from '../types';
+  import AttemptVisualizer from './AttemptVisualizer.svelte';
+  import analytics from '../api/analytics';
 
   let player: HTMLAudioElement;
   let attempt = <Attempt>{ attempts: 0, guesses: [], correct: false, date: new Date() };
   let paused = true;
   let songLength = 0;
-  let timeElapsed = "0:00";
+  let timeElapsed = '0:00';
   let timerInterval;
 
   export let custom = false;
@@ -21,26 +21,26 @@
       attempt = currentAttempt.get();
     }
     player = new Audio(currentSong.get().preview);
-    player.addEventListener("loadedmetadata", () => songLength = player.duration);
+    player.addEventListener('loadedmetadata', () => (songLength = player.duration));
     // disable media keys
-    navigator.mediaSession.setActionHandler("play", () => null);
-    navigator.mediaSession.setActionHandler("pause", () => null);
-    navigator.mediaSession.setActionHandler("seekbackward", null);
-    navigator.mediaSession.setActionHandler("seekforward", () => null);
+    navigator.mediaSession.setActionHandler('play', () => null);
+    navigator.mediaSession.setActionHandler('pause', () => null);
+    navigator.mediaSession.setActionHandler('seekbackward', null);
+    navigator.mediaSession.setActionHandler('seekforward', () => null);
   });
 
-  if (custom) temporaryAttempt.listen((value => attempt = value));
-  else currentAttempt.listen((value => attempt = value));
-  currentSong.listen((value => player = new Audio(value.preview)));
-  songPaused.listen(value => paused = value);
+  if (custom) temporaryAttempt.listen((value) => (attempt = value));
+  else currentAttempt.listen((value) => (attempt = value));
+  currentSong.listen((value) => (player = new Audio(value.preview)));
+  songPaused.listen((value) => (paused = value));
 
   const playSong = () => {
-    analytics.track("play-song");
+    analytics.track('play-song');
     songPaused.set(false);
     player.play();
-    timeElapsed = "0:00";
+    timeElapsed = '0:00';
     let denominator: number;
-    const BASE_LENGTH_DIVIDER = .08333333;
+    const BASE_LENGTH_DIVIDER = 0.08333333;
     switch (attempt.attempts) {
       case 0:
         denominator = BASE_LENGTH_DIVIDER;
@@ -52,17 +52,20 @@
         denominator = BASE_LENGTH_DIVIDER * 4;
         break;
       case 3: // on the 5th attempt, halfway through the song
-        denominator = .5;
+        denominator = 0.5;
         break;
-      case 4:  // 75% of the way through the song
-        denominator = .75;
+      case 4: // 75% of the way through the song
+        denominator = 0.75;
         break;
-      default: // last attempt, full preview
+      default:
+        // last attempt, full preview
         denominator = 1;
         break;
     }
     // get the duration in song length, divided by 2, unless 100% correct!
-    const durationMS = attempt.correct ? player.duration * 1000 : (player.duration / 2 * 1000) * denominator;
+    const durationMS = attempt.correct
+      ? player.duration * 1000
+      : (player.duration / 2) * 1000 * denominator;
     setTimeout(() => {
       player.pause();
       player.currentTime = 0;
@@ -71,7 +74,11 @@
     }, durationMS);
 
     timerInterval = setInterval(() => {
-      timeElapsed = `${Math.floor(player.currentTime / 60)}:${(player.currentTime % 60) < 10 ? "0" + Math.round(player.currentTime % 60) : Math.round(player.currentTime % 60)}`;
+      timeElapsed = `${Math.floor(player.currentTime / 60)}:${
+        player.currentTime % 60 < 10
+          ? '0' + Math.round(player.currentTime % 60)
+          : Math.round(player.currentTime % 60)
+      }`;
     }, 1000);
   };
 
@@ -80,13 +87,11 @@
     player.currentTime = 0;
     songPaused.set(true);
   };
-
-
 </script>
 
 <footer class="border-t border-white bottom-0 w-full fixed bg-gray-800">
   <div class="border-b">
-    <AttemptVisualizer attempt={attempt} />
+    <AttemptVisualizer {attempt} />
   </div>
 
   <div class="max-w-screen-md mx-auto p-3">
@@ -96,9 +101,11 @@
         <div class="flex flex-1 justify-start font-mono">{timeElapsed}</div>
       {/if}
       <div class="text-center flex-1 justify-center">
-        <button title="Play Song"
-                class={`hover:text-blue-600 transition-colors duration-200 ${paused ? '' : 'hidden'}`}
-                on:click={playSong}>
+        <button
+          title="Play Song"
+          class={`hover:text-blue-600 transition-colors duration-200 ${paused ? '' : 'hidden'}`}
+          on:click={playSong}
+        >
           <svg
             class="w-14 h-14 mx-auto"
             fill="none"
@@ -118,23 +125,42 @@
               stroke-width="2"
               d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             />
-          </svg
-          >
+          </svg>
         </button>
-        <button title="Pause Song"
-                class={`hover:text-blue-600 transition-colors duration-200 ${paused ? 'hidden' : ''}`}
-                on:click={stopSong}>
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-14 h-14 mx-auto"
-               fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
+        <button
+          title="Pause Song"
+          class={`hover:text-blue-600 transition-colors duration-200 ${paused ? 'hidden' : ''}`}
+          on:click={stopSong}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-14 h-14 mx-auto"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"
+            />
           </svg>
         </button>
       </div>
       {#if player}
-        <div
-          class="flex flex-1 justify-end font-mono">{Math.floor(songLength / 60) + ":" + (Math.round(songLength % 60) < 10 ? "0" + Math.round(songLength % 60) : Math.round(songLength % 60))}</div>
+        <div class="flex flex-1 justify-end font-mono">
+          {Math.floor(songLength / 60) +
+            ':' +
+            (Math.round(songLength % 60) < 10
+              ? '0' + Math.round(songLength % 60)
+              : Math.round(songLength % 60))}
+        </div>
       {/if}
     </div>
   </div>

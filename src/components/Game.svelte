@@ -1,14 +1,13 @@
 <script lang="ts">
-  import AutoComplete from "simple-svelte-autocomplete";
-  import { onMount } from "svelte";
+  import AutoComplete from 'simple-svelte-autocomplete';
+  import { onMount } from 'svelte';
 
-  import { currentAttempt, currentSong, songPaused, temporaryAttempt } from "../store";
-  import { convertSpotifyTrackToSong } from "../api/util";
-  import type { Attempt, Guess, Song, SpotifyTrack } from "../types";
-  import Button from "./Button.svelte";
-  import GameEnd from "./GameEnd.svelte";
-  import analytics from "../api/analytics";
-
+  import { currentAttempt, currentSong, songPaused, temporaryAttempt } from '../store';
+  import { convertSpotifyTrackToSong } from '../api/util';
+  import type { Attempt, Guess, Song, SpotifyTrack } from '../types';
+  import Button from './Button.svelte';
+  import GameEnd from './GameEnd.svelte';
+  import analytics from '../api/analytics';
 
   export let forceRandom = false;
   let attempt = <Attempt>{};
@@ -20,7 +19,11 @@
   onMount(async () => {
     // if we are in a new date from the past, take the new random song and set it to the current one.
     //    reset the attempts.
-    if (new Date(currentAttempt.get().date).toLocaleDateString() !== new Date().toLocaleDateString() || !currentAttempt) {
+    if (
+      new Date(currentAttempt.get().date).toLocaleDateString() !==
+        new Date().toLocaleDateString() ||
+      !currentAttempt
+    ) {
       currentAttempt.set(<Attempt>{
         guesses: [],
         date: new Date(),
@@ -49,15 +52,15 @@
         artistCorrect: true
       });
       if (custom || forceRandom) {
-        temporaryAttempt.setKey("guesses", guesses);
-        temporaryAttempt.setKey("correct", true);
-        temporaryAttempt.setKey("attempts", attempt.attempts + 1);
+        temporaryAttempt.setKey('guesses', guesses);
+        temporaryAttempt.setKey('correct', true);
+        temporaryAttempt.setKey('attempts', attempt.attempts + 1);
       } else {
-        currentAttempt.setKey("guesses", guesses);
-        currentAttempt.setKey("correct", true);
-        currentAttempt.setKey("attempts", attempt.attempts + 1);
+        currentAttempt.setKey('guesses', guesses);
+        currentAttempt.setKey('correct', true);
+        currentAttempt.setKey('attempts', attempt.attempts + 1);
       }
-      analytics.track("guess-song", { correct: true });
+      analytics.track('guess-song', { correct: true });
     } else {
       const track = allTracks.find((t) => t.id == currentSelectedSong.id);
       guesses.push(<Guess>{
@@ -66,13 +69,13 @@
         artistCorrect: currentSelectedSong.artist.includes(currentSong.get().artist)
       });
       if (custom || forceRandom) {
-        temporaryAttempt.setKey("guesses", guesses);
-        temporaryAttempt.setKey("attempts", attempt.attempts + 1);
+        temporaryAttempt.setKey('guesses', guesses);
+        temporaryAttempt.setKey('attempts', attempt.attempts + 1);
       } else {
-        currentAttempt.setKey("guesses", guesses);
-        currentAttempt.setKey("attempts", attempt.attempts + 1);
+        currentAttempt.setKey('guesses', guesses);
+        currentAttempt.setKey('attempts', attempt.attempts + 1);
       }
-      analytics.track("guess-song", { correct: false });
+      analytics.track('guess-song', { correct: false });
     }
     currentSelectedSong = undefined;
     songPaused.set(true);
@@ -86,32 +89,31 @@
       artistCorrect: false
     });
     if (custom || forceRandom) {
-      temporaryAttempt.setKey("guesses", guesses);
-      temporaryAttempt.setKey("attempts", attempt.attempts + 1);
+      temporaryAttempt.setKey('guesses', guesses);
+      temporaryAttempt.setKey('attempts', attempt.attempts + 1);
     } else {
-      currentAttempt.setKey("guesses", guesses);
-      currentAttempt.setKey("attempts", attempt.attempts + 1);
+      currentAttempt.setKey('guesses', guesses);
+      currentAttempt.setKey('attempts', attempt.attempts + 1);
     }
-    analytics.track("skip-song");
+    analytics.track('skip-song');
   };
 
   const searchSongs = async (query: string) => {
     searchResults = allTracks.filter((t) => {
-        return (t.name + " " + t.artists[0].name).toLowerCase().includes(query.toLowerCase());
-      }
-    );
+      return (t.name + ' ' + t.artists[0].name).toLowerCase().includes(query.toLowerCase());
+    });
     searchResults = searchResults.map((t) => convertSpotifyTrackToSong(t));
     return searchResults;
   };
-
-
 </script>
 
 <div>
   <!-- PLAYLIST/GENRE TITLE -->
   {#if attempt.attempts === 0}
     <div class="w-full px-0 sm:px-20 transition-all duration-200">
-      <span class="text-center mx-auto w-full text-blue-100">listen to the song and try to guess it correctly. you have 6 attempts.</span>
+      <span class="text-center mx-auto w-full text-blue-100"
+        >listen to the song and try to guess it correctly. you have 6 attempts.</span
+      >
     </div>
   {/if}
   <!-- GUESSES -->
@@ -122,9 +124,11 @@
           <div
             title="Open in Spotify"
             on:click={() => {
-            window.open(`https://open.spotify.com/track/${guess.song.id}`, '_blank').focus();
-          }}
-            class={`cursor-pointer ${guess.artistCorrect ? 'border-amber-400' : 'border-red-600'} border-2 h-10 p-2 my-2 w-full text-left rounded-sm bg-gray-900 overflow-ellipsis whitespace-nowrap overflow-hidden`}
+              window.open(`https://open.spotify.com/track/${guess.song.id}`, '_blank').focus();
+            }}
+            class={`cursor-pointer ${
+              guess.artistCorrect ? 'border-amber-400' : 'border-red-600'
+            } border-2 h-10 p-2 my-2 w-full text-left rounded-sm bg-gray-900 overflow-ellipsis whitespace-nowrap overflow-hidden`}
           >
             {guess.song.name} by {guess.song.artist}
           </div>
@@ -155,7 +159,9 @@
           className="w-10/12"
           inputClassName="border-gray-600 border-2 w-full h-8 px-2 py-5 rounded-sm bg-gray-900 hover:border-gray-400 focus:border-gray-400 outline-none transition-all duration-200"
           dropdownClassName="p-0 bg-gray-900"
-          placeholder={`${6 - attempt.attempts} ${(6 - attempt.attempts) !== 1 ? 'attempts' : 'attempt'} left`}
+          placeholder={`${6 - attempt.attempts} ${
+            6 - attempt.attempts !== 1 ? 'attempts' : 'attempt'
+          } left`}
           items={searchResults}
           minCharactersToSearch={2}
           searchFunction={searchSongs}
@@ -194,12 +200,16 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
           </Button>
-          <div class="text-gray-400 cursor-pointer text-center underline underline-offset-1" on:click={skipSong}>skip
+          <div
+            class="text-gray-400 cursor-pointer text-center underline underline-offset-1"
+            on:click={skipSong}
+          >
+            skip
           </div>
         </div>
       </div>
     {:else}
-      <GameEnd custom={(custom || forceRandom)} forceRandom={forceRandom} />
+      <GameEnd custom={custom || forceRandom} {forceRandom} />
     {/if}
   </div>
 </div>

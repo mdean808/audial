@@ -3,50 +3,48 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'League Spartan';
-    src: url('/fonts/LeagueSpartan.ttf');
+  font-family: 'League Spartan';
+  src: url('/fonts/LeagueSpartan.ttf');
 }
 
 body {
-    font-family: 'League Spartan', sans-serif;
-    background: theme('colors.gray.800');
-    color: theme('colors.gray.200');
+  font-family: 'League Spartan', sans-serif;
+  background: theme('colors.gray.800');
+  color: theme('colors.gray.200');
 }
 
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-    width: 12px;
+  width: 12px;
 }
 
 *::-webkit-scrollbar-track {
-    background: transparent;
+  background: transparent;
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: #a1a1a1;
-    transition: all .1s;
-    border-radius: 10px;
-    border: 2px solid theme('colors.gray.900');
+  background-color: #a1a1a1;
+  transition: all 0.1s;
+  border-radius: 10px;
+  border: 2px solid theme('colors.gray.900');
 }
 
 *::-webkit-scrollbar-thumb:hover {
-    background-color: #c1c1c1;
+  background-color: #c1c1c1;
 }
 
 *::-webkit-scrollbar-thumb:focus {
-    background-color: #c1c1c1;
+  background-color: #c1c1c1;
 }
 
-
 .autocomplete-list {
-    background: theme('colors.gray.900') !important;
-    padding: theme('padding.1') theme('padding.2') !important;
-    max-height: 40vh !important;
+  background: theme('colors.gray.900') !important;
+  padding: theme('padding.1') theme('padding.2') !important;
+  max-height: 40vh !important;
 }
 
 .autocomplete-list-item {
-    padding: theme('padding.0') !important;
-    margin-top: theme('margin.2');
-    margin-bottom: theme('margin.2')
-
+  padding: theme('padding.0') !important;
+  margin-top: theme('margin.2');
+  margin-bottom: theme('margin.2');
 }

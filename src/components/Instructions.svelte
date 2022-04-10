@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { readInstructions } from "../store";
-  import Button from "./Button.svelte";
+  import { readInstructions } from '../store';
+  import Button from './Button.svelte';
 
   export let hidden = true;
 </script>
@@ -28,28 +28,37 @@
             <span>type the name of the song or song artist into the box</span>
           </li>
           <li>
-            <span>if you get the song incorrect or press skip, more of the song will be revealed</span>
+            <span
+              >if you get the song incorrect or press skip, more of the song will be revealed</span
+            >
           </li>
           <li>
-            <span>a <span class="text-red-500">red result</span> means you guessed incorrectly.</span>
+            <span
+              >a <span class="text-red-500">red result</span> means you guessed incorrectly.</span
+            >
           </li>
           <li>
-            <span>a <span class="text-amber-400">yellow result</span> means the artist was correct.</span>
+            <span
+              >a <span class="text-amber-400">yellow result</span> means the artist was correct.</span
+            >
           </li>
           <li>
-            <span>a <span class="text-green-500">green result</span> means your guess was correct!</span>
+            <span
+              >a <span class="text-green-500">green result</span> means your guess was correct!</span
+            >
           </li>
         </ul>
       </div>
       <div class="w-full">
         <Button
           on:click={() => {
-					hidden = true;
-					readInstructions.set(true);
-				}}
+            hidden = true;
+            readInstructions.set(true);
+          }}
           title="Close Popup"
           className="mx-auto text-center block"
-          type="primary">sounds cool
+          type="primary"
+          >sounds cool
         </Button>
       </div>
     </div>

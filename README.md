@@ -2,7 +2,7 @@
 
 [Visit audial](https://audial.mogdan.xyz)
 
-----
+---
 
 Inspired by [heardle.app](https://heardle.app), audial is a wordle-style web game for guessing a different song each
 day.

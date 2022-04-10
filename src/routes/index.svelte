@@ -1,12 +1,12 @@
 <script lang="ts">
-  import Footer from "../components/Footer.svelte";
-  import { currentSong, readInstructions } from "../store";
-  import Game from "../components/Game.svelte";
-  import Instructions from "../components/Instructions.svelte";
-  import { onMount } from "svelte";
-  import { getDailySpotifyTrack } from "../api/spotify.ts";
-  import { convertSpotifyTrackToSong } from "../api/util.ts";
-  import type { SpotifyPlaylist } from "../types";
+  import Footer from '../components/Footer.svelte';
+  import { currentSong, readInstructions } from '../store';
+  import Game from '../components/Game.svelte';
+  import Instructions from '../components/Instructions.svelte';
+  import { onMount } from 'svelte';
+  import { getDailySpotifyTrack } from '../api/spotify.ts';
+  import { convertSpotifyTrackToSong } from '../api/util.ts';
+  import type { SpotifyPlaylist } from '../types';
 
   let loading = true;
   let showInstructions;
@@ -17,9 +17,9 @@
   let forceRandom;
   onMount(async () => {
     showInstructions = readInstructions.get();
-    forceRandom = new URL(window.location.href).searchParams.get("random") === "true" || false;
+    forceRandom = new URL(window.location.href).searchParams.get('random') === 'true' || false;
 
-    playlist.id = "5LQuCyn8AhcHpl31DgLaxL";
+    playlist.id = '5LQuCyn8AhcHpl31DgLaxL';
 
     const trackResponse = await getDailySpotifyTrack(playlist, forceRandom);
     daily = trackResponse.daily;
@@ -31,10 +31,9 @@
     loading = false;
   });
 
-  readInstructions.listen(value => {
+  readInstructions.listen((value) => {
     showInstructions = value;
   });
-
 </script>
 
 <div>
@@ -42,20 +41,38 @@
   {#if !loading}
     <div class="max-w-screen-md mx-auto">
       <div class={`text-center p-3 ${!showInstructions ? 'hidden' : ''}`}>
-        <Game custom={forceRandom} forceRandom={forceRandom} daily={daily} allTracks={allTracks} />
+        <Game custom={forceRandom} {forceRandom} {daily} {allTracks} />
       </div>
     </div>
     <Footer custom={forceRandom} />
   {/if}
   {#if loading}
     <div class={`w-full mx-auto text-center mt-20 text-blue-600`}>
-      <svg xmlns="http://www.w3.org/2000/svg"
-           style="margin: auto; background: transparent; display: block; shape-rendering: auto;" width="100px"
-           height="100px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
-        <circle cx="50" cy="50" fill="none" stroke="currentColor" stroke-width="7" r="38"
-                stroke-dasharray="179.0707812546182 61.690260418206066">
-          <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="0.9345794392523364s"
-                            values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        style="margin: auto; background: transparent; display: block; shape-rendering: auto;"
+        width="100px"
+        height="100px"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="xMidYMid"
+      >
+        <circle
+          cx="50"
+          cy="50"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="7"
+          r="38"
+          stroke-dasharray="179.0707812546182 61.690260418206066"
+        >
+          <animateTransform
+            attributeName="transform"
+            type="rotate"
+            repeatCount="indefinite"
+            dur="0.9345794392523364s"
+            values="0 50 50;360 50 50"
+            keyTimes="0;1"
+          />
         </circle>
       </svg>
     </div>
