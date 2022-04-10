@@ -63,13 +63,11 @@
       </div>
     {:else}
       <div class="w-full w-10/12 mx-auto my-5">
-        <div class="text-center mx-auto w-full text-blue-100 mb-2">click the share button on any spotify playlist and
-          copy
-          the link below
+        <div class="text-center mx-auto w-full text-blue-100 mb-2">paste the link to any spotify playlist below
         </div>
         <input bind:value={playlistUrl}
                class="p-2 border-2 w-full text-gray-400 rounded-sm border-gray-600 bg-gray-900 hover:border-gray-400 focus:border-gray-400 outline-none transition-all duration-200"
-               placeholder="spotify playlist link ">
+               placeholder="spotify playlist link" name="spotify playlist input">
         <div class="w-full mx-auto text-center my-4">
           <Button type="submit" on:click={startCustom}>start your custom audial</Button>
         </div>
