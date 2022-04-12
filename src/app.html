@@ -21,7 +21,7 @@
       captureUncaught: true,
       captureUnhandledRejections: true,
       payload: {
-        environment: 'production',
+        environment: window.location.hostname === 'localhost' ? 'development' : 'production',
         //context: 'home/index',
         //trace_id: 'abc123',
         client: {
