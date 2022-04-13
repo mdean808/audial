@@ -8,6 +8,7 @@
   import Button from './Button.svelte';
   import GameEnd from './GameEnd.svelte';
   import analytics from '../api/analytics';
+  import { toast } from '@zerodevx/svelte-toast';
 
   export let forceRandom = false;
   let attempt = <Attempt>{};
@@ -43,7 +44,16 @@
   let currentSelectedSong = <Song>{};
 
   const chooseSong = () => {
-    if (!currentSelectedSong) return;
+    if (!currentSelectedSong || !currentSelectedSong.id) {
+      toast.push('Please select a valid song from the list.', {
+        theme: {
+          '--toastWidth': '20rem',
+          '--toastBackground': '#e64949',
+          '--toastBarBackground': '#C53030'
+        }
+      });
+      return;
+    }
     const guesses = [...(attempt.guesses || [])];
     if (currentSelectedSong.id === currentSong.get().id) {
       guesses.push(<Guess>{

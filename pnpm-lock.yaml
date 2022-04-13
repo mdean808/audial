@@ -11,6 +11,7 @@ specifiers:
   '@types/dlv': ^1.1.2
   '@typescript-eslint/eslint-plugin': ^5.10.1
   '@typescript-eslint/parser': ^5.10.1
+  '@zerodevx/svelte-toast': ^0.7.1
   analytics: ^0.8.1
   autoprefixer: ^10.4.2
   eslint: ^7.32.0
@@ -36,6 +37,7 @@ dependencies:
   '@nanostores/persistent': 0.5.2_nanostores@0.5.12
   '@sveltejs/adapter-node': 1.0.0-next.73
   '@sveltejs/adapter-static': 1.0.0-next.29
+  '@zerodevx/svelte-toast': 0.7.1
   analytics: 0.8.1_@types+dlv@1.1.2
   nanostores: 0.5.12
   random: 3.0.6
@@ -443,6 +445,10 @@ packages:
       '@typescript-eslint/types': 5.19.0
       eslint-visitor-keys: 3.3.0
     dev: true
+
+  /@zerodevx/svelte-toast/0.7.1:
+    resolution: {integrity: sha512-JxyjPlpc3IzwyHLGbU5pDPW68HM1o7FjiSWmm9SIig7NuuBFIqoJkVt9CYr6toAXzi5sLBgu27hT1NntKbKcmA==}
+    dev: false
 
   /acorn-jsx/5.3.2_acorn@7.4.1:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
