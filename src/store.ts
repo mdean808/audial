@@ -32,6 +32,12 @@ export const currentAttempt = persistentMap<Attempt>(
   objectValueCoder
 );
 
+export const pastAttempts = persistentMap<{ array: Attempt[] }>(
+  'past_attempts',
+  { array: [] },
+  objectValueCoder
+);
+
 export const readInstructions = persistentAtom('read_instructions', false, booleanValueCoder);
 
 export const currentSong = persistentMap<Song>('current_song', <Song>{}, objectValueCoder);

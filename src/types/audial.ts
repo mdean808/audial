@@ -16,4 +16,5 @@ export interface Attempt {
   date: Date;
   correct: boolean;
   attempts: number;
+  type?: string;
 }

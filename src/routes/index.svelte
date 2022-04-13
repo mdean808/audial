@@ -1,6 +1,6 @@
 <script lang='ts'>
   import Footer from '../components/Footer.svelte';
-  import { currentSong, readInstructions } from '../store';
+  import { currentSong, pastAttempts, readInstructions } from '../store';
   import Game from '../components/Game.svelte';
   import Instructions from '../components/Instructions.svelte';
   import { onMount } from 'svelte';
@@ -30,6 +30,10 @@
   readInstructions.listen((value) => {
     showInstructions = value;
   });
+
+  pastAttempts.listen((val) => {
+    console.log('pastAttempts value:', val)
+  })
 </script>
 
 <div>
@@ -37,7 +41,7 @@
   {#if !loading}
     <div class='max-w-screen-md mx-auto'>
       <div class={`text-center p-3 ${!showInstructions ? 'hidden' : ''}`}>
-        <Game custom={forceRandom} {forceRandom} {daily} {allTracks} />
+        <Game custom={false} {forceRandom} {daily} {allTracks} />
       </div>
     </div>
     <Footer custom={forceRandom} />

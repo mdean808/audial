@@ -8,11 +8,11 @@
   export let custom;
 
   let notifyClipboard = false;
-  const FIRST_DAY = new Date('3/29/2022');
+  const FIRST_DAY = new Date('4/12/2022');
 
   const generateEmojis = () => {
     let emojiString = '';
-    for (const guess of (custom ? temporaryAttempt.get().guesses : currentAttempt.get().guesses) ||
+    for (const guess of ((custom || forceRandom) ? temporaryAttempt.get().guesses : currentAttempt.get().guesses) ||
     []) {
       if (guess.correct) emojiString += '🟩 ';
       else if (guess.artistCorrect) emojiString += '🟨 ';
@@ -21,7 +21,7 @@
     }
     for (
       let i = 0;
-      i < 6 - (custom ? temporaryAttempt.get().attempts : currentAttempt.get().attempts);
+      i < 6 - ((custom || forceRandom) ? temporaryAttempt.get().attempts : currentAttempt.get().attempts);
       i++
     ) {
       emojiString += '⬛ ';
@@ -45,7 +45,7 @@
 </script>
 
 <div class='py-3'>
-  {#if custom ? !temporaryAttempt.get().correct : !currentAttempt.get().correct}
+  {#if (custom || forceRandom) ? !temporaryAttempt.get().correct : !currentAttempt.get().correct}
     <div
       title='Open in Spotify'
       on:click={() => {

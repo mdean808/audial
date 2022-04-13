@@ -2,7 +2,7 @@
   import AutoComplete from 'simple-svelte-autocomplete';
   import { onMount } from 'svelte';
 
-  import { currentAttempt, currentSong, songPaused, temporaryAttempt } from '../store';
+  import { currentAttempt, currentSong, pastAttempts, songPaused, temporaryAttempt } from '../store';
   import { convertSpotifyTrackToSong } from '../api/util';
   import type { Attempt, Guess, Song, SpotifyTrack } from '../types';
   import Button from './Button.svelte';
@@ -39,6 +39,10 @@
       attempt = currentAttempt.get();
       currentAttempt.listen((value) => (attempt = value));
     }
+    if (forceRandom && custom) temporaryAttempt.setKey('type', 'custom_random');
+    else if (forceRandom) temporaryAttempt.setKey('type', 'random');
+    else if (custom) temporaryAttempt.setKey('type', 'custom');
+    else currentAttempt.setKey('type', 'default');
   });
   let searchResults = [];
   let currentSelectedSong = <Song>{};
@@ -70,8 +74,10 @@
         currentAttempt.setKey('correct', true);
         currentAttempt.setKey('attempts', attempt.attempts + 1);
       }
-      analytics.track('guess-song', { correct: true, custom });
-      analytics.track('attempt-correct', { custom });
+      analytics.track('guess-song', { correct: true, custom, random: forceRandom });
+      analytics.track('attempt-correct', { custom, random: forceRandom });
+      // save correct attempt to localstorage
+      pastAttempts.set({ array: [...pastAttempts.get().array, attempt] });
     } else {
       const track = allTracks.find((t) => t.id == currentSelectedSong.id);
       guesses.push(<Guess>{
@@ -86,10 +92,12 @@
         currentAttempt.setKey('guesses', guesses);
         currentAttempt.setKey('attempts', attempt.attempts + 1);
       }
-      analytics.track('guess-song', { correct: false, custom });
+      analytics.track('guess-song', { correct: false, custom, random: forceRandom });
     }
     if (attempt.attempts === 6 && !attempt.correct) {
-      analytics.track('attempt-fail', { custom });
+      analytics.track('attempt-fail', { custom, random: forceRandom });
+      // save incorrect attempt to localstorage
+      pastAttempts.set({ array: [...pastAttempts.get().array, attempt] });
     }
     currentSelectedSong = undefined;
     songPaused.set(true);
@@ -109,7 +117,7 @@
       currentAttempt.setKey('guesses', guesses);
       currentAttempt.setKey('attempts', attempt.attempts + 1);
     }
-    analytics.track('skip-song', { custom });
+    analytics.track('skip-song', { custom, random: forceRandom });
   };
 
   const searchSongs = async (query: string) => {
@@ -223,7 +231,7 @@
         </div>
       </div>
     {:else}
-      <GameEnd custom={custom || forceRandom} {forceRandom} />
+      <GameEnd custom={custom} {forceRandom} />
     {/if}
   </div>
 </div>
