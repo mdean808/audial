@@ -146,7 +146,7 @@
         <div>
           <h1
             on:click={() => goto('/').then(() => window.location.reload())}
-            class='text-3xl font-bold flex-grow text-center flex-1 cursor-pointer text-white relative'
+            class='text-3xl font-bold flex-grow text-center flex-1 cursor-pointer text-white relative hover:underline underline-offset-1 decoration-blue-500 hover:text-blue-500'
           >
             audial
             {#if $page.url.href.includes('custom') && new URL(url).searchParams.get('random') === 'true'}
@@ -187,7 +187,7 @@
           <button
             on:click={() => readInstructions.set(false)}
             title='View Instructions'
-            class='px-2 py-2 uppercase tracking-widest border-none flex items-center font-semibold text-sm text-white'
+            class='px-2 py-2 uppercase tracking-widest border-none flex items-center font-semibold text-sm text-white hover:text-blue-600'
           >
             <svg
               xmlns='http://www.w3.org/2000/svg'
