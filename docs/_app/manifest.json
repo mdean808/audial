@@ -1,6 +1,6 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-326a6de6.js",
+    "file": "start-ff4cd765.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -17,20 +17,20 @@
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-048ba0c4.js",
+    "file": "pages/__layout.svelte-ca6595cc.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_index-0cb0397c.js",
       "_SvelteToast.svelte_svelte_type_style_lang-449b658d.js",
-      "_store-dee11cb5.js",
+      "_store-2c78cdb7.js",
       "_navigation-0e6511d1.js",
       "_index-246c2946.js",
       "_singletons-d1fb5791.js"
     ],
     "css": [
-      "assets/pages/__layout.svelte-8269b0cb.css"
+      "assets/pages/__layout.svelte-379000ab.css"
     ]
   },
   "src/routes/__error.svelte": {
@@ -43,41 +43,44 @@
     ]
   },
   "src/routes/custom.svelte": {
-    "file": "pages/custom.svelte-59735adf.js",
+    "file": "pages/custom.svelte-02084628.js",
     "src": "src/routes/custom.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_index-0cb0397c.js",
-      "_spotify-0d0180b7.js",
-      "_store-dee11cb5.js",
+      "_spotify-25b237d7.js",
+      "_store-2c78cdb7.js",
       "_navigation-0e6511d1.js",
+      "_util-9cdfb41e.js",
       "_SvelteToast.svelte_svelte_type_style_lang-449b658d.js",
       "_index-246c2946.js",
       "_singletons-d1fb5791.js"
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-632edfeb.js",
+    "file": "pages/index.svelte-8926d464.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_index-0cb0397c.js",
-      "_spotify-0d0180b7.js",
-      "_store-dee11cb5.js",
+      "_spotify-25b237d7.js",
+      "_store-2c78cdb7.js",
+      "_util-9cdfb41e.js",
       "_SvelteToast.svelte_svelte_type_style_lang-449b658d.js",
       "_index-246c2946.js"
     ]
   },
   "src/routes/stats.svelte": {
-    "file": "pages/stats.svelte-e9828051.js",
+    "file": "pages/stats.svelte-1ed2f12e.js",
     "src": "src/routes/stats.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_index-0cb0397c.js",
-      "_store-dee11cb5.js"
+      "_store-2c78cdb7.js",
+      "_util-9cdfb41e.js"
     ]
   },
   "_index-0cb0397c.js": {
@@ -101,8 +104,8 @@
       "assets/SvelteToast.svelte_svelte_type_style_lang-6697d3be.css"
     ]
   },
-  "_store-dee11cb5.js": {
-    "file": "chunks/store-dee11cb5.js"
+  "_store-2c78cdb7.js": {
+    "file": "chunks/store-2c78cdb7.js"
   },
   "_navigation-0e6511d1.js": {
     "file": "chunks/navigation-0e6511d1.js",
@@ -110,15 +113,19 @@
       "_singletons-d1fb5791.js"
     ]
   },
-  "_spotify-0d0180b7.js": {
-    "file": "chunks/spotify-0d0180b7.js",
+  "_spotify-25b237d7.js": {
+    "file": "chunks/spotify-25b237d7.js",
     "imports": [
       "_index-0cb0397c.js",
-      "_store-dee11cb5.js",
-      "_SvelteToast.svelte_svelte_type_style_lang-449b658d.js"
+      "_store-2c78cdb7.js",
+      "_SvelteToast.svelte_svelte_type_style_lang-449b658d.js",
+      "_util-9cdfb41e.js"
     ],
     "css": [
       "assets/spotify-699d62c1.css"
     ]
+  },
+  "_util-9cdfb41e.js": {
+    "file": "chunks/util-9cdfb41e.js"
   }
 }

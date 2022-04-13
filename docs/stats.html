@@ -285,17 +285,18 @@
     // End Rollbar Snippet
   </script>
   <meta http-equiv="content-security-policy" content="">
-	<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-8269b0cb.css">
+	<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-379000ab.css">
 	<link rel="stylesheet" href="/_app/assets/SvelteToast.svelte_svelte_type_style_lang-6697d3be.css">
-	<link rel="modulepreload" href="/_app/start-326a6de6.js">
+	<link rel="modulepreload" href="/_app/start-ff4cd765.js">
 	<link rel="modulepreload" href="/_app/chunks/index-0cb0397c.js">
 	<link rel="modulepreload" href="/_app/chunks/index-246c2946.js">
 	<link rel="modulepreload" href="/_app/chunks/singletons-d1fb5791.js">
-	<link rel="modulepreload" href="/_app/pages/__layout.svelte-048ba0c4.js">
+	<link rel="modulepreload" href="/_app/pages/__layout.svelte-ca6595cc.js">
 	<link rel="modulepreload" href="/_app/chunks/SvelteToast.svelte_svelte_type_style_lang-449b658d.js">
-	<link rel="modulepreload" href="/_app/chunks/store-dee11cb5.js">
+	<link rel="modulepreload" href="/_app/chunks/store-2c78cdb7.js">
 	<link rel="modulepreload" href="/_app/chunks/navigation-0e6511d1.js">
-	<link rel="modulepreload" href="/_app/pages/stats.svelte-e9828051.js">
+	<link rel="modulepreload" href="/_app/pages/stats.svelte-1ed2f12e.js">
+	<link rel="modulepreload" href="/_app/chunks/util-9cdfb41e.js">
 				<script>
 		if ('serviceWorker' in navigator) {
 			navigator.serviceWorker.register('/service-worker.js');
@@ -315,16 +316,24 @@
         <div class="flex flex-1 justify-end"><button title="View Statistics" class="px-2 py-2 tracking-widest border-none flex items-center font-semibold text-sm text-white hover:text-blue-600"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-6M6 20V10M18 20V4"></path></svg></button>
           <button title="View Instructions" class="px-2 py-2 uppercase tracking-widest border-none flex items-center font-semibold text-sm text-white"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></button></div></div></div>
     <div class="hidden text-indigo-500 text-yellow-400 text-teal-500 text-orange-500 text-purple-500 text-cyan-500 text-emerald-500"></div></header></div>
-  <div class="w-8/12 mx-auto mt-2"><h1 class="text-4xl text-white">your stats</h1>
-  <div><ul class="ml-4 mt-2"><li class="text-blue-500">9/12 audials attempted.</li>
-      <li class="text-green-500">5 correct guesses.</li>
-      <li class="text-amber-400">13 correct artist guesses.</li>
-      <li class="text-red-600">20 incorrect guesses.</li>
-      <li class="text-gray-400">2 skips.</li></ul></div>
-  <div class="text-gray-400 mt-3 italic">this section of audial is under development and may not be functional.
-  </div>
-
-  <div class="mt-20 text-gray-400"><div>open source on <a href="https://github.com/mdean808/audial" class="underline-offset-1 underline text-blue-500" target="_blank">github</a>.
+  <div class="w-8/12 mx-auto mt-2"><h1 class="text-4xl text-white">official stats</h1>
+  <div><ul class="ml-4 mt-2"><li class="text-blue-500">0/1 audials attempted.
+      </li>
+      <li class="text-green-500">0 correct guesses.</li>
+      <li class="text-amber-400">0 correct artist guesses.</li>
+      <li class="text-red-600">0 incorrect guesses.</li>
+      <li class="text-gray-400">0 skips.</li></ul></div>
+  <h1 class="text-4xl text-white mt-3">unofficial stats</h1>
+  <div><ul class="ml-4 mt-2"><li class="text-gray-300">0 <span class="text-red-600">random</span> attempts
+        with 0% correct.
+      </li>
+      <li class="text-gray-300">0 <span class="text-green-500">custom</span> attempts
+        with 0% correct.
+      </li>
+      <li class="text-gray-300">0 <span class="text-red-600">random</span> <span class="text-green-500">custom</span> attempts
+        with 0% correct.
+      </li></ul></div>
+  <div class="mt-10 text-gray-400"><div>open source on <a href="https://github.com/mdean808/audial" class="underline-offset-1 underline text-blue-500" target="_blank">github</a>.
     </div>
     <div>made by <a href="https://mogdan.xyz" class="underline-offset-1 underline text-blue-500" target="_blank">morgan dean</a> with svelte, firebase, and github pages.
     </div>
@@ -332,10 +341,10 @@
     </p></div></div></main>
 
 
-		<script type="module" data-hydrate="1d3dtdm">
-		import { start } from "/_app/start-326a6de6.js";
+		<script type="module" data-hydrate="14ei1ea">
+		import { start } from "/_app/start-ff4cd765.js";
 		start({
-			target: document.querySelector('[data-hydrate="1d3dtdm"]').parentNode,
+			target: document.querySelector('[data-hydrate="14ei1ea"]').parentNode,
 			paths: {"base":"","assets":""},
 			session: {},
 			route: true,
@@ -345,8 +354,8 @@
 				status: 200,
 				error: null,
 				nodes: [
-					import("/_app/pages/__layout.svelte-048ba0c4.js"),
-						import("/_app/pages/stats.svelte-e9828051.js")
+					import("/_app/pages/__layout.svelte-ca6595cc.js"),
+						import("/_app/pages/stats.svelte-1ed2f12e.js")
 				],
 				params: {},
 				routeId: "stats"
