@@ -50,6 +50,7 @@
     <div class={`w-full mx-auto text-center mt-20 text-blue-600`}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
+        class="animate-spin"
         style="margin: auto; background: transparent; display: block; shape-rendering: auto;"
         width="100px"
         height="100px"
@@ -64,16 +65,7 @@
           stroke-width="7"
           r="38"
           stroke-dasharray="179.0707812546182 61.690260418206066"
-        >
-          <animateTransform
-            attributeName="transform"
-            type="rotate"
-            repeatCount="indefinite"
-            dur="0.9345794392523364s"
-            values="0 50 50;360 50 50"
-            keyTimes="0;1"
-          />
-        </circle>
+        />
       </svg>
     </div>
   {/if}
