@@ -15,6 +15,10 @@
   <link rel='apple-touch-icon' href='./icons/apple-touch-icon.png' />
   <link rel='manifest' href='./manifest.json' />
   <title>audial</title>
+  <script type="text/javascript">
+    window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.heapanalytics.com/js/heap-"+e+".js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a);for(var n=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","resetIdentity","removeEventProperty","setEventProperties","track","unsetEventProperty"],o=0;o<p.length;o++)heap[p[o]]=n(p[o])};
+    heap.load("612697029");
+  </script>
   <script>
     let _rollbarConfig = {
       accessToken: '44484067cbc44f01a992153669e87fc9',
@@ -285,19 +289,19 @@
     // End Rollbar Snippet
   </script>
   <meta http-equiv="content-security-policy" content="">
-	<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-67e66a85.css">
+	<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-059bf167.css">
 	<link rel="stylesheet" href="/_app/assets/SvelteToast.svelte_svelte_type_style_lang-6697d3be.css">
 	<link rel="stylesheet" href="/_app/assets/spotify-699d62c1.css">
-	<link rel="modulepreload" href="/_app/start-204ddc25.js">
-	<link rel="modulepreload" href="/_app/chunks/index-0cb0397c.js">
-	<link rel="modulepreload" href="/_app/chunks/index-246c2946.js">
+	<link rel="modulepreload" href="/_app/start-4412ee96.js">
+	<link rel="modulepreload" href="/_app/chunks/index-cbeb82b8.js">
+	<link rel="modulepreload" href="/_app/chunks/index-2f4404a6.js">
 	<link rel="modulepreload" href="/_app/chunks/singletons-d1fb5791.js">
-	<link rel="modulepreload" href="/_app/pages/__layout.svelte-e2a899c4.js">
-	<link rel="modulepreload" href="/_app/chunks/SvelteToast.svelte_svelte_type_style_lang-449b658d.js">
+	<link rel="modulepreload" href="/_app/pages/__layout.svelte-c63e8332.js">
+	<link rel="modulepreload" href="/_app/chunks/SvelteToast.svelte_svelte_type_style_lang-bf33fd6b.js">
 	<link rel="modulepreload" href="/_app/chunks/store-2c78cdb7.js">
 	<link rel="modulepreload" href="/_app/chunks/navigation-0e6511d1.js">
-	<link rel="modulepreload" href="/_app/pages/custom.svelte-409d0f57.js">
-	<link rel="modulepreload" href="/_app/chunks/spotify-195511b7.js">
+	<link rel="modulepreload" href="/_app/pages/custom.svelte-2a14fbb0.js">
+	<link rel="modulepreload" href="/_app/chunks/spotify-95450e0a.js">
 	<link rel="modulepreload" href="/_app/chunks/util-9cdfb41e.js">
 				<script>
 		if ('serviceWorker' in navigator) {
@@ -338,15 +342,15 @@
   <div class="max-w-screen-md mx-auto"><div class="w-full w-10/12 mx-auto my-5"><div class="text-center mx-auto w-full text-blue-100 mb-2">paste the link to any spotify playlist below
         </div>
         <input class="p-2 border-2 w-full text-gray-400 rounded-sm border-gray-600 bg-gray-900 hover:border-gray-400 focus:border-gray-400 outline-none transition-all duration-200" placeholder="spotify playlist link" name="spotify playlist input">
-        <div class="w-full mx-auto text-center my-4"><button class="p-2 text-white bg-green-600 hover:bg-green-500 rounded-md shadow hover:shadow-lg transition-all duration-200 ">start your custom audial</button></div></div></div>
+        <div class="w-full mx-auto text-center my-4"><button title="start custom audial" class="p-2 text-white bg-green-600 hover:bg-green-500 rounded-md shadow hover:shadow-lg transition-all duration-200 ">start your custom audial</button></div></div></div>
   
-  <div class="w-full mx-auto text-center mt-20 text-blue-600 hidden"><svg height="100px" preserveAspectRatio="xMidYMid" style="margin: auto; background: transparent; display: block; shape-rendering: auto;" viewBox="0 0 100 100" width="100px" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" fill="none" r="38" stroke="currentColor" stroke-dasharray="179.0707812546182 61.690260418206066" stroke-width="7"><animateTransform attributeName="transform" dur="0.9345794392523364s" keyTimes="0;1" repeatCount="indefinite" type="rotate" values="0 50 50;360 50 50"></animateTransform></circle></svg></div></div></main>
+  <div class="w-full mx-auto text-center mt-20 text-blue-600 hidden"><svg height="100px" preserveAspectRatio="xMidYMid" class="animate-spin" style="margin: auto; background: transparent; display: block; shape-rendering: auto;" viewBox="0 0 100 100" width="100px" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" fill="none" r="38" stroke="currentColor" stroke-dasharray="179.0707812546182 61.690260418206066" stroke-width="7"></circle></svg></div></div></main>
 
 
-		<script type="module" data-hydrate="1y34jtx">
-		import { start } from "/_app/start-204ddc25.js";
+		<script type="module" data-hydrate="1xv18wz">
+		import { start } from "/_app/start-4412ee96.js";
 		start({
-			target: document.querySelector('[data-hydrate="1y34jtx"]').parentNode,
+			target: document.querySelector('[data-hydrate="1xv18wz"]').parentNode,
 			paths: {"base":"","assets":""},
 			session: {},
 			route: true,
@@ -356,8 +360,8 @@
 				status: 200,
 				error: null,
 				nodes: [
-					import("/_app/pages/__layout.svelte-e2a899c4.js"),
-						import("/_app/pages/custom.svelte-409d0f57.js")
+					import("/_app/pages/__layout.svelte-c63e8332.js"),
+						import("/_app/pages/custom.svelte-2a14fbb0.js")
 				],
 				params: {},
 				routeId: "custom"
