@@ -30,10 +30,6 @@
   readInstructions.listen((value) => {
     showInstructions = value;
   });
-
-  pastAttempts.listen((val) => {
-    console.log('pastAttempts value:', val);
-  });
 </script>
 
 <div>
