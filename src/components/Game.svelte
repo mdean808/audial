@@ -119,11 +119,17 @@
     analytics.track('skip-song', { custom, random: forceRandom });
   };
 
-  const searchSongs = (query: string) => {
+  const searchSongs = async (query: string) => {
     let searchResults: SpotifyTrack[] | Song[] = allTracks.filter((t) => {
       return (t.name + ' ' + t.artists[0].name).toLowerCase().includes(query.toLowerCase());
     });
     searchResults = searchResults.map((t) => convertSpotifyTrackToSong(t));
+    searchResults = searchResults.map((s) => <Song>{
+      name: s.name + ' by ' + s.artist,
+      id: s.id,
+      artist: s.artist,
+      preview: s.preview,
+    })
     return searchResults
   };
 </script>
@@ -197,7 +203,7 @@
             let:item
             class='border-2 h-10 px-2 py-3 w-full text-left rounded-sm bg-gray-900 text-white hover:text-blue-500 hover:border-blue-500 overflow-ellipsis whitespace-nowrap overflow-hidden transition-colors duration-150'
           >
-            <span>{item.name} by {item.artist}</span>
+            <span>{item.name}</span>
           </div>
           <div slot='no-results' class='py-1'>
             <span>could not find this song in the playlist.</span>
