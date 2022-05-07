@@ -101,5 +101,6 @@
         stroke-width="7"
       />
     </svg>
+    <p class='w-full mx-auto text-center text-gray-400 mt-4'>please note that your custom audial may take longer to load</p>
   </div>
 </div>

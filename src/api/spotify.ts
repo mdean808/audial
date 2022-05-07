@@ -1,9 +1,12 @@
 import type { SpotifyPlaylist, SpotifyTrack } from '../types';
 import analytics from './analytics';
+import { dev} from '$app/env'
+
+const BASE_URL = !dev ? 'https://us-central1-audial-6e1bd.cloudfunctions.net' : 'http://localhost:5001/audial-6e1bd/us-central1'
 
 export const getSpotifyPlaylistTracks = async (playlist: SpotifyPlaylist) => {
   const res = await fetch(
-    `https://us-central1-audial-6e1bd.cloudfunctions.net/tracks?playlist=${playlist.id}`,
+    `${BASE_URL}/tracks?playlist=${playlist.id}`,
     {
       method: 'GET'
     }
@@ -17,7 +20,7 @@ export const getDailySpotifyTrack = async (playlistId: string, forceRandom: bool
     random: forceRandom
   });
   const res = await fetch(
-    `https://us-central1-audial-6e1bd.cloudfunctions.net/daily?playlist=${playlistId}&random=${forceRandom}&locale=${new Date().toDateString()}`,
+    `${BASE_URL}/daily?playlist=${playlistId}&random=${forceRandom}&locale=${new Date().toDateString()}`,
     {
       method: 'GET',
       cache: 'reload'

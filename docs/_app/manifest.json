@@ -1,11 +1,11 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-4412ee96.js",
+    "file": "start-b96b7c54.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
-      "_index-cbeb82b8.js",
-      "_index-2f4404a6.js",
+      "_index-b7303fea.js",
+      "_index-684da568.js",
       "_singletons-d1fb5791.js"
     ],
     "dynamicImports": [
@@ -17,88 +17,88 @@
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-c63e8332.js",
+    "file": "pages/__layout.svelte-6e5653e7.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-cbeb82b8.js",
-      "_SvelteToast.svelte_svelte_type_style_lang-bf33fd6b.js",
+      "_index-b7303fea.js",
+      "_SvelteToast.svelte_svelte_type_style_lang-d8fc43ab.js",
       "_store-2c78cdb7.js",
       "_navigation-0e6511d1.js",
-      "_index-2f4404a6.js",
+      "_index-684da568.js",
       "_singletons-d1fb5791.js"
     ],
     "css": [
-      "assets/pages/__layout.svelte-059bf167.css"
+      "assets/pages/__layout.svelte-ace9e099.css"
     ]
   },
   "src/routes/__error.svelte": {
-    "file": "pages/__error.svelte-44083b02.js",
+    "file": "pages/__error.svelte-f350241d.js",
     "src": "src/routes/__error.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-cbeb82b8.js"
+      "_index-b7303fea.js"
     ]
   },
   "src/routes/custom.svelte": {
-    "file": "pages/custom.svelte-2a14fbb0.js",
+    "file": "pages/custom.svelte-6ccd694b.js",
     "src": "src/routes/custom.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-cbeb82b8.js",
-      "_spotify-95450e0a.js",
+      "_index-b7303fea.js",
+      "_spotify-8734f69d.js",
       "_store-2c78cdb7.js",
       "_navigation-0e6511d1.js",
       "_util-9cdfb41e.js",
-      "_SvelteToast.svelte_svelte_type_style_lang-bf33fd6b.js",
-      "_index-2f4404a6.js",
+      "_SvelteToast.svelte_svelte_type_style_lang-d8fc43ab.js",
+      "_index-684da568.js",
       "_singletons-d1fb5791.js"
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-a04f390f.js",
+    "file": "pages/index.svelte-12ab2bf5.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-cbeb82b8.js",
-      "_spotify-95450e0a.js",
+      "_index-b7303fea.js",
+      "_spotify-8734f69d.js",
       "_store-2c78cdb7.js",
       "_util-9cdfb41e.js",
-      "_SvelteToast.svelte_svelte_type_style_lang-bf33fd6b.js",
-      "_index-2f4404a6.js"
+      "_SvelteToast.svelte_svelte_type_style_lang-d8fc43ab.js",
+      "_index-684da568.js"
     ]
   },
   "src/routes/stats.svelte": {
-    "file": "pages/stats.svelte-bf3ed324.js",
+    "file": "pages/stats.svelte-82ed294f.js",
     "src": "src/routes/stats.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-cbeb82b8.js",
+      "_index-b7303fea.js",
       "_store-2c78cdb7.js",
       "_util-9cdfb41e.js"
     ]
   },
-  "_index-cbeb82b8.js": {
-    "file": "chunks/index-cbeb82b8.js"
+  "_index-b7303fea.js": {
+    "file": "chunks/index-b7303fea.js"
   },
-  "_index-2f4404a6.js": {
-    "file": "chunks/index-2f4404a6.js",
+  "_index-684da568.js": {
+    "file": "chunks/index-684da568.js",
     "imports": [
-      "_index-cbeb82b8.js"
+      "_index-b7303fea.js"
     ]
   },
   "_singletons-d1fb5791.js": {
     "file": "chunks/singletons-d1fb5791.js"
   },
-  "_SvelteToast.svelte_svelte_type_style_lang-bf33fd6b.js": {
-    "file": "chunks/SvelteToast.svelte_svelte_type_style_lang-bf33fd6b.js",
+  "_SvelteToast.svelte_svelte_type_style_lang-d8fc43ab.js": {
+    "file": "chunks/SvelteToast.svelte_svelte_type_style_lang-d8fc43ab.js",
     "imports": [
-      "_index-2f4404a6.js"
+      "_index-684da568.js"
     ],
     "css": [
       "assets/SvelteToast.svelte_svelte_type_style_lang-6697d3be.css"
@@ -113,12 +113,12 @@
       "_singletons-d1fb5791.js"
     ]
   },
-  "_spotify-95450e0a.js": {
-    "file": "chunks/spotify-95450e0a.js",
+  "_spotify-8734f69d.js": {
+    "file": "chunks/spotify-8734f69d.js",
     "imports": [
-      "_index-cbeb82b8.js",
+      "_index-b7303fea.js",
       "_store-2c78cdb7.js",
-      "_SvelteToast.svelte_svelte_type_style_lang-bf33fd6b.js",
+      "_SvelteToast.svelte_svelte_type_style_lang-d8fc43ab.js",
       "_util-9cdfb41e.js"
     ],
     "css": [

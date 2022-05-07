@@ -44,7 +44,6 @@
     else if (custom) temporaryAttempt.setKey('type', 'custom');
     else currentAttempt.setKey('type', 'default');
   });
-  let searchResults = [];
   let currentSelectedSong = <Song>{};
 
   const chooseSong = () => {
@@ -120,12 +119,12 @@
     analytics.track('skip-song', { custom, random: forceRandom });
   };
 
-  const searchSongs = async (query: string) => {
-    searchResults = allTracks.filter((t) => {
+  const searchSongs = (query: string) => {
+    let searchResults: SpotifyTrack[] | Song[] = allTracks.filter((t) => {
       return (t.name + ' ' + t.artists[0].name).toLowerCase().includes(query.toLowerCase());
     });
     searchResults = searchResults.map((t) => convertSpotifyTrackToSong(t));
-    return searchResults;
+    return searchResults
   };
 </script>
 
@@ -184,7 +183,6 @@
           placeholder={`${6 - attempt.attempts} ${
             6 - attempt.attempts !== 1 ? 'attempts' : 'attempt'
           } left`}
-          items={searchResults}
           minCharactersToSearch={2}
           searchFunction={searchSongs}
           bind:selectedItem={currentSelectedSong}
@@ -197,13 +195,12 @@
           <div
             slot='item'
             let:item
-            let:label
             class='border-2 h-10 px-2 py-3 w-full text-left rounded-sm bg-gray-900 text-white hover:text-blue-500 hover:border-blue-500 overflow-ellipsis whitespace-nowrap overflow-hidden transition-colors duration-150'
           >
             <span>{item.name} by {item.artist}</span>
           </div>
           <div slot='no-results' class='py-1'>
-            <span>could not find this song in our list.</span>
+            <span>could not find this song in the playlist.</span>
           </div>
           <div slot='loading' class='py-1'>
             <span>searching for songs...</span>
