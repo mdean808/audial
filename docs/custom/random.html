@@ -11,9 +11,9 @@
   <meta name='apple-mobile-web-app-title' content='audial' />
   <meta name='theme-color' content='#1f2937' />
   <!--  Files -->
-  <link rel='icon' href='./favicon.ico' />
-  <link rel='apple-touch-icon' href='./icons/apple-touch-icon.png' />
-  <link rel='manifest' href='./manifest.json' />
+  <link rel='icon' href='../favicon.ico' />
+  <link rel='apple-touch-icon' href='../icons/apple-touch-icon.png' />
+  <link rel='manifest' href='../manifest.json' />
   <title>audial</title>
   <script>
     let _rollbarConfig = {
@@ -287,6 +287,7 @@
   <meta http-equiv="content-security-policy" content="">
 	<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-954cf149.css">
 	<link rel="stylesheet" href="/_app/assets/Button-a5fdec76.css">
+	<link rel="stylesheet" href="/_app/assets/Game-f218da57.css">
 	<link rel="modulepreload" href="/_app/start-ff424719.js">
 	<link rel="modulepreload" href="/_app/chunks/index-86d43578.js">
 	<link rel="modulepreload" href="/_app/chunks/index-cde1e508.js">
@@ -295,7 +296,8 @@
 	<link rel="modulepreload" href="/_app/chunks/util-172ab80f.js">
 	<link rel="modulepreload" href="/_app/chunks/navigation-0e6511d1.js">
 	<link rel="modulepreload" href="/_app/chunks/Button-2f2ed635.js">
-	<link rel="modulepreload" href="/_app/pages/stats.svelte-49b995fa.js">
+	<link rel="modulepreload" href="/_app/pages/custom/random.svelte-43483b0a.js">
+	<link rel="modulepreload" href="/_app/chunks/Game-4d035d60.js">
 				<script>
 		if ('serviceWorker' in navigator) {
 			navigator.serviceWorker.register('/service-worker.js');
@@ -329,39 +331,22 @@
   <div><header class="border-b border-gray-500"><div class="max-w-screen-md mx-auto "><div class="flex justify-evenly p-3 items-center"><div class="flex flex-1"><button class="px-2 py-2 tracking-widest border-none flex items-center font-semibold text-sm text-white hover:text-blue-500" title="Custom Playlist"><svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
           <button class="px-2 py-2 tracking-widest border-none flex items-center font-semibold text-sm text-white hover:text-blue-500" title="Random Song"><svg fill="currentColor" height="25" viewBox="0 0 256 256" width="25" xmlns="http://www.w3.org/2000/svg"><rect fill="none" height="256" width="256"></rect><path d="M32,72H55.1a64,64,0,0,1,52,26.8l41.8,58.4a64,64,0,0,0,52,26.8H232" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></path><polyline fill="none" points="208 48 232 72 208 96" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></polyline><polyline fill="none" points="208 160 232 184 208 208" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></polyline><path d="M152.8,93.9A63.7,63.7,0,0,1,200.9,72H232" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></path><path d="M32,184H55.1a63.7,63.7,0,0,0,48.1-21.9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></path></svg></button></div>
         <div><h1 class="text-3xl font-bold flex-grow text-center flex-1 cursor-pointer text-white relative hover:underline underline-offset-1 decoration-blue-500 hover:text-blue-500">audial
-            <span class="absolute rotate-45 text-amber-400 text-sm -right-7">stats</span></h1></div>
+            <span class="absolute rotate-45 text-green-500 text-sm -right-12 -top-1">custom</span>
+              <span class="absolute rotate-45 text-red-600 text-sm -right-10 top-2">shuffle</span></h1></div>
         <div class="flex flex-1 justify-end"><button class="px-2 py-2 tracking-widest border-none flex items-center font-semibold text-sm text-white hover:text-blue-600" title="View Statistics"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20v-6M6 20V10M18 20V4"></path></svg></button>
           <button class="px-2 py-2 uppercase tracking-widest border-none flex items-center font-semibold text-sm text-white hover:text-blue-600" title="View Instructions"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg></button></div></div></div>
     <div class="hidden text-indigo-500 text-yellow-400 text-teal-500 text-orange-500 text-purple-500 text-cyan-500 text-emerald-500"></div></header></div>
-  <div class="w-8/12 mx-auto mt-2"><h1 class="text-4xl text-white">official stats</h1>
-  <div><ul class="ml-4 mt-2"><li class="text-blue-500">0/28 audials attempted.
-      </li>
-      <li class="text-green-500">0 correct guesses.</li>
-      <li class="text-amber-400">0 correct artist guesses.</li>
-      <li class="text-red-600">0 incorrect guesses.</li>
-      <li class="text-gray-400">0 skips.</li></ul></div>
-  <h1 class="text-4xl text-white mt-3">unofficial stats</h1>
-  <div><ul class="ml-4 mt-2"><li class="text-gray-300">0 <span class="text-red-600">random</span> attempts
-        with 0% correct.
-      </li>
-      <li class="text-gray-300">0 <span class="text-green-500">custom</span> attempts
-        with 0% correct.
-      </li>
-      <li class="text-gray-300">0 <span class="text-red-600">random</span> <span class="text-green-500">custom</span> attempts
-        with 0% correct.
-      </li></ul></div>
-  <div class="mt-10 text-gray-400"><div>open source on <a class="underline-offset-1 underline text-blue-500" href="https://github.com/mdean808/audial" target="_blank">github</a>.
+  <div class="w-full w-10/12 max-w-2xl mx-auto my-5"><div class="text-center mx-auto w-full text-blue-100 mb-2">paste the link to any spotify playlist below
     </div>
-    <div>made by <a class="underline-offset-1 underline text-blue-500" href="https://mogdan.xyz" target="_blank">morgan dean</a> with svelte, firebase, and github pages.
-    </div>
-    <p class="cursor-pointer text-red-400 underline-offset-1 underline mt-10">reset local data
-    </p></div></div></main>
+    <input class="p-2 border-2 w-full text-gray-400 rounded-sm border-gray-600 bg-gray-900 hover:border-gray-400 focus:border-gray-400 outline-none transition-all duration-200" name="spotify playlist input" placeholder="spotify playlist link" value="">
+    <div class="w-full mx-auto text-center my-4"><button title="start custom audial" class="p-2 text-white bg-green-600 hover:bg-green-500 rounded-md shadow hover:shadow-lg transition-all duration-200 ">start your custom audial
+      </button></div></div></main>
 
 
-		<script type="module" data-hydrate="16wtwyp">
+		<script type="module" data-hydrate="1vcs798">
 		import { start } from "/_app/start-ff424719.js";
 		start({
-			target: document.querySelector('[data-hydrate="16wtwyp"]').parentNode,
+			target: document.querySelector('[data-hydrate="1vcs798"]').parentNode,
 			paths: {"base":"","assets":""},
 			session: {},
 			route: true,
@@ -372,10 +357,10 @@
 				error: null,
 				nodes: [
 					import("/_app/pages/__layout.svelte-c48870fb.js"),
-						import("/_app/pages/stats.svelte-49b995fa.js")
+						import("/_app/pages/custom/random.svelte-43483b0a.js")
 				],
 				params: {},
-				routeId: "stats"
+				routeId: "custom/random"
 			}
 		});
 	</script></div>

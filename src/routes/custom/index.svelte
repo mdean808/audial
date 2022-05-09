@@ -1,6 +1,7 @@
 <script lang='ts'>
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
+  import { browser } from '$app/env';
   import Button from '$components/Button.svelte';
   import { toast } from '@zerodevx/svelte-toast';
   import { loadGame } from '$lib/util';
@@ -15,10 +16,11 @@
   let playingGame = false;
 
   page.subscribe(val => {
+    if (!browser) return;
     if (!val.url.searchParams.get('playlist') && val.url.pathname.includes('custom')) {
       playingGame = false;
     }
-  })
+  });
 
   onMount(async () => {
     if ($page.url.searchParams.get('playlist')) {
