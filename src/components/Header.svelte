@@ -1,5 +1,5 @@
 <script lang='ts'>
-  import { isRandom, readInstructions } from '$src/store';
+  import { isRandom, playlist, readInstructions } from '$src/store';
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
   import { onMount } from 'svelte';
@@ -42,9 +42,9 @@
   });
 
   const enableRandom = async () => {
+    isRandom.set(true);
     if ($page.url.pathname.includes('/random')) {// don't endlessly add /random to the url
-      console.log('This should refresh the random thing');
-      await loadGame(playlistId, $isRandom);
+      await loadGame($playlist, $isRandom);
     } else if ($page.url.pathname.includes('/custom/')) {
       isRandom.set(true);
       await goto($page.url.pathname + '/random');

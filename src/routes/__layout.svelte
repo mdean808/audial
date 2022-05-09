@@ -12,12 +12,13 @@
 
   page.subscribe((val) => {
     if (val.url.pathname !== prevPathName) analytics.page();
-    if (!val.url.pathname.includes('random')) isRandom.set(false);
+    isRandom.set(val.url.pathname.includes('random'));
     prevPathName = val.url.pathname;
   });
 
   onMount(() => {
     prevPathName = $page.url.pathname;
+    isRandom.set($page.url.pathname.includes('random'));
     analytics.page();
   });
 
