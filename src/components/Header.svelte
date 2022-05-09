@@ -45,9 +45,9 @@
     isRandom.set(true);
     if ($page.url.pathname.includes('/random')) {// don't endlessly add /random to the url
       await loadGame($playlist, $isRandom);
-    } else if ($page.url.pathname.includes('/custom/')) {
+    } else if ($page.url.pathname.includes('/custom')) {
       isRandom.set(true);
-      await goto($page.url.pathname + '/random');
+      await goto($page.url.pathname + '/random' + $page.url.search);
     } else {
       isRandom.set(true);
       await goto('/random');

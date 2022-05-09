@@ -28,18 +28,18 @@
 
   const startCustom = async (id?: string) => {
     if (!playlistUrl && !id) return toast.push('please provide a valid spotify playlist url.');
-    id = id ? id : new URL(playlistUrl).pathname.split('/')[2];
-    await goto('/custom?playlist=' + id);
+    id = id || new URL(playlistUrl).pathname.split('/')[2];
+    await goto('/custom/random?playlist=' + id);
     playingGame = true;
     // reset the temporary attempt because this is a custom game
     temporaryAttempt.set(<Attempt>{
       attempts: 0,
-      type: 'custom',
+      type: 'custom_random',
       guesses: [],
       date: new Date(),
       correct: false
     });
-    await loadGame(id, false);
+    await loadGame(id, true);
   };
 </script>
 {#if playingGame}
@@ -47,7 +47,7 @@
     <LoadingIndicator />
   {:else}
     <div class='max-w-screen-md text-center p-3 mx-auto'>
-      <Game custom random={false} />
+      <Game custom random={true} />
     </div>
     <Footer custom />
   {/if}
