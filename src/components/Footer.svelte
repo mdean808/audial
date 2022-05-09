@@ -1,9 +1,10 @@
 <script lang='ts'>
-  import { currentAttempt, currentSong, songPaused, temporaryAttempt } from '../store';
+  import { currentAttempt, currentSong, songPaused, temporaryAttempt } from '$src/store';
   import { onMount } from 'svelte';
-  import type { Attempt } from '../types';
-  import AttemptVisualizer from './AttemptVisualizer.svelte';
-  import analytics from '../api/analytics';
+  import type { Attempt } from '$src/types';
+  import AttemptVisualizer from '$components/AttemptVisualizer.svelte';
+  import analytics from '$lib/analytics';
+  import { page } from '$app/stores';
 
   let player: HTMLAudioElement;
   let attempt = <Attempt>{ attempts: 0, guesses: [], correct: false, date: new Date() };
@@ -11,14 +12,27 @@
   let songLength = 0;
   let timeElapsed = '0:00';
   let timerInterval;
-
+  let playerTimeout;
   export let custom = false;
 
+  let prevPathName = '/';
+  page.subscribe(val => {
+    if (val.url.pathname !== prevPathName && player) {
+      clearTimeout(playerTimeout);
+      player.pause();
+      player.remove();
+    }
+    prevPathName = val.url.pathname;
+  });
+
   onMount(() => {
+    prevPathName = $page.url.pathname;
     if (custom) {
       attempt = temporaryAttempt.get();
+      temporaryAttempt.listen((value) => (attempt = value));
     } else {
       attempt = currentAttempt.get();
+      currentAttempt.listen((value) => (attempt = value));
     }
     player = new Audio(currentSong.get().preview);
     player.addEventListener('loadedmetadata', () => (songLength = player.duration));
@@ -31,9 +45,10 @@
     }
   });
 
-  if (custom) temporaryAttempt.listen((value) => (attempt = value));
-  else currentAttempt.listen((value) => (attempt = value));
-  currentSong.listen((value) => (player = new Audio(value.preview)));
+  currentSong.listen((value) => {
+    player.remove();
+    player = new Audio(value.preview);
+  });
   songPaused.listen((value) => (paused = value));
 
   const playSong = () => {
@@ -68,7 +83,7 @@
     const durationMS = attempt.correct
       ? player.duration * 1000
       : (player.duration / 2) * 1000 * denominator;
-    setTimeout(() => {
+    playerTimeout = setTimeout(() => {
       player.pause();
       player.currentTime = 0;
       songPaused.set(true);
@@ -104,9 +119,9 @@
       {/if}
       <div class='text-center flex-1 justify-center'>
         <button
-          title='Play Song'
           class={`hover:text-blue-600 transition-colors duration-200 ${paused ? '' : 'hidden'}`}
           on:click={playSong}
+          title='Play Song'
         >
           <svg
             class='w-14 h-14 mx-auto'
@@ -116,41 +131,41 @@
             xmlns='http://www.w3.org/2000/svg'
           >
             <path
+              d='M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z'
               stroke-linecap='round'
               stroke-linejoin='round'
               stroke-width='2'
-              d='M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z'
             />
             <path
+              d='M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
               stroke-linecap='round'
               stroke-linejoin='round'
               stroke-width='2'
-              d='M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
             />
           </svg>
         </button>
         <button
-          title='Pause Song'
           class={`hover:text-blue-600 transition-colors duration-200 ${paused ? 'hidden' : ''}`}
           on:click={stopSong}
+          title='Pause Song'
         >
           <svg
-            xmlns='http://www.w3.org/2000/svg'
             class='w-14 h-14 mx-auto'
             fill='none'
-            viewBox='0 0 24 24'
             stroke='currentColor'
             stroke-width='2'
+            viewBox='0 0 24 24'
+            xmlns='http://www.w3.org/2000/svg'
           >
             <path
+              d='M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
               stroke-linecap='round'
               stroke-linejoin='round'
-              d='M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
             />
             <path
+              d='M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z'
               stroke-linecap='round'
               stroke-linejoin='round'
-              d='M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z'
             />
           </svg>
         </button>
