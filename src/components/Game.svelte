@@ -2,17 +2,16 @@
   import AutoComplete from 'simple-svelte-autocomplete';
   import { onMount } from 'svelte';
 
-  import { currentAttempt, currentSong, pastAttempts, songPaused, temporaryAttempt } from '../store';
-  import { convertSpotifyTrackToSong } from '../api/util';
-  import type { Attempt, Guess, Song, SpotifyTrack } from '../types';
-  import Button from './Button.svelte';
-  import GameEnd from './GameEnd.svelte';
-  import analytics from '../api/analytics';
+  import { allTracks, currentAttempt, currentSong, pastAttempts, songPaused, temporaryAttempt } from '$src/store';
+  import { convertSpotifyTrackToSong } from '$lib/util';
+  import type { Attempt, Guess, Song, SpotifyTrack } from '$src/types';
+  import Button from '$components/Button.svelte';
+  import GameEnd from '$components/GameEnd.svelte';
+  import analytics from '$lib/analytics';
   import { toast } from '@zerodevx/svelte-toast';
 
-  export let forceRandom = false;
+  export let random = false;
   let attempt = <Attempt>{};
-  export let allTracks = <SpotifyTrack[]>[];
   export let custom = false;
 
   // TODO: rewrite store logic to support storing multiple attempts (and maybe custom playlists)
@@ -20,6 +19,7 @@
   onMount(async () => {
     // if we are in a new date from the past, take the new random song and set it to the current one.
     //    reset the attempts.
+    console.log(custom);
     if (
       new Date(currentAttempt.get().date).toLocaleDateString() !==
       new Date().toLocaleDateString() ||
@@ -32,15 +32,15 @@
         attempts: 0
       });
     }
-    if (custom || forceRandom) {
+    if (custom || random) {
       attempt = temporaryAttempt.get();
       temporaryAttempt.listen((value) => (attempt = value));
     } else {
       attempt = currentAttempt.get();
       currentAttempt.listen((value) => (attempt = value));
     }
-    if (forceRandom && custom) temporaryAttempt.setKey('type', 'custom_random');
-    else if (forceRandom) temporaryAttempt.setKey('type', 'random');
+    if (random && custom) temporaryAttempt.setKey('type', 'custom_random');
+    else if (random) temporaryAttempt.setKey('type', 'random');
     else if (custom) temporaryAttempt.setKey('type', 'custom');
     else currentAttempt.setKey('type', 'default');
   });
@@ -64,7 +64,7 @@
         correct: true,
         artistCorrect: true
       });
-      if (custom || forceRandom) {
+      if (custom || random) {
         temporaryAttempt.setKey('guesses', guesses);
         temporaryAttempt.setKey('correct', true);
         temporaryAttempt.setKey('attempts', attempt.attempts + 1);
@@ -73,28 +73,28 @@
         currentAttempt.setKey('correct', true);
         currentAttempt.setKey('attempts', attempt.attempts + 1);
       }
-      analytics.track('guess-song', { correct: true, custom, random: forceRandom });
-      analytics.track('attempt-correct', { custom, random: forceRandom });
+      analytics.track('guess-song', { correct: true, custom, random: random });
+      analytics.track('attempt-correct', { custom, random: random });
       // save correct attempt to localstorage
       pastAttempts.set({ array: [...pastAttempts.get().array, attempt] });
     } else {
-      const track = allTracks.find((t) => t.id == currentSelectedSong.id);
+      const track = $allTracks.find((t) => t.id == currentSelectedSong.id);
       guesses.push(<Guess>{
         song: convertSpotifyTrackToSong(track),
         correct: false,
         artistCorrect: currentSelectedSong.artist.includes(currentSong.get().artist)
       });
-      if (custom || forceRandom) {
+      if (custom || random) {
         temporaryAttempt.setKey('guesses', guesses);
         temporaryAttempt.setKey('attempts', attempt.attempts + 1);
       } else {
         currentAttempt.setKey('guesses', guesses);
         currentAttempt.setKey('attempts', attempt.attempts + 1);
       }
-      analytics.track('guess-song', { correct: false, custom, random: forceRandom });
+      analytics.track('guess-song', { correct: false, custom, random: random });
     }
     if (attempt.attempts === 6 && !attempt.correct) {
-      analytics.track('attempt-fail', { custom, random: forceRandom });
+      analytics.track('attempt-fail', { custom, random: random });
       // save incorrect attempt to localstorage
       pastAttempts.set({ array: [...pastAttempts.get().array, attempt] });
     }
@@ -109,18 +109,18 @@
       correct: false,
       artistCorrect: false
     });
-    if (custom || forceRandom) {
+    if (custom || random) {
       temporaryAttempt.setKey('guesses', guesses);
       temporaryAttempt.setKey('attempts', attempt.attempts + 1);
     } else {
       currentAttempt.setKey('guesses', guesses);
       currentAttempt.setKey('attempts', attempt.attempts + 1);
     }
-    analytics.track('skip-song', { custom, random: forceRandom });
+    analytics.track('skip-song', { custom, random: random });
   };
 
   const searchSongs = async (query: string) => {
-    let searchResults: SpotifyTrack[] | Song[] = allTracks.filter((t) => {
+    let searchResults: SpotifyTrack[] | Song[] = $allTracks.filter((t) => {
       return (t.name + ' ' + t.artists[0].name).toLowerCase().includes(query.toLowerCase());
     });
     searchResults = searchResults.map((t) => convertSpotifyTrackToSong(t));
@@ -128,9 +128,9 @@
       name: s.name + ' by ' + s.artist,
       id: s.id,
       artist: s.artist,
-      preview: s.preview,
-    })
-    return searchResults
+      preview: s.preview
+    });
+    return searchResults;
   };
 </script>
 
@@ -234,7 +234,7 @@
         </div>
       </div>
     {:else}
-      <GameEnd custom={custom} {forceRandom} />
+      <GameEnd custom={custom} {random} />
     {/if}
   </div>
 </div>

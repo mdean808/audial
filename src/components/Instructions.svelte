@@ -1,6 +1,6 @@
 <script lang='ts'>
-  import { readInstructions } from '../store';
-  import Button from './Button.svelte';
+  import { readInstructions } from '$src/store';
+  import Button from '$components/Button.svelte';
 
   export let hidden = true;
 </script>
@@ -13,8 +13,9 @@
       readInstructions.set(true);
     }}
   />
-  <div class='relative px-4 w-full max-w-2xl h-full md:h-auto mx-auto z-50'>
-    <div class='relative rounded-lg mt-6 bg-gray-700 p-3 opacity-100 shadow'>
+  <!--  make this absolute and prevent changing the page-->
+  <div class='absolute px-4 w-full h-full md:h-auto mx-auto z-50'>
+    <div class='rounded-lg w-full max-w-2xl mx-auto mt-20 bg-gray-700 p-3 opacity-100 shadow'>
       <h1 class='text-3xl mx-auto text-center'>instructions</h1>
       <div class='p-4'>
         <ul class='text-left'>
@@ -46,31 +47,31 @@
           </li>
           <li class='border-t border-white mt-1 pt-2'>
             <svg
-              xmlns='http://www.w3.org/2000/svg'
               class='h-5 w-5 inline text-blue-500'
               fill='none'
-              viewBox='0 0 24 24'
               stroke='currentColor'
               stroke-width='2'
+              viewBox='0 0 24 24'
+              xmlns='http://www.w3.org/2000/svg'
             >
               <path
+                d='M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z'
                 stroke-linecap='round'
                 stroke-linejoin='round'
-                d='M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z'
               />
             </svg>
             for a custom playlist.
           </li>
           <li>
             <svg
-              xmlns='http://www.w3.org/2000/svg'
-              width='20'
-              height='20'
-              fill='currentColor'
               class='inline text-blue-500'
+              fill='currentColor'
+              height='20'
               viewBox='0 0 256 256'
+              width='20'
+              xmlns='http://www.w3.org/2000/svg'
             >
-              <rect width='256' height='256' fill='none' />
+              <rect fill='none' height='256' width='256' />
               <path
                 d='M32,72H55.1a64,64,0,0,1,52,26.8l41.8,58.4a64,64,0,0,0,52,26.8H232'
                 fill='none'
@@ -80,16 +81,16 @@
                 stroke-width='24'
               />
               <polyline
-                points='208 48 232 72 208 96'
                 fill='none'
+                points='208 48 232 72 208 96'
                 stroke='currentColor'
                 stroke-linecap='round'
                 stroke-linejoin='round'
                 stroke-width='24'
               />
               <polyline
-                points='208 160 232 184 208 208'
                 fill='none'
+                points='208 160 232 184 208 208'
                 stroke='currentColor'
                 stroke-linecap='round'
                 stroke-linejoin='round'
@@ -118,12 +119,12 @@
       </div>
       <div class='w-full'>
         <Button
+          className='mx-auto text-center block'
           on:click={() => {
             hidden = true;
             readInstructions.set(true);
           }}
           title='Close Popup'
-          className='mx-auto text-center block'
           type='primary'
         >start listening
         </Button>

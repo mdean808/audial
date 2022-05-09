@@ -1,10 +1,11 @@
 <script lang='ts'>
-  import { currentAttempt, currentSong, temporaryAttempt } from '../store';
-  import { daysBetweenDates } from '../api/util';
-  import Button from './Button.svelte';
-  import analytics from '../api/analytics';
+  import { currentAttempt, currentSong, temporaryAttempt } from '$src/store';
+  import { daysBetweenDates } from '$lib/util';
+  import Button from '$components/Button.svelte';
+  import analytics from '$lib/analytics';
+  import { page } from '$app/stores';
 
-  export let forceRandom;
+  export let random;
   export let custom;
 
   let notifyClipboard = false;
@@ -12,7 +13,7 @@
 
   const generateEmojis = () => {
     let emojiString = '';
-    for (const guess of ((custom || forceRandom) ? temporaryAttempt.get().guesses : currentAttempt.get().guesses) ||
+    for (const guess of ((custom || random) ? temporaryAttempt.get().guesses : currentAttempt.get().guesses) ||
     []) {
       if (guess.correct) emojiString += '🟩 ';
       else if (guess.artistCorrect) emojiString += '🟨 ';
@@ -21,7 +22,7 @@
     }
     for (
       let i = 0;
-      i < 6 - ((custom || forceRandom) ? temporaryAttempt.get().attempts : currentAttempt.get().attempts);
+      i < 6 - ((custom || random) ? temporaryAttempt.get().attempts : currentAttempt.get().attempts);
       i++
     ) {
       emojiString += '⬛ ';
@@ -32,12 +33,7 @@
   const generateShareClipboard = () => {
     let string = `${custom ? 'custom ' : ''}audial #` + daysBetweenDates(new Date(), FIRST_DAY);
     string += '\n' + generateEmojis();
-    const link =
-      'https://audial.mogdan.xyz' +
-      (custom
-        ? '/custom?playlist=' + new URLSearchParams(window.location.search).get('playlist')
-        : '');
-    string += '\n' + link;
+    string += '\n' + $page.url.toString();
     navigator.clipboard.writeText(string);
     notifyClipboard = true;
     analytics.track('share-score', { result: generateEmojis(), custom });
@@ -45,7 +41,7 @@
 </script>
 
 <div class='py-3'>
-  {#if (custom || forceRandom) ? !temporaryAttempt.get().correct : !currentAttempt.get().correct}
+  {#if (custom || random) ? !temporaryAttempt.get().correct : !currentAttempt.get().correct}
     <div
       title='Open in Spotify'
       on:click={() => {
@@ -56,11 +52,11 @@
       {currentSong.get().name} by {currentSong.get().artist}
     </div>
   {/if}
-  {#if !forceRandom}
+  {#if !random}
     <span class='my-2'>{custom ? 'custom ' : ''}audial #{daysBetweenDates(new Date(), FIRST_DAY)}</span>
   {/if}
   <span> {generateEmojis()}</span>
-  {#if !forceRandom}
+  {#if !random}
     <div class='w-full mx-auto my-2'>
       <Button
         title='Share Score'

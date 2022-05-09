@@ -1,5 +1,5 @@
-<script lang="ts">
-  import type { Attempt, Guess } from '../types';
+<script lang='ts'>
+  import type { Attempt, Guess } from '$src/types';
 
   export let attempt: Attempt;
 
@@ -20,7 +20,7 @@
   };
 </script>
 
-<div class=" max-w-3xl mx-auto flex h-3">
+<div class=' max-w-3xl mx-auto flex h-3'>
   <div class={`w-2/12 ${getColorOfAttempt(0, attempt.attempts)} border-r border-l`} />
   <div class={`w-2/12 ${getColorOfAttempt(1, attempt.attempts)} border-r border-l`} />
 

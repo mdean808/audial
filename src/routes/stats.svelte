@@ -1,8 +1,9 @@
 <script lang='ts'>
-  import type { Attempt, Guess, Song } from '../types';
-  import { currentAttempt, currentSong, pastAttempts, readInstructions } from '../store';
+  import type { Attempt, Guess, Song } from '$src/types';
+  import { currentAttempt, currentSong, pastAttempts, readInstructions, temporaryAttempt } from '$src/store';
   import { onMount } from 'svelte';
-  import { daysBetweenDates } from '../api/util';
+  import { daysBetweenDates } from '$lib/util';
+  import { goto } from '$app/navigation';
 
   const resetData = () => {
     currentAttempt.set(<Attempt>{
@@ -11,11 +12,18 @@
       correct: false,
       date: new Date()
     });
+    temporaryAttempt.set(<Attempt>{
+      attempts: 0,
+      guesses: [],
+      correct: false,
+      date: new Date()
+    });
     readInstructions.set(false);
     currentSong.set(<Song>{});
     pastAttempts.set({ array: [] });
-    window.location.href = '/';
+    goto('/');
   };
+
 
   let officialAttempts = <Attempt[]>[];
   let randomAttempts = <Attempt[]>[];
@@ -85,19 +93,19 @@
   <div class='mt-10 text-gray-400'>
     <div>
       open source on <a
-      href='https://github.com/mdean808/audial'
       class='underline-offset-1 underline text-blue-500'
+      href='https://github.com/mdean808/audial'
       target='_blank'>github</a
     >.
     </div>
     <div>
       made by <a
-      href='https://mogdan.xyz'
       class='underline-offset-1 underline text-blue-500'
+      href='https://mogdan.xyz'
       target='_blank'>morgan dean</a
     > with svelte, firebase, and github pages.
     </div>
-    <p on:click={resetData} class='cursor-pointer text-red-400 underline-offset-1 underline mt-10'>
+    <p class='cursor-pointer text-red-400 underline-offset-1 underline mt-10' on:click={resetData}>
       reset local data
     </p>
   </div>
