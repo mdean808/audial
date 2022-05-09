@@ -54,6 +54,8 @@ export const temporaryAttempt = map<Attempt>(<Attempt>{
 
 export const isRandom = atom(false);
 
+export const playlist = atom('');
+
 export const loading = atom(true);
 
 export const allTracks = atom(<SpotifyTrack[]>[]);

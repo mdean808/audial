@@ -3,6 +3,7 @@
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
   import { onMount } from 'svelte';
+  import { loadGame } from '../lib/util';
 
   let decade;
   let decadeColor;
@@ -43,9 +44,12 @@
   const enableRandom = async () => {
     if ($page.url.pathname.includes('/random')) {// don't endlessly add /random to the url
       console.log('This should refresh the random thing');
+      await loadGame(playlistId, $isRandom);
     } else if ($page.url.pathname.includes('/custom/')) {
+      isRandom.set(true);
       await goto($page.url.pathname + '/random');
     } else {
+      isRandom.set(true);
       await goto('/random');
     }
   };

@@ -7,15 +7,18 @@
   import Instructions from '$components/Instructions.svelte';
   import { isRandom, readInstructions } from '$src/store';
   import { page } from '$app/stores';
-  import { browser } from '$app/env';
+
+  let prevPathName = '/';
 
   page.subscribe((val) => {
-    if (browser) isRandom.set(val.url.searchParams.get('random') === 'true');
+    if (val.url.pathname !== prevPathName) analytics.page();
+    if (!val.url.pathname.includes('random')) isRandom.set(false);
+    prevPathName = val.url.pathname;
   });
 
   onMount(() => {
+    prevPathName = $page.url.pathname;
     analytics.page();
-    isRandom.set($page.url.searchParams.get('random') === 'true');
   });
 
 </script>

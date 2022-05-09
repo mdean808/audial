@@ -19,7 +19,6 @@
   onMount(async () => {
     // if we are in a new date from the past, take the new random song and set it to the current one.
     //    reset the attempts.
-    console.log(custom);
     if (
       new Date(currentAttempt.get().date).toLocaleDateString() !==
       new Date().toLocaleDateString() ||

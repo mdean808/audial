@@ -1,5 +1,5 @@
 import type { Song, SpotifyTrack } from '$src/types';
-import { allTracks, currentSong, loading } from '../store';
+import { allTracks, currentSong, loading, playlist } from '../store';
 import { getDailySpotifyTrack } from './spotify';
 
 export const convertSpotifyTrackToSong = (track: SpotifyTrack) => {
@@ -19,11 +19,11 @@ export const daysBetweenDates = (d1: Date, d2: Date) => {
 
 
 export const loadGame = async (playlistId: string, random: boolean) => {
-  console.log('loading normal game');
   loading.set(true);
   const trackResponse = await getDailySpotifyTrack(playlistId, random);
   allTracks.set(trackResponse.tracks);
   const song = convertSpotifyTrackToSong(trackResponse.daily);
   currentSong.set(song);
+  playlist.set(playlistId);
   loading.set(false);
 };
