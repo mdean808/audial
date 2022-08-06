@@ -1,23 +1,169 @@
 {
-  "name": "audial",
-  "short_name": "audial",
-  "theme_color": "#2196f3",
-  "background_color": "#1f2937",
-  "display": "standalone",
-  "scope": "/",
-  "start_url": "/",
-  "icons": [
-    {
-      "src": "/icons/android-chrome-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/icons/android-chrome-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ]
+  ".svelte-kit/runtime/client/start.js": {
+    "file": "_app/immutable/start-adfe4a53.js",
+    "src": ".svelte-kit/runtime/client/start.js",
+    "isEntry": true,
+    "imports": [
+      "_index-82e3b787.js",
+      "_index-950c601e.js",
+      "_singletons-eca981c1.js"
+    ],
+    "dynamicImports": [
+      "src/routes/__layout.svelte",
+      "src/routes/__error.svelte",
+      "src/routes/custom/index.svelte",
+      "src/routes/custom/random.svelte",
+      "src/routes/index.svelte",
+      "src/routes/random.svelte",
+      "src/routes/stats.svelte"
+    ]
+  },
+  "src/routes/__layout.svelte": {
+    "file": "_app/immutable/pages/__layout.svelte-cd464854.js",
+    "src": "src/routes/__layout.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-82e3b787.js",
+      "_util-4be2a3ca.js",
+      "_navigation-75a744b1.js",
+      "_Button-88d2cbd5.js",
+      "_index-950c601e.js",
+      "_singletons-eca981c1.js"
+    ],
+    "css": [
+      "_app/immutable/assets/__layout-51ee2ee4.css"
+    ]
+  },
+  "src/routes/__error.svelte": {
+    "file": "_app/immutable/pages/__error.svelte-2781d237.js",
+    "src": "src/routes/__error.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-82e3b787.js"
+    ]
+  },
+  "src/routes/custom/index.svelte": {
+    "file": "_app/immutable/pages/custom/index.svelte-982a512d.js",
+    "src": "src/routes/custom/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-82e3b787.js",
+      "_navigation-75a744b1.js",
+      "_Button-88d2cbd5.js",
+      "_util-4be2a3ca.js",
+      "_Game-d358db62.js",
+      "_singletons-eca981c1.js",
+      "_index-950c601e.js"
+    ]
+  },
+  "src/routes/custom/random.svelte": {
+    "file": "_app/immutable/pages/custom/random.svelte-2a13f913.js",
+    "src": "src/routes/custom/random.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-82e3b787.js",
+      "_navigation-75a744b1.js",
+      "_Button-88d2cbd5.js",
+      "_util-4be2a3ca.js",
+      "_Game-d358db62.js",
+      "_singletons-eca981c1.js",
+      "_index-950c601e.js"
+    ]
+  },
+  "src/routes/index.svelte": {
+    "file": "_app/immutable/pages/index.svelte-fd18781b.js",
+    "src": "src/routes/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-82e3b787.js",
+      "_Game-d358db62.js",
+      "_util-4be2a3ca.js",
+      "_Button-88d2cbd5.js",
+      "_index-950c601e.js"
+    ]
+  },
+  "src/routes/random.svelte": {
+    "file": "_app/immutable/pages/random.svelte-24498995.js",
+    "src": "src/routes/random.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-82e3b787.js",
+      "_Game-d358db62.js",
+      "_util-4be2a3ca.js",
+      "_Button-88d2cbd5.js",
+      "_index-950c601e.js"
+    ]
+  },
+  "src/routes/stats.svelte": {
+    "file": "_app/immutable/pages/stats.svelte-62284651.js",
+    "src": "src/routes/stats.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-82e3b787.js",
+      "_util-4be2a3ca.js",
+      "_navigation-75a744b1.js",
+      "_singletons-eca981c1.js"
+    ]
+  },
+  "_index-82e3b787.js": {
+    "file": "_app/immutable/chunks/index-82e3b787.js"
+  },
+  "_index-950c601e.js": {
+    "file": "_app/immutable/chunks/index-950c601e.js",
+    "imports": [
+      "_index-82e3b787.js"
+    ]
+  },
+  "_singletons-eca981c1.js": {
+    "file": "_app/immutable/chunks/singletons-eca981c1.js"
+  },
+  "_util-4be2a3ca.js": {
+    "file": "_app/immutable/chunks/util-4be2a3ca.js"
+  },
+  "_Button-88d2cbd5.js": {
+    "file": "_app/immutable/chunks/Button-88d2cbd5.js",
+    "imports": [
+      "_index-82e3b787.js",
+      "_index-950c601e.js"
+    ],
+    "css": [
+      "_app/immutable/assets/Button-3b800996.css"
+    ]
+  },
+  "_navigation-75a744b1.js": {
+    "file": "_app/immutable/chunks/navigation-75a744b1.js",
+    "imports": [
+      "_singletons-eca981c1.js"
+    ]
+  },
+  "_Game-d358db62.js": {
+    "file": "_app/immutable/chunks/Game-d358db62.js",
+    "imports": [
+      "_index-82e3b787.js",
+      "_util-4be2a3ca.js",
+      "_Button-88d2cbd5.js"
+    ],
+    "css": [
+      "_app/immutable/assets/Game-46e97be5.css"
+    ]
+  },
+  "Button.css": {
+    "file": "_app/immutable/assets/Button-3b800996.css",
+    "src": "Button.css"
+  },
+  "Game.css": {
+    "file": "_app/immutable/assets/Game-46e97be5.css",
+    "src": "Game.css"
+  },
+  "src/routes/__layout.css": {
+    "file": "_app/immutable/assets/__layout-51ee2ee4.css",
+    "src": "src/routes/__layout.css"
+  }
 }

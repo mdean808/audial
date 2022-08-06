@@ -3,17 +3,17 @@
 <head>
   <!--  Meta -->
   <meta charset='utf-8' />
-  <meta name='name' content='audial' />
-  <meta name='description' content='your daily song quiz, inspired by wordle' />
-  <meta name='viewport' content='width=device-width, initial-scale=1' />
-  <meta name='application-name' content='audial' />
-  <meta name='author' content='morgan dean' />
-  <meta name='apple-mobile-web-app-title' content='audial' />
-  <meta name='theme-color' content='#1f2937' />
+  <meta content='audial' name='name' />
+  <meta content='your daily song quiz, inspired by wordle' name='description' />
+  <meta content='width=device-width, initial-scale=1' name='viewport' />
+  <meta content='audial' name='application-name' />
+  <meta content='morgan dean' name='author' />
+  <meta content='audial' name='apple-mobile-web-app-title' />
+  <meta content='#1f2937' name='theme-color' />
   <!--  Files -->
-  <link rel='icon' href='%svelte.assets%/favicon.ico' />
-  <link rel='apple-touch-icon' href='%svelte.assets%/icons/apple-touch-icon.png' />
-  <link rel='manifest' href='%svelte.assets%/manifest.json' />
+  <link href='%sveltekit.assets%/favicon.ico' rel='icon' />
+  <link href='%sveltekit.assets%/icons/apple-touch-icon.png' rel='apple-touch-icon' />
+  <link href='%sveltekit.assets%/manifest.json' rel='manifest' />
   <title>audial</title>
   <script>
     let _rollbarConfig = {
@@ -112,7 +112,8 @@
 
       function u(r) {
         return a((function() {
-          var e = this, o = Array.prototype.slice.call(arguments, 0), n = { shim: e, method: r, args: o, ts: new Date };
+          var e = this, o = Array.prototype.slice.call(arguments, 0),
+            n = { shim: e, method: r, args: o, ts: new Date };
           window._rollbarShims[this.shimId()].messages.push(n);
         }));
       }
@@ -152,7 +153,7 @@
               return r.apply(this, arguments);
             } catch (o) {
               var e = o;
-              throw e && ('string' == typeof e && (e = new String(e)), e._rollbarContext = n() || {}, e._rollbarContext._wrappedSource = r.toString(), window._rollbarWrappedError = e), e;
+              throw e && ('string' == typeof e && (e = String(e)), e._rollbarContext = n() || {}, e._rollbarContext._wrappedSource = r.toString(), window._rollbarWrappedError = e), e;
             }
           }, r._rollbar_wrapped._isWrap = !0, r.hasOwnProperty)) for (var t in r) r.hasOwnProperty(t) && (r._rollbar_wrapped[t] = r[t]);
           return r._rollbar_wrapped;
@@ -284,9 +285,9 @@
     }]);
     // End Rollbar Snippet
   </script>
-  %svelte.head%
+  %sveltekit.head%
 </head>
 <body>
-<div>%svelte.body%</div>
+<div>%sveltekit.body%</div>
 </body>
 </html>
