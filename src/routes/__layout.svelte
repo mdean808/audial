@@ -53,7 +53,6 @@
   <meta content='/icons/android-chrome-512x512.png' property='og:image' />
 
   <!-- Twitter -->
-  <meta content='summary_small_image' property='twitter:card' />
   <meta content={$page.url.toString()} property='twitter:url' />
   <meta
     content={`audial${$page.routeId ? ` - ${$page.routeId.replace('/', ' ')}` : ''}`}
