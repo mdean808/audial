@@ -49,7 +49,7 @@
   };
 
   const getIncorrectGuesses = () => {
-    officialAttempts = pastAttempt.get().array.filter(a => a.type === 'default') as Attempt[];
+    officialAttempts = pastAttempts.get().array.filter(a => a.type === 'default') as Attempt[];
     let allGuesses = <Guess[]>[];
     for (const a of officialAttempts) {
       allGuesses = allGuesses.concat(a.guesses);
@@ -111,7 +111,13 @@
                 target='_blank'>morgan dean</a
         > with svelte, firebase, and github pages.
         </div>
-        <p class='cursor-pointer text-red-400 underline-offset-1 underline mt-10' on:click={resetData}>
+        <div class="mt-6">
+            suggestions? contact me on
+            <a class="underline underline-offset-1 text-blue-500"
+               href="https://twitter.com/mdean808"
+               target="_blank">twitter</a>.
+        </div>
+        <p class='cursor-pointer text-red-400 underline-offset-1 underline mt-8' on:click={resetData}>
             reset local data
         </p>
     </div>
