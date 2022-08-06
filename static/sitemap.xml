@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<urlset
+        xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
+>
+    <url>
+        <loc>https://audial.mogdan.xyz</loc>
+        <lastmod>2022-08-06</lastmod>
+    </url>
+    <url>
+        <loc>https://audial.mogdan.xyz/stats</loc>
+        <lastmod>2022-08-06</lastmod>
+    </url>
+    <url>
+        <loc>https://audial.mogdan.xyz/random</loc>
+        <lastmod>2022-08-06</lastmod>
+    </url>
+    <url>
+        <loc>https://audial.mogdan.xyz/custom</loc>
+        <lastmod>2022-08-06</lastmod>
+    </url>
+    <url>
+        <loc>https://audial.mogdan.xyz/custom/random</loc>
+        <lastmod>2022-08-06</lastmod>
+    </url>
+</urlset>
