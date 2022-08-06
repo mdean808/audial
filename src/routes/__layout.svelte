@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang='ts'>
   import '../app.css';
   import { onMount } from 'svelte';
   import analytics from '$lib/analytics';
@@ -28,38 +28,45 @@
   <title>{`audial${$page.routeId ? ` - ${$page.routeId.replace('/', ' ')}` : ''}`}</title>
   <meta
     content={`audial${$page.routeId ? ` - ${$page.routeId.replace('/', ' ')}` : ''}`}
-    name="title"
+    name='title'
   />
   <meta
-    content="listen to the daily song snippet and guess it on audial, a wordle style game."
-    name="description"
+    content='listen to the daily song snippet and guess it on audial, a wordle style game.'
+    name='description'
   />
+
+  <!--  Misc/Apple -->
+  <meta content={`audial${$page.routeId ? ` - ${$page.routeId.replace('/', ' ')}` : ''}`} name='application-name' />
+  <meta content='morgan dean' name='author' />
+  <meta content={`audial${$page.routeId ? ` - ${$page.routeId.replace('/', ' ')}` : ''}`}
+        name='apple-mobile-web-app-title' />
+  <meta content='#1f2937' name='theme-color' />
 
   <!-- Open Graph / Facebook -->
-  <meta content="website" property="og:type" />
-  <meta content={$page.url.toString()} property="og:url" />
-  <meta content="audial" property="og:title" />
+  <meta content='website' property='og:type' />
+  <meta content={$page.url.toString()} property='og:url' />
+  <meta content={`audial${$page.routeId ? ` - ${$page.routeId.replace('/', ' ')}` : ''}`} property='og:title' />
   <meta
-    content="listen to the daily song snippet and guess it on audial, a wordle style game."
-    property="og:description"
+    content='listen to the daily song snippet and guess it on audial, a wordle style game.'
+    property='og:description'
   />
-  <meta content="/icons/android-chrome-512x512.png" property="og:image" />
+  <meta content='/icons/android-chrome-512x512.png' property='og:image' />
 
   <!-- Twitter -->
-  <meta content="summary_small_image" property="twitter:card" />
-  <meta content={$page.url.toString()} property="twitter:url" />
+  <meta content='summary_small_image' property='twitter:card' />
+  <meta content={$page.url.toString()} property='twitter:url' />
   <meta
     content={`audial${$page.routeId ? ` - ${$page.routeId.replace('/', ' ')}` : ''}`}
-    property="twitter:title"
+    property='twitter:title'
   />
   <meta
-    content="listen to the daily song snippet and guess it on audial, a wordle style game."
-    property="twitter:description"
+    content='listen to the daily song snippet and guess it on audial, a wordle style game.'
+    property='twitter:description'
   />
-  <meta content="/icons/android-chrome-512x512.png" property="twitter:image" />
+  <meta content='/icons/android-chrome-512x512.png' property='twitter:image' />
 </svelte:head>
 
-<main class="">
+<main class=''>
   <Instructions hidden={$readInstructions} />
   <SvelteToast />
   <Header />
