@@ -1,4 +1,4 @@
-<script lang='ts'>
+<script lang="ts">
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
   import { browser } from '$app/env';
@@ -44,29 +44,30 @@
     await loadGame(id, false);
   };
 </script>
+
 {#if playingGame}
   {#if $loading}
     <LoadingIndicator />
   {:else}
-    <div class='max-w-screen-md text-center p-3 mx-auto'>
+    <div class="max-w-screen-md text-center p-3 mx-auto">
       <Game custom random={false} />
     </div>
     <Footer custom />
   {/if}
 {:else}
-  <div class='w-full w-10/12 max-w-2xl mx-auto my-5'>
-    <div class='text-center mx-auto w-full text-blue-100 mb-2'>
+  <div class="w-full w-10/12 max-w-2xl mx-auto my-5">
+    <div class="text-center mx-auto w-full text-blue-100 mb-2">
       paste the link to any spotify playlist below
     </div>
     <input
       bind:value={playlistUrl}
-      class='p-2 border-2 w-full text-gray-400 rounded-sm border-gray-600 bg-gray-900 hover:border-gray-400 focus:border-gray-400 outline-none transition-all duration-200'
-      name='spotify playlist input'
-      placeholder='spotify playlist link'
+      class="p-2 border-2 w-full text-gray-400 rounded-sm border-gray-600 bg-gray-900 hover:border-gray-400 focus:border-gray-400 outline-none transition-all duration-200"
+      name="spotify playlist input"
+      placeholder="spotify playlist link"
     />
-    <div class='w-full mx-auto text-center my-4'>
-      <Button on:click={() => startCustom()} title='start custom audial' type='submit'
-      >start your custom audial
+    <div class="w-full mx-auto text-center my-4">
+      <Button on:click={() => startCustom()} title="start custom audial" type="submit"
+        >start your custom audial
       </Button>
     </div>
   </div>

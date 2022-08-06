@@ -1,4 +1,4 @@
-<script lang='ts'>
+<script lang="ts">
   import Footer from '$components/Footer.svelte';
   import { loading, temporaryAttempt } from '$src/store';
   import Game from '$components/Game.svelte';
@@ -18,14 +18,13 @@
     });
     await loadGame('', true);
   });
-
 </script>
 
 <div>
   {#if $loading}
     <LoadingIndicator />
   {:else}
-    <div class='max-w-screen-md mx-auto'>
+    <div class="max-w-screen-md mx-auto">
       <div class={`text-center p-3`}>
         <Game custom={false} random />
       </div>

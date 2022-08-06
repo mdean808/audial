@@ -1,4 +1,4 @@
-<script lang='ts'>
+<script lang="ts">
   import { currentAttempt, currentSong, temporaryAttempt } from '$src/store';
   import { daysBetweenDates } from '$lib/util';
   import Button from '$components/Button.svelte';
@@ -13,8 +13,9 @@
 
   const generateEmojis = () => {
     let emojiString = '';
-    for (const guess of ((custom || random) ? temporaryAttempt.get().guesses : currentAttempt.get().guesses) ||
-    []) {
+    for (const guess of (custom || random
+      ? temporaryAttempt.get().guesses
+      : currentAttempt.get().guesses) || []) {
       if (guess.correct) emojiString += '🟩 ';
       else if (guess.artistCorrect) emojiString += '🟨 ';
       else if (!guess.song) emojiString += '⬜ ';
@@ -22,7 +23,7 @@
     }
     for (
       let i = 0;
-      i < 6 - ((custom || random) ? temporaryAttempt.get().attempts : currentAttempt.get().attempts);
+      i < 6 - (custom || random ? temporaryAttempt.get().attempts : currentAttempt.get().attempts);
       i++
     ) {
       emojiString += '⬛ ';
@@ -40,10 +41,10 @@
   };
 </script>
 
-<div class='py-3'>
-  {#if (custom || random) ? !temporaryAttempt.get().correct : !currentAttempt.get().correct}
+<div class="py-3">
+  {#if custom || random ? !temporaryAttempt.get().correct : !currentAttempt.get().correct}
     <div
-      title='Open in Spotify'
+      title="Open in Spotify"
       on:click={() => {
         window.open(`https://open.spotify.com/track/${currentSong.get().id}`, '_blank').focus();
       }}
@@ -53,15 +54,17 @@
     </div>
   {/if}
   {#if !random}
-    <span class='my-2'>{custom ? 'custom ' : ''}audial #{daysBetweenDates(new Date(), FIRST_DAY)}</span>
+    <span class="my-2"
+      >{custom ? 'custom ' : ''}audial #{daysBetweenDates(new Date(), FIRST_DAY)}</span
+    >
   {/if}
   <span> {generateEmojis()}</span>
   {#if !random}
-    <div class='w-full mx-auto my-2'>
+    <div class="w-full mx-auto my-2">
       <Button
-        title='Share Score'
-        className='block mx-auto'
-        type='submit'
+        title="Share Score"
+        className="block mx-auto"
+        type="submit"
         on:click={generateShareClipboard}
       >
         share

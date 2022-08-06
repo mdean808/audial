@@ -17,7 +17,6 @@ export const daysBetweenDates = (d1: Date, d2: Date) => {
   return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 };
 
-
 export const loadGame = async (playlistId: string, random: boolean) => {
   loading.set(true);
   const trackResponse = await getDailySpotifyTrack(playlistId, random);

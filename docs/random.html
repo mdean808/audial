@@ -1,368 +1,815 @@
 <!DOCTYPE html>
-<html lang='en'>
-<head>
-  <!--  Meta -->
-  <meta charset='utf-8' />
-  <meta content='audial' name='name' />
-  <meta content='your daily song quiz, inspired by wordle' name='description' />
-  <meta content='width=device-width, initial-scale=1' name='viewport' />
-  <meta content='audial' name='application-name' />
-  <meta content='morgan dean' name='author' />
-  <meta content='audial' name='apple-mobile-web-app-title' />
-  <meta content='#1f2937' name='theme-color' />
-  <!--  Files -->
-  <link href='./favicon.ico' rel='icon' />
-  <link href='./icons/apple-touch-icon.png' rel='apple-touch-icon' />
-  <link href='./manifest.json' rel='manifest' />
-  <title>audial</title>
-  <script>
-    let _rollbarConfig = {
-      accessToken: '44484067cbc44f01a992153669e87fc9',
-      captureUncaught: true,
-      captureUnhandledRejections: true,
-      payload: {
-        environment: window.location.hostname === 'localhost' ? 'development' : 'production',
-        //context: 'home/index',
-        //trace_id: 'abc123',
-        client: {
-          javascript: {
-            code_version: '1.0.0'
-            //source_map_enabled: true,
-            //guess_uncaught_frames: true
-          }
-        }
-      }
-    };
-    // Rollbar Snippet
-    !function(r) {
-      var e = {};
-
-      function o(n) {
-        if (e[n]) return e[n].exports;
-        var t = e[n] = { i: n, l: !1, exports: {} };
-        return r[n].call(t.exports, t, t.exports, o), t.l = !0, t.exports;
-      }
-
-      o.m = r, o.c = e, o.d = function(r, e, n) {
-        o.o(r, e) || Object.defineProperty(r, e, { enumerable: !0, get: n });
-      }, o.r = function(r) {
-        'undefined' != typeof Symbol && Symbol.toStringTag && Object.defineProperty(r, Symbol.toStringTag, { value: 'Module' }), Object.defineProperty(r, '__esModule', { value: !0 });
-      }, o.t = function(r, e) {
-        if (1 & e && (r = o(r)), 8 & e) return r;
-        if (4 & e && 'object' == typeof r && r && r.__esModule) return r;
-        var n = Object.create(null);
-        if (o.r(n), Object.defineProperty(n, 'default', {
-          enumerable: !0,
-          value: r
-        }), 2 & e && 'string' != typeof r) for (var t in r) o.d(n, t, function(e) {
-          return r[e];
-        }.bind(null, t));
-        return n;
-      }, o.n = function(r) {
-        var e = r && r.__esModule ? function() {
-          return r.default;
-        } : function() {
-          return r;
-        };
-        return o.d(e, 'a', e), e;
-      }, o.o = function(r, e) {
-        return Object.prototype.hasOwnProperty.call(r, e);
-      }, o.p = '', o(o.s = 0);
-    }([function(r, e, o) {
-      'use strict';
-      var n = o(1), t = o(5);
-      _rollbarConfig = _rollbarConfig || {}, _rollbarConfig.rollbarJsUrl = _rollbarConfig.rollbarJsUrl || 'https://cdn.rollbar.com/rollbarjs/refs/tags/v2.24.0/rollbar.min.js', _rollbarConfig.async = void 0 === _rollbarConfig.async || _rollbarConfig.async;
-      var a = n.setupShim(window, _rollbarConfig), l = t(_rollbarConfig);
-      window.rollbar = n.Rollbar, a.loadFull(window, document, !_rollbarConfig.async, _rollbarConfig, l);
-    }, function(r, e, o) {
-      'use strict';
-      var n = o(2), t = o(3);
-
-      function a(r) {
-        return function() {
-          try {
-            return r.apply(this, arguments);
-          } catch (r) {
-            try {
-              console.error('[Rollbar]: Internal error', r);
-            } catch (r) {
+<html lang="en">
+  <head>
+    <!--  Meta -->
+    <meta charset="utf-8" />
+    <meta content="audial" name="name" />
+    <meta content="your daily song quiz, inspired by wordle" name="description" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="audial" name="application-name" />
+    <meta content="morgan dean" name="author" />
+    <meta content="audial" name="apple-mobile-web-app-title" />
+    <meta content="#1f2937" name="theme-color" />
+    <!--  Files -->
+    <link href="./favicon.ico" rel="icon" />
+    <link href="./icons/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="./manifest.json" rel="manifest" />
+    <title>audial</title>
+    <script>
+      let _rollbarConfig = {
+        accessToken: '44484067cbc44f01a992153669e87fc9',
+        captureUncaught: true,
+        captureUnhandledRejections: true,
+        payload: {
+          environment: window.location.hostname === 'localhost' ? 'development' : 'production',
+          //context: 'home/index',
+          //trace_id: 'abc123',
+          client: {
+            javascript: {
+              code_version: '1.0.0'
+              //source_map_enabled: true,
+              //guess_uncaught_frames: true
             }
           }
-        };
-      }
+        }
+      };
+      // Rollbar Snippet
+      !(function (r) {
+        var e = {};
 
-      var l = 0;
+        function o(n) {
+          if (e[n]) return e[n].exports;
+          var t = (e[n] = { i: n, l: !1, exports: {} });
+          return r[n].call(t.exports, t, t.exports, o), (t.l = !0), t.exports;
+        }
 
-      function i(r, e) {
-        this.options = r, this._rollbarOldOnError = null;
-        var o = l++;
-        this.shimId = function() {
-          return o;
-        }, 'undefined' != typeof window && window._rollbarShims && (window._rollbarShims[o] = {
-          handler: e,
-          messages: []
+        (o.m = r),
+          (o.c = e),
+          (o.d = function (r, e, n) {
+            o.o(r, e) || Object.defineProperty(r, e, { enumerable: !0, get: n });
+          }),
+          (o.r = function (r) {
+            'undefined' != typeof Symbol &&
+              Symbol.toStringTag &&
+              Object.defineProperty(r, Symbol.toStringTag, { value: 'Module' }),
+              Object.defineProperty(r, '__esModule', { value: !0 });
+          }),
+          (o.t = function (r, e) {
+            if ((1 & e && (r = o(r)), 8 & e)) return r;
+            if (4 & e && 'object' == typeof r && r && r.__esModule) return r;
+            var n = Object.create(null);
+            if (
+              (o.r(n),
+              Object.defineProperty(n, 'default', {
+                enumerable: !0,
+                value: r
+              }),
+              2 & e && 'string' != typeof r)
+            )
+              for (var t in r)
+                o.d(
+                  n,
+                  t,
+                  function (e) {
+                    return r[e];
+                  }.bind(null, t)
+                );
+            return n;
+          }),
+          (o.n = function (r) {
+            var e =
+              r && r.__esModule
+                ? function () {
+                    return r.default;
+                  }
+                : function () {
+                    return r;
+                  };
+            return o.d(e, 'a', e), e;
+          }),
+          (o.o = function (r, e) {
+            return Object.prototype.hasOwnProperty.call(r, e);
+          }),
+          (o.p = ''),
+          o((o.s = 0));
+      })([
+        function (r, e, o) {
+          'use strict';
+          var n = o(1),
+            t = o(5);
+          (_rollbarConfig = _rollbarConfig || {}),
+            (_rollbarConfig.rollbarJsUrl =
+              _rollbarConfig.rollbarJsUrl ||
+              'https://cdn.rollbar.com/rollbarjs/refs/tags/v2.24.0/rollbar.min.js'),
+            (_rollbarConfig.async = void 0 === _rollbarConfig.async || _rollbarConfig.async);
+          var a = n.setupShim(window, _rollbarConfig),
+            l = t(_rollbarConfig);
+          (window.rollbar = n.Rollbar),
+            a.loadFull(window, document, !_rollbarConfig.async, _rollbarConfig, l);
+        },
+        function (r, e, o) {
+          'use strict';
+          var n = o(2),
+            t = o(3);
+
+          function a(r) {
+            return function () {
+              try {
+                return r.apply(this, arguments);
+              } catch (r) {
+                try {
+                  console.error('[Rollbar]: Internal error', r);
+                } catch (r) {}
+              }
+            };
+          }
+
+          var l = 0;
+
+          function i(r, e) {
+            (this.options = r), (this._rollbarOldOnError = null);
+            var o = l++;
+            (this.shimId = function () {
+              return o;
+            }),
+              'undefined' != typeof window &&
+                window._rollbarShims &&
+                (window._rollbarShims[o] = {
+                  handler: e,
+                  messages: []
+                });
+          }
+
+          var s = o(4),
+            d = function (r, e) {
+              return new i(r, e);
+            },
+            c = function (r) {
+              return new s(d, r);
+            };
+
+          function u(r) {
+            return a(function () {
+              var e = this,
+                o = Array.prototype.slice.call(arguments, 0),
+                n = { shim: e, method: r, args: o, ts: new Date() };
+              window._rollbarShims[this.shimId()].messages.push(n);
+            });
+          }
+
+          (i.prototype.loadFull = function (r, e, o, n, t) {
+            var l = !1,
+              i = e.createElement('script'),
+              s = e.getElementsByTagName('script')[0],
+              d = s.parentNode;
+            (i.crossOrigin = ''),
+              (i.src = n.rollbarJsUrl),
+              o || (i.async = !0),
+              (i.onload = i.onreadystatechange =
+                a(function () {
+                  if (
+                    !(
+                      l ||
+                      (this.readyState &&
+                        'loaded' !== this.readyState &&
+                        'complete' !== this.readyState)
+                    )
+                  ) {
+                    i.onload = i.onreadystatechange = null;
+                    try {
+                      d.removeChild(i);
+                    } catch (r) {}
+                    (l = !0),
+                      (function () {
+                        var e;
+                        if (void 0 === r._rollbarDidLoad) {
+                          e = new Error('rollbar.js did not load');
+                          for (var o, n, a, l, i = 0; (o = r._rollbarShims[i++]); )
+                            for (o = o.messages || []; (n = o.shift()); )
+                              for (a = n.args || [], i = 0; i < a.length; ++i)
+                                if ('function' == typeof (l = a[i])) {
+                                  l(e);
+                                  break;
+                                }
+                        }
+                        'function' == typeof t && t(e);
+                      })();
+                  }
+                })),
+              d.insertBefore(i, s);
+          }),
+            (i.prototype.wrap = function (r, e, o) {
+              try {
+                var n;
+                if (
+                  ((n =
+                    'function' == typeof e
+                      ? e
+                      : function () {
+                          return e || {};
+                        }),
+                  'function' != typeof r)
+                )
+                  return r;
+                if (r._isWrap) return r;
+                if (
+                  !r._rollbar_wrapped &&
+                  ((r._rollbar_wrapped = function () {
+                    o && 'function' == typeof o && o.apply(this, arguments);
+                    try {
+                      return r.apply(this, arguments);
+                    } catch (o) {
+                      var e = o;
+                      throw (
+                        (e &&
+                          ('string' == typeof e && (e = String(e)),
+                          (e._rollbarContext = n() || {}),
+                          (e._rollbarContext._wrappedSource = r.toString()),
+                          (window._rollbarWrappedError = e)),
+                        e)
+                      );
+                    }
+                  }),
+                  (r._rollbar_wrapped._isWrap = !0),
+                  r.hasOwnProperty)
+                )
+                  for (var t in r) r.hasOwnProperty(t) && (r._rollbar_wrapped[t] = r[t]);
+                return r._rollbar_wrapped;
+              } catch (e) {
+                return r;
+              }
+            });
+          for (
+            var p =
+                'log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad'.split(
+                  ','
+                ),
+              f = 0;
+            f < p.length;
+            ++f
+          )
+            i.prototype[p[f]] = u(p[f]);
+          r.exports = {
+            setupShim: function (r, e) {
+              if (r) {
+                var o = e.globalAlias || 'Rollbar';
+                if ('object' == typeof r[o]) return r[o];
+                (r._rollbarShims = {}), (r._rollbarWrappedError = null);
+                var l = new c(e);
+                return a(function () {
+                  e.captureUncaught &&
+                    ((l._rollbarOldOnError = r.onerror),
+                    n.captureUncaughtExceptions(r, l, !0),
+                    e.wrapGlobalEventHandlers && t(r, l, !0)),
+                    e.captureUnhandledRejections && n.captureUnhandledRejections(r, l, !0);
+                  var a = e.autoInstrument;
+                  return (
+                    !1 !== e.enabled &&
+                      (void 0 === a || !0 === a || ('object' == typeof a && a.network)) &&
+                      r.addEventListener &&
+                      (r.addEventListener('load', l.captureLoad.bind(l)),
+                      r.addEventListener('DOMContentLoaded', l.captureDomContentLoaded.bind(l))),
+                    (r[o] = l),
+                    l
+                  );
+                })();
+              }
+            },
+            Rollbar: c
+          };
+        },
+        function (r, e, o) {
+          'use strict';
+
+          function n(r, e, o, n) {
+            r._rollbarWrappedError &&
+              (n[4] || (n[4] = r._rollbarWrappedError),
+              n[5] || (n[5] = r._rollbarWrappedError._rollbarContext),
+              (r._rollbarWrappedError = null));
+            var t = e.handleUncaughtException.apply(e, n);
+            o && o.apply(r, n), 'anonymous' === t && (e.anonymousErrorsPending += 1);
+          }
+
+          r.exports = {
+            captureUncaughtExceptions: function (r, e, o) {
+              if (r) {
+                var t;
+                if ('function' == typeof e._rollbarOldOnError) t = e._rollbarOldOnError;
+                else if (r.onerror) {
+                  for (t = r.onerror; t._rollbarOldOnError; ) t = t._rollbarOldOnError;
+                  e._rollbarOldOnError = t;
+                }
+                e.handleAnonymousErrors();
+                var a = function () {
+                  var o = Array.prototype.slice.call(arguments, 0);
+                  n(r, e, t, o);
+                };
+                o && (a._rollbarOldOnError = t), (r.onerror = a);
+              }
+            },
+            captureUnhandledRejections: function (r, e, o) {
+              if (r) {
+                'function' == typeof r._rollbarURH &&
+                  r._rollbarURH.belongsToShim &&
+                  r.removeEventListener('unhandledrejection', r._rollbarURH);
+                var n = function (r) {
+                  var o, n, t;
+                  try {
+                    o = r.reason;
+                  } catch (r) {
+                    o = void 0;
+                  }
+                  try {
+                    n = r.promise;
+                  } catch (r) {
+                    n = '[unhandledrejection] error getting `promise` from event';
+                  }
+                  try {
+                    (t = r.detail), !o && t && ((o = t.reason), (n = t.promise));
+                  } catch (r) {}
+                  o || (o = '[unhandledrejection] error getting `reason` from event'),
+                    e && e.handleUnhandledRejection && e.handleUnhandledRejection(o, n);
+                };
+                (n.belongsToShim = o),
+                  (r._rollbarURH = n),
+                  r.addEventListener('unhandledrejection', n);
+              }
+            }
+          };
+        },
+        function (r, e, o) {
+          'use strict';
+
+          function n(r, e, o) {
+            if (e.hasOwnProperty && e.hasOwnProperty('addEventListener')) {
+              for (var n = e.addEventListener; n._rollbarOldAdd && n.belongsToShim; )
+                n = n._rollbarOldAdd;
+              var t = function (e, o, t) {
+                n.call(this, e, r.wrap(o), t);
+              };
+              (t._rollbarOldAdd = n), (t.belongsToShim = o), (e.addEventListener = t);
+              for (var a = e.removeEventListener; a._rollbarOldRemove && a.belongsToShim; )
+                a = a._rollbarOldRemove;
+              var l = function (r, e, o) {
+                a.call(this, r, (e && e._rollbar_wrapped) || e, o);
+              };
+              (l._rollbarOldRemove = a), (l.belongsToShim = o), (e.removeEventListener = l);
+            }
+          }
+
+          r.exports = function (r, e, o) {
+            if (r) {
+              var t,
+                a,
+                l =
+                  'EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload'.split(
+                    ','
+                  );
+              for (t = 0; t < l.length; ++t)
+                r[(a = l[t])] && r[a].prototype && n(e, r[a].prototype, o);
+            }
+          };
+        },
+        function (r, e, o) {
+          'use strict';
+
+          function n(r, e) {
+            (this.impl = r(e, this)),
+              (this.options = e),
+              (function (r) {
+                for (
+                  var e = function (r) {
+                      return function () {
+                        var e = Array.prototype.slice.call(arguments, 0);
+                        if (this.impl[r]) return this.impl[r].apply(this.impl, e);
+                      };
+                    },
+                    o =
+                      'log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad'.split(
+                        ','
+                      ),
+                    n = 0;
+                  n < o.length;
+                  n++
+                )
+                  r[o[n]] = e(o[n]);
+              })(n.prototype);
+          }
+
+          (n.prototype._swapAndProcessMessages = function (r, e) {
+            var o, n, t;
+            for (this.impl = r(this.options); (o = e.shift()); )
+              (n = o.method),
+                (t = o.args),
+                this[n] &&
+                  'function' == typeof this[n] &&
+                  ('captureDomContentLoaded' === n || 'captureLoad' === n
+                    ? this[n].apply(this, [t[0], o.ts])
+                    : this[n].apply(this, t));
+            return this;
+          }),
+            (r.exports = n);
+        },
+        function (r, e, o) {
+          'use strict';
+          r.exports = function (r) {
+            return function (e) {
+              if (!e && !window._rollbarInitialized) {
+                for (
+                  var o,
+                    n,
+                    t = (r = r || {}).globalAlias || 'Rollbar',
+                    a = window.rollbar,
+                    l = function (r) {
+                      return new a(r);
+                    },
+                    i = 0;
+                  (o = window._rollbarShims[i++]);
+
+                )
+                  n || (n = o.handler), o.handler._swapAndProcessMessages(l, o.messages);
+                (window[t] = n), (window._rollbarInitialized = !0);
+              }
+            };
+          };
+        }
+      ]);
+      // End Rollbar Snippet
+    </script>
+    <meta http-equiv="content-security-policy" content="" />
+    <title>audial - random</title>
+    <meta content="audial - random" name="title" data-svelte="svelte-1y9sn3x" />
+    <meta
+      content="listen to the daily song snippet and guess it on audial, a wordle style game."
+      name="description"
+      data-svelte="svelte-1y9sn3x"
+    />
+    <meta content="website" property="og:type" data-svelte="svelte-1y9sn3x" />
+    <meta
+      content="http://sveltekit-prerender/random"
+      property="og:url"
+      data-svelte="svelte-1y9sn3x"
+    />
+    <meta content="audial" property="og:title" data-svelte="svelte-1y9sn3x" />
+    <meta
+      content="listen to the daily song snippet and guess it on audial, a wordle style game."
+      property="og:description"
+      data-svelte="svelte-1y9sn3x"
+    />
+    <meta
+      content="/icons/android-chrome-512x512.png"
+      property="og:image"
+      data-svelte="svelte-1y9sn3x"
+    />
+    <meta content="summary_small_image" property="twitter:card" data-svelte="svelte-1y9sn3x" />
+    <meta
+      content="http://sveltekit-prerender/random"
+      property="twitter:url"
+      data-svelte="svelte-1y9sn3x"
+    />
+    <meta content="audial - random" property="twitter:title" data-svelte="svelte-1y9sn3x" />
+    <meta
+      content="listen to the daily song snippet and guess it on audial, a wordle style game."
+      property="twitter:description"
+      data-svelte="svelte-1y9sn3x"
+    />
+    <meta
+      content="/icons/android-chrome-512x512.png"
+      property="twitter:image"
+      data-svelte="svelte-1y9sn3x"
+    />
+    <link rel="stylesheet" href="/_app/immutable/assets/__layout-51ee2ee4.css" />
+    <link rel="stylesheet" href="/_app/immutable/assets/Button-3b800996.css" />
+    <link rel="stylesheet" href="/_app/immutable/assets/Game-46e97be5.css" />
+    <link rel="modulepreload" href="/_app/immutable/start-adfe4a53.js" />
+    <link rel="modulepreload" href="/_app/immutable/chunks/index-82e3b787.js" />
+    <link rel="modulepreload" href="/_app/immutable/chunks/index-950c601e.js" />
+    <link rel="modulepreload" href="/_app/immutable/chunks/singletons-eca981c1.js" />
+    <link rel="modulepreload" href="/_app/immutable/pages/__layout.svelte-cd464854.js" />
+    <link rel="modulepreload" href="/_app/immutable/chunks/util-4be2a3ca.js" />
+    <link rel="modulepreload" href="/_app/immutable/chunks/navigation-75a744b1.js" />
+    <link rel="modulepreload" href="/_app/immutable/chunks/Button-88d2cbd5.js" />
+    <link rel="modulepreload" href="/_app/immutable/pages/random.svelte-24498995.js" />
+    <link rel="modulepreload" href="/_app/immutable/chunks/Game-d358db62.js" />
+    <script>
+      if ('serviceWorker' in navigator) {
+        addEventListener('load', function () {
+          navigator.serviceWorker.register('/service-worker.js');
         });
       }
+    </script>
+  </head>
+  <body>
+    <div>
+      <main class="">
+        <div class="hidden">
+          <div
+            class="flex overflow-y-auto overflow-x-hidden fixed absolute right-0 left-0 z-40 justify-center items-center h-modal md:h-full md:inset-0 bg-black opacity-50"
+          ></div>
 
-      var s = o(4), d = function(r, e) {
-        return new i(r, e);
-      }, c = function(r) {
-        return new s(d, r);
-      };
+          <div class="absolute px-4 w-full h-full md:h-auto mx-auto z-50">
+            <div
+              class="rounded-lg w-full max-w-2xl mx-auto mt-20 bg-gray-700 p-3 opacity-100 shadow"
+            >
+              <h1 class="text-3xl mx-auto text-center">instructions</h1>
+              <div class="p-4">
+                <ul class="text-left">
+                  <li>
+                    <span
+                      >listen to the song snippet and type the name of the song into the box</span
+                    >
+                  </li>
+                  <li>
+                    <span
+                      >if you get the song incorrect or press skip, more of the song will be
+                      revealed</span
+                    >
+                  </li>
+                  <li>
+                    <span
+                      >a <span class="text-red-500">red result</span> means you guessed
+                      incorrectly.</span
+                    >
+                  </li>
+                  <li>
+                    <span
+                      >a <span class="text-amber-400">yellow result</span> means the artist was
+                      correct.</span
+                    >
+                  </li>
+                  <li>
+                    <span
+                      >a <span class="text-green-500">green result</span> means your guess was
+                      correct!</span
+                    >
+                  </li>
+                  <li class="text-gray-400">
+                    hint: the colored text on the header describes the current active playlist
+                  </li>
+                  <li class="border-t border-white mt-1 pt-2">
+                    <svg
+                      class="h-5 w-5 inline text-blue-500"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></path>
+                    </svg>
+                    for a custom playlist.
+                  </li>
+                  <li>
+                    <svg
+                      class="inline text-blue-500"
+                      fill="currentColor"
+                      height="20"
+                      viewBox="0 0 256 256"
+                      width="20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect fill="none" height="256" width="256"></rect>
+                      <path
+                        d="M32,72H55.1a64,64,0,0,1,52,26.8l41.8,58.4a64,64,0,0,0,52,26.8H232"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="24"
+                      ></path>
+                      <polyline
+                        fill="none"
+                        points="208 48 232 72 208 96"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="24"
+                      ></polyline>
+                      <polyline
+                        fill="none"
+                        points="208 160 232 184 208 208"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="24"
+                      ></polyline>
+                      <path
+                        d="M152.8,93.9A63.7,63.7,0,0,1,200.9,72H232"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="24"
+                      ></path>
+                      <path
+                        d="M32,184H55.1a63.7,63.7,0,0,0,48.1-21.9"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="24"
+                      ></path>
+                    </svg>
+                    for audial shuffle.
+                  </li>
+                </ul>
+              </div>
+              <div class="w-full">
+                <button
+                  title="Close Popup"
+                  class="p-2 text-white bg-blue-600 hover:bg-blue-500 rounded-md shadow hover:shadow-lg transition-all duration-200 mx-auto text-center block"
+                >
+                  start listening
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="_toastContainer svelte-yh90az"></ul>
+        <div>
+          <header class="border-b border-gray-500">
+            <div class="max-w-screen-md mx-auto">
+              <div class="flex justify-evenly p-3 items-center">
+                <div class="flex flex-1">
+                  <button
+                    class="px-2 py-2 tracking-widest border-none flex items-center font-semibold text-sm text-white hover:text-blue-500"
+                    title="Custom Playlist"
+                  >
+                    <svg
+                      class="h-6 w-6"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></path>
+                    </svg>
+                  </button>
+                  <button
+                    class="px-2 py-2 tracking-widest border-none flex items-center font-semibold text-sm text-white hover:text-blue-500"
+                    title="Random Song"
+                  >
+                    <svg
+                      fill="currentColor"
+                      height="25"
+                      viewBox="0 0 256 256"
+                      width="25"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect fill="none" height="256" width="256"></rect>
+                      <path
+                        d="M32,72H55.1a64,64,0,0,1,52,26.8l41.8,58.4a64,64,0,0,0,52,26.8H232"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="24"
+                      ></path>
+                      <polyline
+                        fill="none"
+                        points="208 48 232 72 208 96"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="24"
+                      ></polyline>
+                      <polyline
+                        fill="none"
+                        points="208 160 232 184 208 208"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="24"
+                      ></polyline>
+                      <path
+                        d="M152.8,93.9A63.7,63.7,0,0,1,200.9,72H232"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="24"
+                      ></path>
+                      <path
+                        d="M32,184H55.1a63.7,63.7,0,0,0,48.1-21.9"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="24"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+                <div>
+                  <h1
+                    class="text-3xl font-bold flex-grow text-center flex-1 cursor-pointer text-white relative hover:underline underline-offset-1 decoration-blue-500 hover:text-blue-500"
+                  >
+                    audial
+                    <span class="absolute rotate-45 text-red-600 text-sm -right-9">shuffle</span>
+                  </h1>
+                </div>
+                <div class="flex flex-1 justify-end">
+                  <button
+                    class="px-2 py-2 tracking-widest border-none flex items-center font-semibold text-sm text-white hover:text-blue-600"
+                    title="View Statistics"
+                  >
+                    <svg
+                      fill="none"
+                      height="24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M12 20v-6M6 20V10M18 20V4"></path>
+                    </svg>
+                  </button>
+                  <button
+                    class="px-2 py-2 uppercase tracking-widest border-none flex items-center font-semibold text-sm text-white hover:text-blue-600"
+                    title="View Instructions"
+                  >
+                    <svg
+                      fill="none"
+                      height="24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                      <line x1="12" x2="12.01" y1="17" y2="17"></line>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="hidden text-indigo-500 text-yellow-400 text-teal-500 text-orange-500 text-purple-500 text-cyan-500 text-emerald-500"
+            ></div>
+          </header>
+        </div>
+        <div>
+          <div class="w-full mx-auto text-center mt-20 text-blue-600">
+            <svg
+              class="animate-spin"
+              height="100px"
+              preserveAspectRatio="xMidYMid"
+              style="margin: auto; background: transparent; display: block; shape-rendering: auto"
+              viewBox="0 0 100 100"
+              width="100px"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="50"
+                cy="50"
+                fill="none"
+                r="38"
+                stroke="currentColor"
+                stroke-dasharray="179.0707812546182 61.690260418206066"
+                stroke-width="7"
+              ></circle>
+            </svg>
+          </div>
+        </div>
+      </main>
 
-      function u(r) {
-        return a((function() {
-          var e = this, o = Array.prototype.slice.call(arguments, 0),
-            n = { shim: e, method: r, args: o, ts: new Date };
-          window._rollbarShims[this.shimId()].messages.push(n);
-        }));
-      }
+      <script type="module" data-sveltekit-hydrate="195p5dg">
+        import { set_public_env, start } from '/_app/immutable/start-adfe4a53.js';
 
-      i.prototype.loadFull = function(r, e, o, n, t) {
-        var l = !1, i = e.createElement('script'), s = e.getElementsByTagName('script')[0], d = s.parentNode;
-        i.crossOrigin = '', i.src = n.rollbarJsUrl, o || (i.async = !0), i.onload = i.onreadystatechange = a((function() {
-          if (!(l || this.readyState && 'loaded' !== this.readyState && 'complete' !== this.readyState)) {
-            i.onload = i.onreadystatechange = null;
-            try {
-              d.removeChild(i);
-            } catch (r) {
-            }
-            l = !0, function() {
-              var e;
-              if (void 0 === r._rollbarDidLoad) {
-                e = new Error('rollbar.js did not load');
-                for (var o, n, a, l, i = 0; o = r._rollbarShims[i++];) for (o = o.messages || []; n = o.shift();) for (a = n.args || [], i = 0; i < a.length; ++i) if ('function' == typeof (l = a[i])) {
-                  l(e);
-                  break;
-                }
-              }
-              'function' == typeof t && t(e);
-            }();
+        set_public_env({});
+
+        start({
+          target: document.querySelector('[data-sveltekit-hydrate="195p5dg"]').parentNode,
+          paths: { base: '', assets: '' },
+          session: {},
+          route: true,
+          spa: false,
+          trailing_slash: 'never',
+          hydrate: {
+            status: 200,
+            error: null,
+            nodes: [0, 5],
+            params: {},
+            routeId: 'random'
           }
-        })), d.insertBefore(i, s);
-      }, i.prototype.wrap = function(r, e, o) {
-        try {
-          var n;
-          if (n = 'function' == typeof e ? e : function() {
-            return e || {};
-          }, 'function' != typeof r) return r;
-          if (r._isWrap) return r;
-          if (!r._rollbar_wrapped && (r._rollbar_wrapped = function() {
-            o && 'function' == typeof o && o.apply(this, arguments);
-            try {
-              return r.apply(this, arguments);
-            } catch (o) {
-              var e = o;
-              throw e && ('string' == typeof e && (e = String(e)), e._rollbarContext = n() || {}, e._rollbarContext._wrappedSource = r.toString(), window._rollbarWrappedError = e), e;
-            }
-          }, r._rollbar_wrapped._isWrap = !0, r.hasOwnProperty)) for (var t in r) r.hasOwnProperty(t) && (r._rollbar_wrapped[t] = r[t]);
-          return r._rollbar_wrapped;
-        } catch (e) {
-          return r;
-        }
-      };
-      for (var p = 'log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad'.split(','), f = 0; f < p.length; ++f) i.prototype[p[f]] = u(p[f]);
-      r.exports = {
-        setupShim: function(r, e) {
-          if (r) {
-            var o = e.globalAlias || 'Rollbar';
-            if ('object' == typeof r[o]) return r[o];
-            r._rollbarShims = {}, r._rollbarWrappedError = null;
-            var l = new c(e);
-            return a((function() {
-              e.captureUncaught && (l._rollbarOldOnError = r.onerror, n.captureUncaughtExceptions(r, l, !0), e.wrapGlobalEventHandlers && t(r, l, !0)), e.captureUnhandledRejections && n.captureUnhandledRejections(r, l, !0);
-              var a = e.autoInstrument;
-              return !1 !== e.enabled && (void 0 === a || !0 === a || 'object' == typeof a && a.network) && r.addEventListener && (r.addEventListener('load', l.captureLoad.bind(l)), r.addEventListener('DOMContentLoaded', l.captureDomContentLoaded.bind(l))), r[o] = l, l;
-            }))();
-          }
-        }, Rollbar: c
-      };
-    }, function(r, e, o) {
-      'use strict';
-
-      function n(r, e, o, n) {
-        r._rollbarWrappedError && (n[4] || (n[4] = r._rollbarWrappedError), n[5] || (n[5] = r._rollbarWrappedError._rollbarContext), r._rollbarWrappedError = null);
-        var t = e.handleUncaughtException.apply(e, n);
-        o && o.apply(r, n), 'anonymous' === t && (e.anonymousErrorsPending += 1);
-      }
-
-      r.exports = {
-        captureUncaughtExceptions: function(r, e, o) {
-          if (r) {
-            var t;
-            if ('function' == typeof e._rollbarOldOnError) t = e._rollbarOldOnError; else if (r.onerror) {
-              for (t = r.onerror; t._rollbarOldOnError;) t = t._rollbarOldOnError;
-              e._rollbarOldOnError = t;
-            }
-            e.handleAnonymousErrors();
-            var a = function() {
-              var o = Array.prototype.slice.call(arguments, 0);
-              n(r, e, t, o);
-            };
-            o && (a._rollbarOldOnError = t), r.onerror = a;
-          }
-        }, captureUnhandledRejections: function(r, e, o) {
-          if (r) {
-            'function' == typeof r._rollbarURH && r._rollbarURH.belongsToShim && r.removeEventListener('unhandledrejection', r._rollbarURH);
-            var n = function(r) {
-              var o, n, t;
-              try {
-                o = r.reason;
-              } catch (r) {
-                o = void 0;
-              }
-              try {
-                n = r.promise;
-              } catch (r) {
-                n = '[unhandledrejection] error getting `promise` from event';
-              }
-              try {
-                t = r.detail, !o && t && (o = t.reason, n = t.promise);
-              } catch (r) {
-              }
-              o || (o = '[unhandledrejection] error getting `reason` from event'), e && e.handleUnhandledRejection && e.handleUnhandledRejection(o, n);
-            };
-            n.belongsToShim = o, r._rollbarURH = n, r.addEventListener('unhandledrejection', n);
-          }
-        }
-      };
-    }, function(r, e, o) {
-      'use strict';
-
-      function n(r, e, o) {
-        if (e.hasOwnProperty && e.hasOwnProperty('addEventListener')) {
-          for (var n = e.addEventListener; n._rollbarOldAdd && n.belongsToShim;) n = n._rollbarOldAdd;
-          var t = function(e, o, t) {
-            n.call(this, e, r.wrap(o), t);
-          };
-          t._rollbarOldAdd = n, t.belongsToShim = o, e.addEventListener = t;
-          for (var a = e.removeEventListener; a._rollbarOldRemove && a.belongsToShim;) a = a._rollbarOldRemove;
-          var l = function(r, e, o) {
-            a.call(this, r, e && e._rollbar_wrapped || e, o);
-          };
-          l._rollbarOldRemove = a, l.belongsToShim = o, e.removeEventListener = l;
-        }
-      }
-
-      r.exports = function(r, e, o) {
-        if (r) {
-          var t, a,
-            l = 'EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload'.split(',');
-          for (t = 0; t < l.length; ++t) r[a = l[t]] && r[a].prototype && n(e, r[a].prototype, o);
-        }
-      };
-    }, function(r, e, o) {
-      'use strict';
-
-      function n(r, e) {
-        this.impl = r(e, this), this.options = e, function(r) {
-          for (var e = function(r) {
-            return function() {
-              var e = Array.prototype.slice.call(arguments, 0);
-              if (this.impl[r]) return this.impl[r].apply(this.impl, e);
-            };
-          }, o = 'log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleAnonymousErrors,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad'.split(','), n = 0; n < o.length; n++) r[o[n]] = e(o[n]);
-        }(n.prototype);
-      }
-
-      n.prototype._swapAndProcessMessages = function(r, e) {
-        var o, n, t;
-        for (this.impl = r(this.options); o = e.shift();) n = o.method, t = o.args, this[n] && 'function' == typeof this[n] && ('captureDomContentLoaded' === n || 'captureLoad' === n ? this[n].apply(this, [t[0], o.ts]) : this[n].apply(this, t));
-        return this;
-      }, r.exports = n;
-    }, function(r, e, o) {
-      'use strict';
-      r.exports = function(r) {
-        return function(e) {
-          if (!e && !window._rollbarInitialized) {
-            for (var o, n, t = (r = r || {}).globalAlias || 'Rollbar', a = window.rollbar, l = function(r) {
-              return new a(r);
-            }, i = 0; o = window._rollbarShims[i++];) n || (n = o.handler), o.handler._swapAndProcessMessages(l, o.messages);
-            window[t] = n, window._rollbarInitialized = !0;
-          }
-        };
-      };
-    }]);
-    // End Rollbar Snippet
-  </script>
-  <meta http-equiv="content-security-policy" content=""><title>audial - random</title><meta content="audial - random" name="title" data-svelte="svelte-1y9sn3x"><meta content="listen to the daily song snippet and guess it on audial, a wordle style game." name="description" data-svelte="svelte-1y9sn3x"><meta content="website" property="og:type" data-svelte="svelte-1y9sn3x"><meta content="http://sveltekit-prerender/random" property="og:url" data-svelte="svelte-1y9sn3x"><meta content="audial" property="og:title" data-svelte="svelte-1y9sn3x"><meta content="listen to the daily song snippet and guess it on audial, a wordle style game." property="og:description" data-svelte="svelte-1y9sn3x"><meta content="/icons/android-chrome-512x512.png" property="og:image" data-svelte="svelte-1y9sn3x"><meta content="summary_small_image" property="twitter:card" data-svelte="svelte-1y9sn3x"><meta content="http://sveltekit-prerender/random" property="twitter:url" data-svelte="svelte-1y9sn3x"><meta content="audial - random" property="twitter:title" data-svelte="svelte-1y9sn3x"><meta content="listen to the daily song snippet and guess it on audial, a wordle style game." property="twitter:description" data-svelte="svelte-1y9sn3x"><meta content="/icons/android-chrome-512x512.png" property="twitter:image" data-svelte="svelte-1y9sn3x">
-	<link rel="stylesheet" href="/_app/immutable/assets/__layout-51ee2ee4.css">
-	<link rel="stylesheet" href="/_app/immutable/assets/Button-3b800996.css">
-	<link rel="stylesheet" href="/_app/immutable/assets/Game-46e97be5.css">
-	<link rel="modulepreload" href="/_app/immutable/start-adfe4a53.js">
-	<link rel="modulepreload" href="/_app/immutable/chunks/index-82e3b787.js">
-	<link rel="modulepreload" href="/_app/immutable/chunks/index-950c601e.js">
-	<link rel="modulepreload" href="/_app/immutable/chunks/singletons-eca981c1.js">
-	<link rel="modulepreload" href="/_app/immutable/pages/__layout.svelte-cd464854.js">
-	<link rel="modulepreload" href="/_app/immutable/chunks/util-4be2a3ca.js">
-	<link rel="modulepreload" href="/_app/immutable/chunks/navigation-75a744b1.js">
-	<link rel="modulepreload" href="/_app/immutable/chunks/Button-88d2cbd5.js">
-	<link rel="modulepreload" href="/_app/immutable/pages/random.svelte-24498995.js">
-	<link rel="modulepreload" href="/_app/immutable/chunks/Game-d358db62.js">
-			<script>
-		if ('serviceWorker' in navigator) {
-			addEventListener('load', function () {
-				navigator.serviceWorker.register('/service-worker.js');
-			});
-		}
-	</script>
-</head>
-<body>
-<div>
-
-
-
-
-<main class=""><div class="hidden"><div class="flex overflow-y-auto overflow-x-hidden fixed absolute right-0 left-0 z-40 justify-center items-center h-modal md:h-full md:inset-0 bg-black opacity-50"></div>
-  
-  <div class="absolute px-4 w-full h-full md:h-auto mx-auto z-50"><div class="rounded-lg w-full max-w-2xl mx-auto mt-20 bg-gray-700 p-3 opacity-100 shadow"><h1 class="text-3xl mx-auto text-center">instructions</h1>
-      <div class="p-4"><ul class="text-left"><li><span>listen to the song snippet and type the name of the song into the box</span></li>
-          <li><span>if you get the song incorrect or press skip, more of the song will be revealed</span></li>
-          <li><span>a <span class="text-red-500">red result</span> means you guessed incorrectly.</span></li>
-          <li><span>a <span class="text-amber-400">yellow result</span> means the artist was correct.</span></li>
-          <li><span>a <span class="text-green-500">green result</span> means your guess was correct!</span></li>
-          <li class="text-gray-400">hint: the colored text on the header describes the current active playlist
-          </li>
-          <li class="border-t border-white mt-1 pt-2"><svg class="h-5 w-5 inline text-blue-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            for a custom playlist.
-          </li>
-          <li><svg class="inline text-blue-500" fill="currentColor" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg"><rect fill="none" height="256" width="256"></rect><path d="M32,72H55.1a64,64,0,0,1,52,26.8l41.8,58.4a64,64,0,0,0,52,26.8H232" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></path><polyline fill="none" points="208 48 232 72 208 96" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></polyline><polyline fill="none" points="208 160 232 184 208 208" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></polyline><path d="M152.8,93.9A63.7,63.7,0,0,1,200.9,72H232" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></path><path d="M32,184H55.1a63.7,63.7,0,0,0,48.1-21.9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></path></svg>
-            for audial shuffle.
-          </li></ul></div>
-      <div class="w-full"><button title="Close Popup" class="p-2 text-white bg-blue-600 hover:bg-blue-500 rounded-md shadow hover:shadow-lg transition-all duration-200 mx-auto text-center block">start listening
-        </button></div></div></div></div>
-    <ul class="_toastContainer svelte-yh90az">
-</ul>
-    <div><header class="border-b border-gray-500"><div class="max-w-screen-md mx-auto "><div class="flex justify-evenly p-3 items-center"><div class="flex flex-1"><button class="px-2 py-2 tracking-widest border-none flex items-center font-semibold text-sm text-white hover:text-blue-500" title="Custom Playlist"><svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
-                    <button class="px-2 py-2 tracking-widest border-none flex items-center font-semibold text-sm text-white hover:text-blue-500" title="Random Song"><svg fill="currentColor" height="25" viewBox="0 0 256 256" width="25" xmlns="http://www.w3.org/2000/svg"><rect fill="none" height="256" width="256"></rect><path d="M32,72H55.1a64,64,0,0,1,52,26.8l41.8,58.4a64,64,0,0,0,52,26.8H232" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></path><polyline fill="none" points="208 48 232 72 208 96" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></polyline><polyline fill="none" points="208 160 232 184 208 208" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></polyline><path d="M152.8,93.9A63.7,63.7,0,0,1,200.9,72H232" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></path><path d="M32,184H55.1a63.7,63.7,0,0,0,48.1-21.9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="24"></path></svg></button></div>
-                <div><h1 class="text-3xl font-bold flex-grow text-center flex-1 cursor-pointer text-white relative hover:underline underline-offset-1 decoration-blue-500 hover:text-blue-500">audial
-                        <span class="absolute rotate-45 text-red-600 text-sm -right-9">shuffle</span></h1></div>
-                <div class="flex flex-1 justify-end"><button class="px-2 py-2 tracking-widest border-none flex items-center font-semibold text-sm text-white hover:text-blue-600" title="View Statistics"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20v-6M6 20V10M18 20V4"></path></svg></button>
-                    <button class="px-2 py-2 uppercase tracking-widest border-none flex items-center font-semibold text-sm text-white hover:text-blue-600" title="View Instructions"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg></button></div></div></div>
-        <div class="hidden text-indigo-500 text-yellow-400 text-teal-500 text-orange-500 text-purple-500 text-cyan-500 text-emerald-500"></div></header></div>
-    <div><div class="w-full mx-auto text-center mt-20 text-blue-600"><svg class="animate-spin" height="100px" preserveAspectRatio="xMidYMid" style="margin: auto; background: transparent; display: block; shape-rendering: auto;" viewBox="0 0 100 100" width="100px" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" fill="none" r="38" stroke="currentColor" stroke-dasharray="179.0707812546182 61.690260418206066" stroke-width="7"></circle></svg></div></div></main>
-
-
-		<script type="module" data-sveltekit-hydrate="195p5dg">
-		import { set_public_env, start } from "/_app/immutable/start-adfe4a53.js";
-
-		set_public_env({});
-
-		start({
-			target: document.querySelector('[data-sveltekit-hydrate="195p5dg"]').parentNode,
-			paths: {"base":"","assets":""},
-			session: {},
-			route: true,
-			spa: false,
-			trailing_slash: "never",
-			hydrate: {
-				status: 200,
-				error: null,
-				nodes: [0, 5],
-				params: {},
-				routeId: "random"
-			}
-		});
-	</script></div>
-</body>
+        });
+      </script>
+    </div>
+  </body>
 </html>

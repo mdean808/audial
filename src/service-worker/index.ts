@@ -16,6 +16,6 @@ self.addEventListener('activate', function () {
     .then(function (clients) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      clients.forEach((client) => client.navigate(client.url));
+      clients.forEach(client => client.navigate(client.url));
     });
 });

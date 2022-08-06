@@ -2,15 +2,14 @@ import type { SpotifyPlaylist, SpotifyTrack } from '$src/types';
 import analytics from '$lib/analytics';
 import { dev } from '$app/env';
 
-const BASE_URL = !dev ? 'https://us-central1-audial-6e1bd.cloudfunctions.net' : 'http://localhost:5001/audial-6e1bd/us-central1';
+const BASE_URL = !dev
+  ? 'https://us-central1-audial-6e1bd.cloudfunctions.net'
+  : 'http://localhost:5001/audial-6e1bd/us-central1';
 
 export const getSpotifyPlaylistTracks = async (playlist: SpotifyPlaylist) => {
-  const res = await fetch(
-    `${BASE_URL}/tracks?playlist=${playlist.id}`,
-    {
-      method: 'GET'
-    }
-  );
+  const res = await fetch(`${BASE_URL}/tracks?playlist=${playlist.id}`, {
+    method: 'GET'
+  });
   return (await res.json()) as SpotifyTrack[];
 };
 

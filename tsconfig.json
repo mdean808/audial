@@ -4,8 +4,8 @@
     "lib": ["WebWorker"],
     "paths": {
       "$src/*": ["src/*"],
-      "$lib":["src/lib"],
-      "$lib/*":["src/lib/*"],
+      "$lib": ["src/lib"],
+      "$lib/*": ["src/lib/*"],
       "$components/*": ["src/components/*"],
       "$types/*": ["src/stores/*"],
       "$routes/*": ["src/actions/*"]

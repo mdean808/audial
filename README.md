@@ -4,16 +4,16 @@ audial is a wordle-style web game, but instead of formulating a word, the user g
 
 Expanded from just a song a day, audial also inlcudes:
 
-* A randomization mode
-* Support for custom playlists
-* Stat and history tracking
+- A randomization mode
+- Support for custom playlists
+- Stat and history tracking
 
 ## Technologies
 
-* [Firebase Functions and Realtime Database](https://github.com/mdean808/audial-firebase)
-* [SvelteKit](https://kit.svelte.dev/)
-* [TailwindCSS](https://tailwindcss.com/)
-* [NanoStores](https://github.com/nanostores/nanostores)
+- [Firebase Functions and Realtime Database](https://github.com/mdean808/audial-firebase)
+- [SvelteKit](https://kit.svelte.dev/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [NanoStores](https://github.com/nanostores/nanostores)
 
 ## Development
 

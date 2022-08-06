@@ -3,11 +3,7 @@
     "file": "_app/immutable/start-adfe4a53.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
-    "imports": [
-      "_index-82e3b787.js",
-      "_index-950c601e.js",
-      "_singletons-eca981c1.js"
-    ],
+    "imports": ["_index-82e3b787.js", "_index-950c601e.js", "_singletons-eca981c1.js"],
     "dynamicImports": [
       "src/routes/__layout.svelte",
       "src/routes/__error.svelte",
@@ -31,18 +27,14 @@
       "_index-950c601e.js",
       "_singletons-eca981c1.js"
     ],
-    "css": [
-      "_app/immutable/assets/__layout-51ee2ee4.css"
-    ]
+    "css": ["_app/immutable/assets/__layout-51ee2ee4.css"]
   },
   "src/routes/__error.svelte": {
     "file": "_app/immutable/pages/__error.svelte-2781d237.js",
     "src": "src/routes/__error.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
-    "imports": [
-      "_index-82e3b787.js"
-    ]
+    "imports": ["_index-82e3b787.js"]
   },
   "src/routes/custom/index.svelte": {
     "file": "_app/immutable/pages/custom/index.svelte-982a512d.js",
@@ -117,9 +109,7 @@
   },
   "_index-950c601e.js": {
     "file": "_app/immutable/chunks/index-950c601e.js",
-    "imports": [
-      "_index-82e3b787.js"
-    ]
+    "imports": ["_index-82e3b787.js"]
   },
   "_singletons-eca981c1.js": {
     "file": "_app/immutable/chunks/singletons-eca981c1.js"
@@ -129,30 +119,17 @@
   },
   "_Button-88d2cbd5.js": {
     "file": "_app/immutable/chunks/Button-88d2cbd5.js",
-    "imports": [
-      "_index-82e3b787.js",
-      "_index-950c601e.js"
-    ],
-    "css": [
-      "_app/immutable/assets/Button-3b800996.css"
-    ]
+    "imports": ["_index-82e3b787.js", "_index-950c601e.js"],
+    "css": ["_app/immutable/assets/Button-3b800996.css"]
   },
   "_navigation-75a744b1.js": {
     "file": "_app/immutable/chunks/navigation-75a744b1.js",
-    "imports": [
-      "_singletons-eca981c1.js"
-    ]
+    "imports": ["_singletons-eca981c1.js"]
   },
   "_Game-d358db62.js": {
     "file": "_app/immutable/chunks/Game-d358db62.js",
-    "imports": [
-      "_index-82e3b787.js",
-      "_util-4be2a3ca.js",
-      "_Button-88d2cbd5.js"
-    ],
-    "css": [
-      "_app/immutable/assets/Game-46e97be5.css"
-    ]
+    "imports": ["_index-82e3b787.js", "_util-4be2a3ca.js", "_Button-88d2cbd5.js"],
+    "css": ["_app/immutable/assets/Game-46e97be5.css"]
   },
   "Button.css": {
     "file": "_app/immutable/assets/Button-3b800996.css",

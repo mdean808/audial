@@ -16,7 +16,7 @@ const config = {
       default: true
     },
     serviceWorker: {
-      files: (path) => !path.includes('CNAME') && !path.includes('.nojekyll')
+      files: path => !path.includes('CNAME') && !path.includes('.nojekyll')
     },
     version: {
       pollInterval: 3600,
