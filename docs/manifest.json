@@ -1,6 +1,6 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "_app/immutable/start-ed128dbd.js",
+    "file": "_app/immutable/start-ca2f9710.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -19,7 +19,7 @@
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "_app/immutable/pages/__layout.svelte-fd9931af.js",
+    "file": "_app/immutable/pages/__layout.svelte-b0f22a95.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -32,7 +32,7 @@
       "_singletons-eca981c1.js"
     ],
     "css": [
-      "_app/immutable/assets/__layout-51ee2ee4.css"
+      "_app/immutable/assets/__layout-4d457c1e.css"
     ]
   },
   "src/routes/__error.svelte": {
@@ -45,7 +45,7 @@
     ]
   },
   "src/routes/custom/index.svelte": {
-    "file": "_app/immutable/pages/custom/index.svelte-6715f6c8.js",
+    "file": "_app/immutable/pages/custom/index.svelte-c51126ba.js",
     "src": "src/routes/custom/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -54,13 +54,13 @@
       "_navigation-75a744b1.js",
       "_Button-88d2cbd5.js",
       "_util-b8b9fcc5.js",
-      "_Game-4367e9f2.js",
+      "_Game-71c70950.js",
       "_singletons-eca981c1.js",
       "_index-950c601e.js"
     ]
   },
   "src/routes/custom/random.svelte": {
-    "file": "_app/immutable/pages/custom/random.svelte-1d14750e.js",
+    "file": "_app/immutable/pages/custom/random.svelte-6ce9d479.js",
     "src": "src/routes/custom/random.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -69,32 +69,32 @@
       "_navigation-75a744b1.js",
       "_Button-88d2cbd5.js",
       "_util-b8b9fcc5.js",
-      "_Game-4367e9f2.js",
+      "_Game-71c70950.js",
       "_singletons-eca981c1.js",
       "_index-950c601e.js"
     ]
   },
   "src/routes/index.svelte": {
-    "file": "_app/immutable/pages/index.svelte-9e1f22db.js",
+    "file": "_app/immutable/pages/index.svelte-b9f89c3d.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_index-82e3b787.js",
-      "_Game-4367e9f2.js",
+      "_Game-71c70950.js",
       "_util-b8b9fcc5.js",
       "_Button-88d2cbd5.js",
       "_index-950c601e.js"
     ]
   },
   "src/routes/random.svelte": {
-    "file": "_app/immutable/pages/random.svelte-8dbb67e8.js",
+    "file": "_app/immutable/pages/random.svelte-864e429e.js",
     "src": "src/routes/random.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_index-82e3b787.js",
-      "_Game-4367e9f2.js",
+      "_Game-71c70950.js",
       "_util-b8b9fcc5.js",
       "_Button-88d2cbd5.js",
       "_index-950c601e.js"
@@ -143,8 +143,8 @@
       "_singletons-eca981c1.js"
     ]
   },
-  "_Game-4367e9f2.js": {
-    "file": "_app/immutable/chunks/Game-4367e9f2.js",
+  "_Game-71c70950.js": {
+    "file": "_app/immutable/chunks/Game-71c70950.js",
     "imports": [
       "_index-82e3b787.js",
       "_util-b8b9fcc5.js",
@@ -154,16 +154,16 @@
       "_app/immutable/assets/Game-46e97be5.css"
     ]
   },
-  "Game.css": {
-    "file": "_app/immutable/assets/Game-46e97be5.css",
-    "src": "Game.css"
-  },
   "Button.css": {
     "file": "_app/immutable/assets/Button-3b800996.css",
     "src": "Button.css"
   },
+  "Game.css": {
+    "file": "_app/immutable/assets/Game-46e97be5.css",
+    "src": "Game.css"
+  },
   "src/routes/__layout.css": {
-    "file": "_app/immutable/assets/__layout-51ee2ee4.css",
+    "file": "_app/immutable/assets/__layout-4d457c1e.css",
     "src": "src/routes/__layout.css"
   }
 }

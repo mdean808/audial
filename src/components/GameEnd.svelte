@@ -1,9 +1,10 @@
-<script lang="ts">
-  import { currentAttempt, currentSong, temporaryAttempt } from '$src/store';
-  import { daysBetweenDates } from '$lib/util';
+<script lang='ts'>
+  import { currentAttempt, currentSong, isRandom, playlist, temporaryAttempt } from '$src/store';
+  import { daysBetweenDates, loadGame } from '$lib/util';
   import Button from '$components/Button.svelte';
   import analytics from '$lib/analytics';
   import { page } from '$app/stores';
+  import type { Attempt } from '../types';
 
   export let random;
   export let custom;
@@ -39,12 +40,23 @@
     notifyClipboard = true;
     analytics.track('share-score', { result: generateEmojis(), custom });
   };
+  const newRandomGame = async () => {
+    isRandom.set(true);
+    temporaryAttempt.set(<Attempt>{
+      attempts: 0,
+      type: 'random',
+      guesses: [],
+      date: new Date(),
+      correct: false
+    });
+    await loadGame($playlist, $isRandom);
+  };
 </script>
 
-<div class="py-3">
+<div class='py-3'>
   {#if custom || random ? !temporaryAttempt.get().correct : !currentAttempt.get().correct}
     <div
-      title="Open in Spotify"
+      title='Open in Spotify'
       on:click={() => {
         window.open(`https://open.spotify.com/track/${currentSong.get().id}`, '_blank').focus();
       }}
@@ -54,17 +66,21 @@
     </div>
   {/if}
   {#if !random}
-    <span class="my-2"
-      >{custom ? 'custom ' : ''}audial #{daysBetweenDates(new Date(), FIRST_DAY)}</span
+    <span class='my-2'
+    >{custom ? 'custom ' : ''}audial #{daysBetweenDates(new Date(), FIRST_DAY)}</span
     >
   {/if}
   <span> {generateEmojis()}</span>
-  {#if !random}
-    <div class="w-full mx-auto my-2">
+  {#if random}
+    <div class='mt-4'>
+      <Button on:click={newRandomGame} type='primary'>Shuffle Again</Button>
+    </div>
+  {:else}
+    <div class='w-full mx-auto my-2'>
       <Button
-        title="Share Score"
-        className="block mx-auto"
-        type="submit"
+        title='Share Score'
+        className='block mx-auto'
+        type='submit'
         on:click={generateShareClipboard}
       >
         share
