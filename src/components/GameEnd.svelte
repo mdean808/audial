@@ -6,8 +6,8 @@
   import { page } from '$app/stores';
   import type { Attempt } from '../types';
 
-  export let random;
-  export let custom;
+  export let random: boolean;
+  export let custom: boolean;
 
   let notifyClipboard = false;
   const FIRST_DAY = new Date('4/12/2022');

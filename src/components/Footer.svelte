@@ -11,8 +11,8 @@
   let paused = true;
   let songLength = 0;
   let timeElapsed = '0:00';
-  let timerInterval;
-  let playerTimeout;
+  let timerInterval: NodeJS.Timeout;
+  let playerTimeout: NodeJS.Timeout;
   export let custom = false;
 
   let prevPathName = '/';

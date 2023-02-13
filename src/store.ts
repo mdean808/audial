@@ -3,10 +3,10 @@ import type { Attempt, Song, SpotifyTrack } from './types';
 import { atom, map } from 'nanostores';
 
 const objectValueCoder = {
-  encode(val) {
+  encode(val: unknown) {
     return JSON.stringify(val);
   },
-  decode(val) {
+  decode(val: string) {
     try {
       return JSON.parse(val);
     } catch (e) {
@@ -16,11 +16,11 @@ const objectValueCoder = {
 };
 
 const booleanValueCoder = {
-  encode(val) {
+  encode(val: boolean) {
     if (val) return '1';
     else return '0';
   },
-  decode(val) {
+  decode(val: string) {
     return val === '1';
   }
 };

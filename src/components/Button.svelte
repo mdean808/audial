@@ -2,7 +2,7 @@
   export let type: string;
   export let className = '';
   export let title: string;
-  let buttonCSS;
+  let buttonCSS: string;
 
   switch (type) {
     case 'primary':
