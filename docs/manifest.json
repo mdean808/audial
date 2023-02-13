@@ -158,12 +158,12 @@
     "file": "_app/immutable/assets/Button-3b800996.css",
     "src": "Button.css"
   },
-  "Game.css": {
-    "file": "_app/immutable/assets/Game-46e97be5.css",
-    "src": "Game.css"
-  },
   "src/routes/__layout.css": {
     "file": "_app/immutable/assets/__layout-4d457c1e.css",
     "src": "src/routes/__layout.css"
+  },
+  "Game.css": {
+    "file": "_app/immutable/assets/Game-46e97be5.css",
+    "src": "Game.css"
   }
 }
