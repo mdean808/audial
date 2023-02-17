@@ -137,7 +137,7 @@
       >.
     </div>
     <p class="cursor-pointer text-red-400 underline-offset-1 underline mt-8" on:click={resetData}>
-      reset local data
+      reset your local data
     </p>
   </div>
 </div>
