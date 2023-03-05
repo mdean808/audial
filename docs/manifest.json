@@ -1,6 +1,6 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "_app/immutable/start-ca2f9710.js",
+    "file": "_app/immutable/start-9865a9de.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -101,7 +101,7 @@
     ]
   },
   "src/routes/stats.svelte": {
-    "file": "_app/immutable/pages/stats.svelte-a28ce24a.js",
+    "file": "_app/immutable/pages/stats.svelte-a9e917c7.js",
     "src": "src/routes/stats.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -154,6 +154,10 @@
       "_app/immutable/assets/Game-46e97be5.css"
     ]
   },
+  "src/routes/__layout.css": {
+    "file": "_app/immutable/assets/__layout-4d457c1e.css",
+    "src": "src/routes/__layout.css"
+  },
   "Button.css": {
     "file": "_app/immutable/assets/Button-3b800996.css",
     "src": "Button.css"
@@ -161,9 +165,5 @@
   "Game.css": {
     "file": "_app/immutable/assets/Game-46e97be5.css",
     "src": "Game.css"
-  },
-  "src/routes/__layout.css": {
-    "file": "_app/immutable/assets/__layout-4d457c1e.css",
-    "src": "src/routes/__layout.css"
   }
 }
