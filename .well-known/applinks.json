@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.mogdan.friendsfm",
+      "sha256_cert_fingerprints": [
+        "08:BC:D6:1E:BB:E6:F0:6F:B8:10:00:7F:FA:F1:E7:40:C7:5A:07:DF:BC:6E:37:F3:FD:7C:43:FE:4A:5F:08:66"
+      ]
+    }
+  }
+]
