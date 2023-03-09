@@ -10,5 +10,17 @@
         "C9:C9:46:16:2D:FF:E3:E2:3D:3A:A0:93:42:2D:5C:B2:15:4D:7D:33:80:AD:11:3F:7C:E9:E4:07:E6:F5:4C:AC"
       ]
     }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "xyz.mogdan.friendsfm",
+      "sha256_cert_fingerprints": [
+        "C9:C9:46:16:2D:FF:E3:E2:3D:3A:A0:93:42:2D:5C:B2:15:4D:7D:33:80:AD:11:3F:7C:E9:E4:07:E6:F5:4C:AC"
+      ]
+    }
   }
 ]
