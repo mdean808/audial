@@ -2,7 +2,7 @@
 
 audial is a wordle-style web game, but instead of formulating a word, the user guesses the song.
 
-> ⚠️ NOTE: Audial uses the `preview_url` attribute from the Spotify API to play snippets of songs, and it appears that they've removed that attribute going forward for "security reasons." Unfortunately this means that audial is now defunct, and won't be fixed unless I find time to transition to a more reliable and developer-friendly music service API.
+> ⚠️ NOTE: Audial uses the `preview_url` attribute from the Spotify API to play snippets of songs, and it appears that they've [removed that attribute](https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api) going forward for "security reasons." Unfortunately this means that audial is now defunct, and won't be fixed unless I find time to transition to a more reliable and developer-friendly music service API.
 
 Expanded from just a song a day, audial also inlcudes:
 
